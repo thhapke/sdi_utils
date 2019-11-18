@@ -5,16 +5,22 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gensolution",
-    version="0.0.2",
+    version="0.0.12",
     author="Thorsten Hapke",
     author_email="thorsten.hapke@sap.com",
     description="Generates solution package when locally developing SAP DI operators",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/thhapke/textfield_parser",
-    keywords = ['textfield parsing'],
+    url="https://github.com/thhapke/gensolution",
+    keywords = ['SAP Data Intelligence','genjson'],
     packages=setuptools.find_packages(),
     install_requires=[],
+    include_package_data=True,
+    entry_points={
+        'console_scripts': [
+            'gensolution = diutil.gensolution:main'
+        ]
+    },
     classifiers=[
     	'Programming Language :: Python :: 3.5',
     	'Programming Language :: Python :: 3.6',

@@ -1,0 +1,3 @@
+[console_scripts]
+gensolution = diutil.gensolution:main
+

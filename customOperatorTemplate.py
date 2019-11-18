@@ -2,21 +2,18 @@
 
 def process(msg):
 
-    # core process
     # start custom code
+
+    # example of accessing config parameter
     filename = api.config.filename
-    with open(filename, 'r') as fin :
-        data = fin.read()
-        fin.close()
+
     # end custom code
 
     # return message
-    return  api.Message(attributes = {'filename':api.config.filename}, body=data), log_stream.getvalue()
+    return  api.Message(attributes = {'filename':api.config.filename}, body=filename)
 
-'''
-Mock pipeline engine api to allow testing outside pipeline engine
-'''
-
+### definitions for local development to test
+### - will not be read when called by vflow of SAP Data Intelligence
 try:
     api
 except NameError:
@@ -33,11 +30,10 @@ except NameError:
             tags = {'python36': ''}  # tags that helps to select the appropriate container
             operator_description = 'Read File from Container'
             version = "0.0.2"  # for creating the manifest.json
+            config_params = dict()
 
-            # operator parameter for config the operator
-            config_params=dict()
+            # operator parameter for config the operator and producing configSchema.json
             filename = './data/test_file.txt'
-            #info for necessary for solution import
             config_params['filename'] = {'title': 'Filename', 'description':'Filename (path)', 'type':'string'}
 
         class Message:
@@ -52,23 +48,33 @@ except NameError:
                 print('--- Body: --- ')
                 print(msg.body)
 
+        # just takes default
         def set_port_callback(port, callback):
             print("Port: ",port)
             msg = api.get_default_input()
             callback(msg)
 
-        def call(msg,config):
+        # call function providing input data and config parameter
+        def call(msg,config,port,callback):
             api.config = config
-            msg, info = process(msg)
-            return msg, info
+            msg = process(msg)
+            callback(msg)
+            return msg
 
 # list input and output ports with specified types for creating operator.json
 inports = [{"name":"input","type":"message"}]
 outports = [{"name":"output","type":"message"}]
 
-def interface(msg):
-    msg, info = process(msg)
-    api.send(outports[0]["name"], msg)
+#def interface(msg):
+#    msg = process(msg)
+#    api.send(outports[0]["name"], msg)
 
-# Triggers the request for every message
+# Triggers the request for every message - will be un-commented with gensolution or do it manually
 api.set_port_callback(inports[0]["name"], interface)
+
+## test standalone
+if __name__ == '__main__':
+    config = api.config
+    config.filename = "./newfile.txt"
+    msg = api.Message(attributes={"filename":"new","Suffix":config.filename.split('.')[-1]},body='do it')
+    api.call(msg,config)

@@ -17,7 +17,7 @@ def gensolution(script_path, config, inports, outports, src_path=None, project_p
         project_path = os.getcwd()
 
     if not src_path :
-        src_path = os.path.join(project_path,"src")
+        src_path = os.path.join(project_path,"diutil")
 
     script_filename  = os.path.basename(script_path)
 
@@ -128,19 +128,20 @@ def change_version(manifest_file, version) :
         json.dump(manifest_dict, json_file,indent=4)
         json_file.close()
 
-if __name__ == '__main__':
+
+def main() :
 
     logging.Formatter('%(levelname)s - %(message)s')
 
     parser = argparse.ArgumentParser(description='Generate SAP Data Intelligence solution for local operator code')
 
+    parser.add_argument('--project',help='Creates new project with folder structure for locally programming operators ')
     parser.add_argument('--version', help='version format <num.num.num>')
     parser.add_argument('--debug',action='store_true', help='for debug-level information ')
     parser.add_argument('--force', action='store_true', help='removes subdirectories from <solution/operators>')
-    parser.add_argument('--prepare', help='Prepares folder structure for locally programming operators ')
 
-    #args = parser.parse_args()
-    args = parser.parse_args(['--prepare', '../newproject','--force'])
+    args = parser.parse_args()
+    #args = parser.parse_args(['--project', '../newproject','--force'])
 
     version = args.version
     debug = args.debug
@@ -153,18 +154,18 @@ if __name__ == '__main__':
         logging.basicConfig(level=logging.INFO,format='%(levelname)s - %(message)s')
 
 
-    if args.prepare :
-        projpathdir = os.path.dirname(args.prepare)
-        projpath = args.prepare
-        projname = os.path.basename(args.prepare)
+    if args.project:
+        projpathdir = os.path.dirname(args.project)
+        projpath = args.project
+        projname = os.path.basename(args.project)
         if not os.path.isdir(projpathdir) :
-            logging.error('Path to new project does not exist:  '+projpathdir)
+            logging.error('Path to new project does not exist:  ' + projpathdir)
             exit(-1)
         logging.info('Prepares folder structure at <{}> for project <{}>'.format(projpath,projname))
 
         os.mkdir(projpath)
-        src_path = os.path.join(projpath, 'src')
-        logging.info('Creates src-directory: ' + src_path)
+        src_path = os.path.join(projpath, 'diutil')
+        logging.info('Creates diutil-directory: ' + src_path)
         os.mkdir(src_path)
         logging.info('Creates package-directory: ' + os.path.join(src_path,projname))
         os.mkdir(os.path.join(src_path,projname))
@@ -184,7 +185,7 @@ if __name__ == '__main__':
 
 
     project_path = os.getcwd()
-    src_path = os.path.join(project_path,'src')
+    src_path = os.path.join(project_path,'diutil')
     solution_path = os.path.join(project_path, "solution", "operators")
 
     ### clear solution folder to avoid ambiguities
@@ -234,4 +235,5 @@ if __name__ == '__main__':
         subprocess.run(["vctl", "solution", "bundle", source_dir, "-t", tarfilename])
 
 
-
+#if __name__ == '__main__':
+    main()
