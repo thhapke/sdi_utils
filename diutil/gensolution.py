@@ -3,7 +3,7 @@ import os
 import re
 import json
 import subprocess
-import urllib
+import requests
 import logging
 import argparse
 
@@ -129,9 +129,12 @@ def change_version(manifest_file, version) :
         json.dump(manifest_dict, json_file,indent=4)
         json_file.close()
 
-def download_examplefile() :
-    example_code = urllib.URLopener()
-    example_code.retrieve("http://randomsite.com/file.gz", "file.gz")
+def download_templatefile(path) :
+    url = 'https://github.com/thhapke/gensolution/blob/master/diutil/customOperatorTemplate.py'
+    logging.info("Download templateCode.py from Github ({})".format(url))
+    example_code = requests.get(url)
+    open(path, 'wb').write(example_code.content)
+
 
 
 def main() :
@@ -146,7 +149,7 @@ def main() :
     parser.add_argument('--force', action='store_true', help='removes subdirectories from <solution/operators>')
 
     args = parser.parse_args()
-    #args = parser.parse_args(['--project', '../newproject','--force'])
+    args = parser.parse_args(['--project', '../newproject','--force'])
 
     version = args.version
     debug = args.debug
@@ -169,7 +172,7 @@ def main() :
         logging.info('Prepares folder structure at <{}> for project <{}>'.format(projpath,projname))
 
         os.mkdir(projpath)
-        src_path = os.path.join(projpath, 'diutil')
+        src_path = os.path.join(projpath, 'src')
         logging.info('Creates diutil-directory: ' + src_path)
         os.mkdir(src_path)
         logging.info('Creates package-directory: ' + os.path.join(src_path,projname))
@@ -182,6 +185,9 @@ def main() :
         with open(readme_file, 'w') as rmfile:
             readme = '# ' + projname + '\n\nDescription'
             rmfile.write(readme)
+
+        # download templateCode.py
+        download_templatefile(os.path.join(src_path,"templateCode.py"))
         exit(1)
 
     if version and not re.match(r'\d+\.\d+\.\d+', version) :
@@ -240,5 +246,5 @@ def main() :
         subprocess.run(["vctl", "solution", "bundle", source_dir, "-t", tarfilename])
 
 
-#if __name__ == '__main__':
+if __name__ == '__main__':
     main()

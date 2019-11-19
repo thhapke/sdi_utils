@@ -41,13 +41,6 @@ except NameError:
                 self.body = body
                 self.attributes = attributes
 
-        def send(port, msg):
-            if isinstance(msg,api.Message) :
-                print('--- Attributes: --- ')
-                print(msg.attributes)
-                print('--- Body: --- ')
-                print(msg.body)
-
         # just takes default
         def set_port_callback(port, callback):
             print("Port: ",port)
@@ -61,20 +54,20 @@ except NameError:
             callback(msg)
             return msg
 
+
 # list input and output ports with specified types for creating operator.json
 inports = [{"name":"input","type":"message"}]
 outports = [{"name":"output","type":"message"}]
 
-#def interface(msg):
-#    msg = process(msg)
-#    api.send(outports[0]["name"], msg)
-
 # Triggers the request for every message - will be un-commented with gensolution or do it manually
-api.set_port_callback(inports[0]["name"], interface)
+api.set_port_callback(inports[0]["name"], process)
 
 ## test standalone
 if __name__ == '__main__':
     config = api.config
     config.filename = "./newfile.txt"
     msg = api.Message(attributes={"filename":"new","Suffix":config.filename.split('.')[-1]},body='do it')
-    api.call(msg,config)
+    api.call(msg,config,inports[0]["name"],process)
+
+    print("Attributes: ",msg.attributes)
+    print("Body: ",msg.body)
