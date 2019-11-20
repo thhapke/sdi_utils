@@ -5,7 +5,11 @@ def process(msg):
     # start custom code
 
     # example of accessing config parameter
-    filename = api.config.filename
+    global counter
+    counter += 1
+    msg = api.Message(attributes={'name':'counter','type':'int'},body=counter)
+
+    api.send("output", msg)
 
     # end custom code
 
@@ -33,13 +37,18 @@ except NameError:
             config_params = dict()
 
             # operator parameter for config the operator and producing configSchema.json
-            filename = './data/test_file.txt'
+            filename = './text/test.txt'
             config_params['filename'] = {'title': 'Filename', 'description':'Filename (path)', 'type':'string'}
 
         class Message:
             def __init__(self,body = None,attributes = ""):
                 self.body = body
                 self.attributes = attributes
+
+        class send(port,msg) :
+            print('Port: ', port)
+            print('Attributes: ', msg.attributes)
+            print('Body: ', str(msg.body))
 
         # just takes default
         def set_port_callback(port, callback):
@@ -59,8 +68,11 @@ except NameError:
 inports = [{"name":"input","type":"message"}]
 outports = [{"name":"output","type":"message"}]
 
-# Triggers the request for every message - will be un-commented with gensolution or do it manually
-api.set_port_callback(inports[0]["name"], process)
+def call_on_input(msg) :
+    new_msg = process(msg)
+    api.send(outports[0]["name"],new_msg)
+
+api.set_port_callback(inports[0]["name"], call_on_input)
 
 ## test standalone
 if __name__ == '__main__':
