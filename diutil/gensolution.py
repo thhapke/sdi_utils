@@ -145,14 +145,19 @@ def main() :
 
     parser.add_argument('--project',help='Creates new project with folder structure for locally programming operators ')
     parser.add_argument('--version', help='version format <num.num.num>')
-    parser.add_argument('--debug',action='store_true', help='for debug-level information ')
-    parser.add_argument('--force', action='store_true', help='removes subdirectories from <solution/operators>')
+    parser.add_argument('--debug',action='store_true', help='For debug-level information ')
+    parser.add_argument('--zip',action='store_true', help='Zipping solution folder ')
+    parser.add_argument('--force', action='store_true', help='Removes subdirectories from <solution/operators>')
 
     args = parser.parse_args()
+    # testing args
     args = parser.parse_args(['--project', '../newproject','--force'])
+    #args = parser.parse_args(['--version', '0.0.3','--debug','--force'])
+
 
     version = args.version
     debug = args.debug
+    zip_flag = args.zip
     clear_solution_path = args.force
 
     if debug :
@@ -175,8 +180,9 @@ def main() :
         src_path = os.path.join(projpath, 'src')
         logging.info('Creates diutil-directory: ' + src_path)
         os.mkdir(src_path)
-        logging.info('Creates package-directory: ' + os.path.join(src_path,projname))
-        os.mkdir(os.path.join(src_path,projname))
+        src_project_path = os.path.join(src_path,projname)
+        logging.info('Creates package-directory: ' + src_project_path)
+        os.mkdir(src_project_path)
         solution_path = os.path.join(projpath, 'solution')
         logging.info('Creates solution-directory: ' + solution_path)
         os.mkdir(solution_path)
@@ -227,23 +233,23 @@ def main() :
                 gensolution(os.path.join(root,f),config = m.api.config,inports = m.inports,outports=m.outports)
 
     ###  creating operator solutions for uploading
-
-    for d in os.listdir(solution_path):
-        if d in exclude_dirs or re.match(r'.+.zip',d) :  # Zips are interpreted as directories
-            continue
-        source_dir = os.path.join(solution_path, d)
-        logging.debug('Building solution of folder: ' + source_dir)
-        if version :
-            logging.debug('Change version in <manifest.json> file')
-            change_version(os.path.join(solution_path,d,'manifest.json'),version = version)
-            d = re.sub(r'(\d+\.\d+\.\d+)$',version,d)
-            dest_dir = os.path.join(solution_path,d)
-            logging.info('Rename folder: {} -> {}'.format(source_dir,dest_dir))
-            move(source_dir, dest_dir)
+    if zip_flag :
+        for d in os.listdir(solution_path):
+            if d in exclude_dirs or re.match(r'.+.zip',d) :  # Zips are interpreted as directories
+                continue
             source_dir = os.path.join(solution_path, d)
-        tarfilename = os.path.join(solution_path, d + '.zip')
-        logging.info('Start vctl cmd: vctl solution bundle {} -t {}'.format(source_dir, tarfilename))
-        subprocess.run(["vctl", "solution", "bundle", source_dir, "-t", tarfilename])
+            logging.debug('Building solution of folder: ' + source_dir)
+            if version :
+                logging.debug('Change version in <manifest.json> file')
+                change_version(os.path.join(solution_path,d,'manifest.json'),version = version)
+                d = re.sub(r'(\d+\.\d+\.\d+)$',version,d)
+                dest_dir = os.path.join(solution_path,d)
+                logging.info('Rename folder: {} -> {}'.format(source_dir,dest_dir))
+                move(source_dir, dest_dir)
+                source_dir = os.path.join(solution_path, d)
+            tarfilename = os.path.join(solution_path, d + '.zip')
+            logging.info('Start vctl cmd: vctl solution bundle {} -t {}'.format(source_dir, tarfilename))
+            subprocess.run(["vctl", "solution", "bundle", source_dir, "-t", tarfilename])
 
 
 if __name__ == '__main__':
