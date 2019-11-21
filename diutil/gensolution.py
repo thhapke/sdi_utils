@@ -106,10 +106,6 @@ def gensolution(script_path, config, inports, outports, src_path=None, project_p
         write_fn.close()
     read_fn.close()
 
-    #script_str =
-
-
-
     # create manifest
     manifest = {"name": package_name, "version": config.version, "format": "2", "dependencies": []}
     root_solution_path = os.path.join(project_path, 'solution', 'operators')
@@ -129,9 +125,8 @@ def change_version(manifest_file, version) :
         json.dump(manifest_dict, json_file,indent=4)
         json_file.close()
 
-def download_templatefile(path) :
-    url = 'https://github.com/thhapke/gensolution/blob/master/diutil/customOperatorTemplate.py'
-    logging.info("Download templateCode.py from Github ({})".format(url))
+def download_templatefile(url,path) :
+    logging.info("Download templateCode.py from Github {} to  {}".format(url,path))
     example_code = requests.get(url)
     open(path, 'wb').write(example_code.content)
 
@@ -151,7 +146,7 @@ def main() :
 
     args = parser.parse_args()
     # testing args
-    args = parser.parse_args(['--project', '../newproject','--force'])
+    #args = parser.parse_args(['--project', '../newproject','--force'])
     #args = parser.parse_args(['--version', '0.0.3','--debug','--force'])
 
 
@@ -193,7 +188,8 @@ def main() :
             rmfile.write(readme)
 
         # download templateCode.py
-        download_templatefile(os.path.join(src_path,"templateCode.py"))
+        template_url = 'https://raw.githubusercontent.com/thhapke/gensolution/master/diutil/customOperatorTemplate.py'
+        download_templatefile(template_url,os.path.join(src_project_path,"customOperatorTemplate.py"))
         exit(1)
 
     if version and not re.match(r'\d+\.\d+\.\d+', version) :

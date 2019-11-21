@@ -1,8 +1,8 @@
 MANIFEST.in
 README.md
-customOperatorTemplate.py
 setup.py
 diutil/__init__.py
+diutil/customOperatorTemplate.py
 diutil/gensolution.py
 diutil/textfield_parser.py
 gensolution.egg-info/PKG-INFO

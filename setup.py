@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="gensolution",
-    version="0.0.12",
+    version="0.0.14",
     author="Thorsten Hapke",
     author_email="thorsten.hapke@sap.com",
     description="Generates solution package when locally developing SAP DI operators",
