@@ -12,13 +12,16 @@ from shutil import copyfile, move, rmtree
 exclude_files = ['__init__.py']
 exclude_dirs = ['__pycache__']
 
-def gensolution(script_path, config, inports, outports, src_path=None, project_path = None, override_readme = False, tar = False) :
+def gensolution(script_path, config, inports, outports, src_path=None, override_readme = False, tar = False) :
 
-    if not project_path :
-        project_path = os.getcwd()
+    script_path = os.path.abspath(script_path)
+    drive, project_path = os.path.splitdrive(script_path)
+    project_path, folder = os.path.split(project_path)
+    while folder  and not folder == 'src':
+        project_path, folder = os.path.split(project_path)
 
     if not src_path :
-        src_path = os.path.join(project_path,"diutil")
+        src_path = os.path.join(project_path,"sdi_utils")
 
     script_filename  = os.path.basename(script_path)
 
@@ -90,7 +93,7 @@ def gensolution(script_path, config, inports, outports, src_path=None, project_p
     # Review code and do some adjustments
     # * remove comment in line #api.set_port_callback (used when run locally)
     # * remove all lines following "if __name__ == '__main__': "^
-    # * remove import gensolution - maybe used in same script for generating
+    # * remove import sdi_utils - maybe used in same script for generating
     with open(script_path, 'r') as read_fn:
         with open(os.path.join(operator_solution_path, script_filename), 'w') as write_fn:
             line = read_fn.readline()
@@ -98,9 +101,9 @@ def gensolution(script_path, config, inports, outports, src_path=None, project_p
                 line = re.sub(r'^#api.set_port_callback', 'api.set_port_callback', line)
                 if re.match(r'if __name__ == \'__main__\'',line) or re.match(r'if __name__ == \"__main__\"',line) :
                     break
-                if re.match(r'import gensolution',line) :
-                    line = read_fn.readline()
-                    continue
+                #if re.match(r'import sdi_utils',line) :
+                #    line = read_fn.readline()
+                #    continue
                 write_fn.write(line)
                 line = read_fn.readline()
         write_fn.close()
@@ -130,7 +133,16 @@ def download_templatefile(url,path) :
     example_code = requests.get(url)
     open(path, 'wb').write(example_code.content)
 
-
+def getRoot(file=None):
+  if file is None:
+      file='.'
+  me=os.path.abspath(file)
+  drive,path=os.path.splitdrive(me)
+  while 1:
+    path,folder=os.path.split(path)
+    if not folder:
+       break
+  return drive+path
 
 def main() :
 
@@ -173,7 +185,7 @@ def main() :
 
         os.mkdir(projpath)
         src_path = os.path.join(projpath, 'src')
-        logging.info('Creates diutil-directory: ' + src_path)
+        logging.info('Creates sdi_utils-directory: ' + src_path)
         os.mkdir(src_path)
         src_project_path = os.path.join(src_path,projname)
         logging.info('Creates package-directory: ' + src_project_path)
@@ -197,8 +209,8 @@ def main() :
         exit(-1)
 
 
-    project_path = os.getcwd()
-    src_path = os.path.join(project_path,'diutil')
+    project_path = os.getcwd()                              # root path of the whole project
+    src_path = os.path.join(project_path,'src')             # path of the src
     solution_path = os.path.join(project_path, "solution", "operators")
 
     ### clear solution folder to avoid ambiguities

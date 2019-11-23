@@ -1,0 +1,25 @@
+{
+    "description": "Custom Operator Template",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "message"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/.configSchema.json",
+        "script": "file://customOperatorTemplate",
+        "var1": "own foo",
+        "var2": "bar"
+    },
+    "tags": {
+        "python36": ""
+    }
+}

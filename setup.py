@@ -4,21 +4,21 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="gensolution",
-    version="0.0.14",
+    name="sdi_utils",
+    version="0.0.15",
     author="Thorsten Hapke",
     author_email="thorsten.hapke@sap.com",
     description="Generates solution package when locally developing SAP DI operators",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/thhapke/gensolution",
-    keywords = ['SAP Data Intelligence','genjson'],
+    keywords = ['SAP Data Intelligence','genjson','tprogress','textfield_parser'],
     packages=setuptools.find_packages(),
     install_requires=[],
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'gensolution = diutil.gensolution:main'
+            'gensolution = sdi_utils.gensolution.py:main'
         ]
     },
     classifiers=[
