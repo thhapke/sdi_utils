@@ -14,10 +14,22 @@ def set_logging(name='operator',loglevel = logging.INFO) :
     log_stream = StringIO()
     logger = logging.getLogger(name=name)
     sh = logging.StreamHandler(stream=log_stream)
-    sh.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%H:%M:%S'))
+    sh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt='%H:%M:%S'))
     logger.addHandler(sh)
     eh = logging.StreamHandler(stream=sys.stderr)
-    eh.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%H:%M:%S'))
+    eh.setFormatter(logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s', datefmt='%H:%M:%S'))
     logger.addHandler(eh)
     logger.setLevel(loglevel)
     return logger, log_stream
+
+def main() :
+    logger, log_stream = set_logging(name = 'Test', loglevel='INFO')
+    logger.debug('Message debug level')
+    logger.info('Message debug level')
+
+    print('Log String: ')
+    print(log_stream.getvalue())
+
+if __name__ == '__main__':
+    main()
+
