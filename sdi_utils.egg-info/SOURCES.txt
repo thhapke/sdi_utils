@@ -1,0 +1,12 @@
+README.md
+setup.py
+sdi_utils/__init__.py
+sdi_utils/gensolution.py
+sdi_utils/set_logging.py
+sdi_utils/textfield_parser.py
+sdi_utils/tprogress.py
+sdi_utils.egg-info/PKG-INFO
+sdi_utils.egg-info/SOURCES.txt
+sdi_utils.egg-info/dependency_links.txt
+sdi_utils.egg-info/entry_points.txt
+sdi_utils.egg-info/top_level.txt

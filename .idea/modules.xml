@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/gensolution.iml" filepath="$PROJECT_DIR$/.idea/gensolution.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/sdi_utils.iml" filepath="$PROJECT_DIR$/.idea/sdi_utils.iml" />
     </modules>
   </component>
 </project>

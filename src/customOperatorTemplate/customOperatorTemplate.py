@@ -2,7 +2,6 @@
 import sdi_utils.gensolution as gs
 import sdi_utils.set_logging as slog
 import sdi_utils.tprogress as tp
-import logging
 
 import os
 
@@ -49,7 +48,7 @@ except NameError:
 
 
 def process(msg):
-    logger, log_stream = slog.set_logging(loglevel=logging.DEBUG)
+    logger, log_stream = slog.set_logging('DEBUG')
     time_monitor = tp.progress()
 
     result = ''

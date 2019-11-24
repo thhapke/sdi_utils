@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sdi_utils",
-    version="0.0.15",
+    version="0.0.17",
     author="Thorsten Hapke",
     author_email="thorsten.hapke@sap.com",
     description="Generates solution package when locally developing SAP DI operators",
