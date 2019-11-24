@@ -1,7 +1,7 @@
 Metadata-Version: 2.1
 Name: sdi-utils
-Version: 0.0.17
-Summary: Generates solution package when locally developing SAP DI operators
+Version: 0.0.19
+Summary: List of SAP DI helper functions like gensolution (package locally developed operators, textfield_parser, time_monitoring
 Home-page: https://github.com/thhapke/gensolution
 Author: Thorsten Hapke
 Author-email: thorsten.hapke@sap.com

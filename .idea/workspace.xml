@@ -2,13 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="849904c2-7d13-49e7-8bdb-607989122955" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sdi_utils.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sdi_utils.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/set_logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/set_logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.17-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.17.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/SOURCES.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdi_utils/set_logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/set_logging.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customOperatorTemplate/customOperatorTemplate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/customOperatorTemplate/customOperatorTemplate.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,7 +77,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574573931507</updated>
-      <workItem from="1574573932614" duration="2106000" />
+      <workItem from="1574573932614" duration="5157000" />
     </task>
     <servers />
   </component>
@@ -97,11 +98,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/sdi_utils/set_logging.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/customOperatorTemplate/customOperatorTemplate.py</url>
           <line>1</line>

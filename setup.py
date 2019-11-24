@@ -5,16 +5,18 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sdi_utils",
-    version="0.0.17",
+    version="0.0.19",
     author="Thorsten Hapke",
     author_email="thorsten.hapke@sap.com",
-    description="Generates solution package when locally developing SAP DI operators",
+    description="List of SAP DI helper functions like gensolution (package locally developed operators, textfield_parser, time_monitoring",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/thhapke/gensolution",
     keywords = ['SAP Data Intelligence','genjson','tprogress','textfield_parser'],
     packages=setuptools.find_packages(),
-    install_requires=[],
+    install_requires=[
+        'requests'
+    ],
     include_package_data=True,
     entry_points={
         'console_scripts': [

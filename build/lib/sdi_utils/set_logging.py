@@ -2,17 +2,17 @@ import logging
 from io import StringIO
 import sys
 
-map_logs = {'DEBUG':logging.DEBUG,'INFO':logging.INFO,'WARNING':logging.WARNING,'ERROR':logging.ERROR}
+map_logs = {'DEBUG':logging.DEBUG,'INFO':logging.INFO,'WARNING':logging.WARNING,'ERROR':logging.ERROR,'CRITICAL':logging.CRITICAL}
 
 ### set logger for strerr and to StringIO
-def set_logging(loglevel = logging.INFO) :
+def set_logging(name='operator',loglevel = logging.INFO) :
     if isinstance(loglevel,str) :
         try :
             loglevel = map_logs[loglevel]
         except KeyError :
             raise ValueError('Unknown logging level. Valid values: INFO, DEBUG, WARNING, ERROR')
     log_stream = StringIO()
-    logger = logging.getLogger()
+    logger = logging.getLogger(name=name)
     sh = logging.StreamHandler(stream=log_stream)
     sh.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s', datefmt='%H:%M:%S'))
     logger.addHandler(sh)
