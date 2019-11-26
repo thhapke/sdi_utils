@@ -5,10 +5,10 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sdi_utils",
-    version="0.0.21",
+    version="0.0.28",
     author="Thorsten Hapke",
     author_email="thorsten.hapke@sap.com",
-    description="List of SAP DI helper functions like gensolution (package locally developed operators, textfield_parser, time_monitoring",
+    description="List of SAP DI helper functions like gensolution (package locally developed operators,textfield_parser, time_monitoring",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/thhapke/gensolution",
@@ -20,7 +20,7 @@ setuptools.setup(
     include_package_data=True,
     entry_points={
         'console_scripts': [
-            'gensolution = sdi_utils.gensolution.py:main'
+            'gensolution = sdi_utils.gensolution:main'
         ]
     },
     classifiers=[

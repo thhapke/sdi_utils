@@ -1,0 +1,24 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/pandas.setValue.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "map_values": {
+            "title": "Mapping Values",
+            "description": "Mapping Values",
+            "type": "string"
+        },
+        "fill_nan_values": {
+            "title": "Fill NaN for Values",
+            "description": "Fill NaN for Values",
+            "type": "string"
+        }
+    },
+    "required": []
+}

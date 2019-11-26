@@ -1,0 +1,53 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/pandas.fuzzyjoin.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "check_columns": {
+            "title": "Columns to check",
+            "description": "Columns to check",
+            "type": "string"
+        },
+        "limit": {
+            "title": "Matching Limit",
+            "description": "Matching Limit",
+            "type": "integer"
+        },
+        "test_index": {
+            "title": "Index of Test DataFrame",
+            "description": "Index of Test DataFrame",
+            "type": "string"
+        },
+        "only_matching_rows": {
+            "title": "Matching Rows only",
+            "description": "Matching Rows only",
+            "type": "boolean"
+        },
+        "only_index": {
+            "title": "Add only Index to DataFrame",
+            "description": "Add only Index to DataFrame",
+            "type": "boolean"
+        },
+        "joint_id": {
+            "title": "Add joint id",
+            "description": "Add joint id",
+            "type": "boolean"
+        },
+        "base_index": {
+            "title": "Index of Base Dataset",
+            "description": "Index of Base Dataset",
+            "type": "string"
+        },
+        "add_non_matching": {
+            "title": "Add non matching datasets",
+            "description": "Add non matching datasets",
+            "type": "boolean"
+        }
+    }
+}

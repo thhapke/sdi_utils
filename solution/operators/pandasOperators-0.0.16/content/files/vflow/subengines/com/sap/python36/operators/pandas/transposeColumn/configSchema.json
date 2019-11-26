@@ -1,0 +1,48 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/pandas.transposeColumnDF.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "transpose_column": {
+            "title": "Transpose Column",
+            "description": "Transpose Column",
+            "type": "string"
+        },
+        "value_column": {
+            "title": "Value Column",
+            "description": "Value Column",
+            "type": "string"
+        },
+        "aggr_trans": {
+            "title": "Aggregation of transposed column",
+            "description": "Aggregation of transposed column",
+            "type": "string"
+        },
+        "aggr_default": {
+            "title": "Default aggregation ",
+            "description": "Default aggregation",
+            "type": "string"
+        },
+        "groupby": {
+            "title": "Group by columns",
+            "description": "Group by columns",
+            "type": "string"
+        },
+        "as_index": {
+            "title": "Groupby as index",
+            "description": "Groupby as index",
+            "type": "boolean"
+        },
+        "reset_index": {
+            "title": "Reset index",
+            "description": "Reset Index",
+            "type": "boolean"
+        }
+    }
+}

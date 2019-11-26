@@ -4,12 +4,31 @@
     <list default="true" id="849904c2-7d13-49e7-8bdb-607989122955" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/set_logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/set_logging.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.19-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.19.tar.gz" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/textfield_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/textfield_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.21-py3-none-any.whl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.21.tar.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/entry_points.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/entry_points.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdi_utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/gensolution.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdi_utils/set_logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/set_logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdi_utils/textfield_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/textfield_parser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/OperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/OperatorTemplate/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/OperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/OperatorTemplate/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/OperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/OperatorTemplate/customOperatorTemplate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/OperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/OperatorTemplate/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/OperatorTemplate_0.0.1/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customOperatorTemplate/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customOperatorTemplate/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customOperatorTemplate/customOperatorTemplate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/customOperatorTemplate/customOperatorTemplate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customOperatorTemplate/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/operator.json" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,7 +42,7 @@
   <component name="ProjectId" id="1U38UCESkF7iBDelS35UYRFpC7D" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../DI_Pandas" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../SDI_Pandas" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunDashboard">
@@ -38,7 +57,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.set_logging">
+  <component name="RunManager" selected="Python.gensolution">
     <configuration name="customOperatorTemplate" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sdi_utils" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -53,6 +72,28 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/customOperatorTemplate/customOperatorTemplate.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="gensolution" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sdi_utils" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sdi_utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sdi_utils/gensolution.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -83,10 +124,34 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="textfield_parser" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sdi_utils" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/sdi_utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/sdi_utils/textfield_parser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.set_logging" />
+        <item itemvalue="Python.gensolution" />
         <item itemvalue="Python.customOperatorTemplate" />
+        <item itemvalue="Python.set_logging" />
+        <item itemvalue="Python.textfield_parser" />
       </list>
     </recent_temporary>
   </component>
@@ -100,7 +165,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1574573931507</updated>
-      <workItem from="1574573932614" duration="7443000" />
+      <workItem from="1574573932614" duration="13457000" />
+      <workItem from="1574671648873" duration="23806000" />
     </task>
     <servers />
   </component>
@@ -112,7 +178,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
@@ -126,11 +194,22 @@
           <line>1</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sdi_utils/set_logging.py</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/sdi_utils/gensolution.py</url>
+          <line>144</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/sdi_utils$customOperatorTemplate.coverage" NAME="customOperatorTemplate Coverage Results" MODIFIED="1574575348993" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/customOperatorTemplate" />
-    <SUITE FILE_PATH="coverage/sdi_utils$set_logging.coverage" NAME="set_logging Coverage Results" MODIFIED="1574604884848" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdi_utils" />
+    <SUITE FILE_PATH="coverage/sdi_utils$gensolution.coverage" NAME="gensolution Coverage Results" MODIFIED="1574760062293" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdi_utils" />
+    <SUITE FILE_PATH="coverage/sdi_utils$customOperatorTemplate.coverage" NAME="customOperatorTemplate Coverage Results" MODIFIED="1574685301324" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/customOperatorTemplate" />
+    <SUITE FILE_PATH="coverage/sdi_utils$set_logging.coverage" NAME="set_logging Coverage Results" MODIFIED="1574671078247" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdi_utils" />
+    <SUITE FILE_PATH="coverage/sdi_utils$textfield_parser.coverage" NAME="textfield_parser Coverage Results" MODIFIED="1574668336306" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdi_utils" />
   </component>
 </project>

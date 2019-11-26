@@ -5,7 +5,6 @@ import sdi_utils.tprogress as tp
 
 import os
 
-
 try:
     api
 except NameError:

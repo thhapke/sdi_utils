@@ -1,5 +1,9 @@
 import json
 import re
+import logging
+
+tflogger = logging.getLogger('textfield_parser')
+
 
 #### READ Value
 def read_value(text,test_number = True):
@@ -8,6 +12,7 @@ def read_value(text,test_number = True):
     val = text.strip().strip("'").strip('"')
     if test_number :
         val = number_test(val)
+    tflogger.debug('Text -> Result: {} -> {} '.format(text,val))
     return  val
 
 #### READ LIST
@@ -49,6 +54,7 @@ def read_list(text,value_list=None,sep = ',',modifier_list_not=None,test_number 
             raise ValueError("Negation needs a value list to exclude items")
         result_list = [x for x in value_list if x not in result_list]
 
+    tflogger.debug('Text -> Result: {} -> {} '.format(text, result_list))
     return result_list
 
 #### READ VALUE LIST
@@ -167,11 +173,19 @@ def number_test(str) :
 ### MAIN
 ##############################
 if __name__ == '__main__':
+    logging.basicConfig(level=logging.INFO)
 
+    #tflogger.setLevel(logging.DEBUG)
+    tflogger.info('Main')
     ### list
+
+    text_1 = "'1'"
+
     text = "'Hello', 'a list', with , 5, 5.6, separated by , me"
     not_text = "Not Mercedes, Renault, Citroen, Peugeaut, 'Rolls Royce'"
     list2 = ['Mercedes', 'Audi', 'VW', 'Skoda', 'Renault', 'Citroen', 'Peugeot', 'Rolls Royce']
+    print('Value: ' + str(read_value(text_1)))
+    print('Value Number: ' + str(read_value(text_1,test_number=True)))
     print('Not: ' + str(read_list(not_text, list2)))
     print('None :' + str(read_list('')))
     print('None (literally):' + str(read_list('None')))

@@ -1,4 +1,4 @@
-#  - 
+# OperatorTemplate - 
 
 ## Inport
 
@@ -7,6 +7,7 @@
 ## outports
 
 * output  (Type: message)
+* log  (Type: string)
 
 ## Config
 

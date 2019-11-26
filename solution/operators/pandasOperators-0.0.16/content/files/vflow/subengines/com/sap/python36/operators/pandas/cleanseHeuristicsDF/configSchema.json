@@ -1,0 +1,94 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/pandas.cleanseHeuristicsDF.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "zero_to_null": {
+            "title": "Zero to Null/Nan Value",
+            "description": "Zero to Null/Nan Value",
+            "type": "boolean"
+        },
+        "yes_no_to_num": {
+            "title": "Yes/No to Numeric",
+            "description": "Yes/No to Numeric",
+            "type": "boolean"
+        },
+        "drop_nan_columns": {
+            "title": "Drop NaN Columns",
+            "description": "Drop NaN Columns",
+            "type": "boolean"
+        },
+        "all_constant_to_NaN": {
+            "title": "Columns with unique Value to NaN",
+            "description": "Columns with unique Value to NaN",
+            "type": "boolean"
+        },
+        "threshold_unique": {
+            "title": "Threshold Unique Values to 1",
+            "description": "Threshold Unique Values to 1",
+            "type": "number"
+        },
+        "threshold_unique_cols": {
+            "title": "Columns for Unique Threshold Criteria",
+            "description": "Columns for Unique Threshold Criteria",
+            "type": "string"
+        },
+        "threshold_freq": {
+            "title": "Threshold Frequency ",
+            "description": "Threshold Frequency ",
+            "type": "number"
+        },
+        "threshold_freq_cols": {
+            "title": "Columns for Threshold Frequency Criteria",
+            "description": "Columns for Threshold Frequency Criteria",
+            "type": "string"
+        },
+        "drop_nan_rows_cols": {
+            "title": "Drop NaN Rows Columns",
+            "description": "Columns for dropping NaN Rows ",
+            "type": "string"
+        },
+        "rare_value_quantile": {
+            "title": "Rare Value Quantile",
+            "description": "Rare Value Quantile",
+            "type": "number"
+        },
+        "rare_value_cols": {
+            "title": "Columns for Rare Value Criteria",
+            "description": "Columns for Rare Value Criteria",
+            "type": "string"
+        },
+        "rare_value_std": {
+            "title": "Rare Value Standard Deviation",
+            "description": "Rare Value Standard Deviation",
+            "type": "number"
+        },
+        "max_cat_num": {
+            "title": "Maximum Number of Categories",
+            "description": "Maximum Number of Categories",
+            "type": "number"
+        },
+        "max_cat_num_cols": {
+            "title": "Columns for Maximum Number Categories Criteria",
+            "description": "Columns for Maximum Number Categories Criteria",
+            "type": "string"
+        },
+        "reduce_categoricals_only": {
+            "title": "Reduce Categorical Type Columns only",
+            "description": "Reduce Categorical Type Columns only",
+            "type": "boolean"
+        },
+        "remove_duplicates_cols": {
+            "title": "Columns for Remove Duplicate Criteria",
+            "description": "Columns for Remove Duplicate Criteria",
+            "type": "string"
+        }
+    },
+    "required": []
+}

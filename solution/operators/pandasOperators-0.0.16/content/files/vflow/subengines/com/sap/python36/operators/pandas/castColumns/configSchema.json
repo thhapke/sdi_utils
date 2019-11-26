@@ -1,0 +1,23 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/pandas.castColumns.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "cast": {
+            "title": "Cast Mapping List",
+            "description": "Cast Mapping List",
+            "type": "string"
+        },
+        "round": {
+            "title": "Round when cast",
+            "description": "Round when cast",
+            "type": "boolean"
+        }
+    }
+}

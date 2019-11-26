@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/pandas.groupby.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "groupby": {
+            "title": "Groupby Columns",
+            "description": "Groupby Columns",
+            "type": "string"
+        },
+        "aggregation": {
+            "title": "Aggregation Mapping",
+            "description": "Aggregation Mapping",
+            "type": "string"
+        },
+        "index": {
+            "title": "Set Index",
+            "description": "Set Index",
+            "type": "boolean"
+        },
+        "drop_columns": {
+            "title": "Drop Columns",
+            "description": "Drop Columns",
+            "type": "string"
+        }
+    }
+}
