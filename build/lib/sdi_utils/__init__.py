@@ -1,1 +1,1 @@
--äname = "textfield_parser"
+from .set_logging import  set_logging

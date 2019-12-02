@@ -157,11 +157,25 @@ def make_data_list(port_list) :
     return ret_list, ', '.join(ret_list)
 
 
-def reverse_solution(project_path, package, operator_folder) :
+def reverse_solution(project_path, package, operator_folder,override=False) :
     operator_folder = operator_folder.replace('.','/')
     operator_solution_path = os.path.join(project_path, 'solution', 'operators', package, 'content','files' ,'vflow', \
                                    'subengines' ,'com' ,'sap', 'python36', 'operators', operator_folder)
     operator_script = os.path.basename(operator_folder) + '.py'
+    operator_src_path = os.path.join(project_path, 'src', operator_folder)
+    script_src_path = os.path.join(operator_src_path, operator_script)
+    if os.path.isfile(script_src_path) :
+        if not override :
+            raise FileExistsError (script_src_path)
+        else :
+            logging.warning('Overwrite File: ' + script_src_path)
+
+    found_version = re.match('.+(\d+)\.(\d+)\.(\d+).*',package)
+    new_version = '0.0.1'
+    if found_version and not new_version == '0.0.1' :
+        new_version ="'{}.{}.{}'".format(found_version[1],found_version[2],int(found_version[3])+1)
+
+
     logging.debug("Load <configSchema.json>")
     with open(os.path.join(operator_solution_path,'configSchema.json')) as schemaFile:
         schema_dict = json.load(schemaFile)
@@ -173,7 +187,7 @@ def reverse_solution(project_path, package, operator_folder) :
         operatorFile.close()
 
     logging.debug("Make src-directory for operator")
-    operator_src_path = os.path.join(project_path,'src',operator_folder)
+
     logging.debug("Make src-directory for operator: {}".format(operator_src_path))
     os.makedirs(operator_src_path, exist_ok=True)
 
@@ -183,7 +197,7 @@ def reverse_solution(project_path, package, operator_folder) :
     copyfile(os.path.join(operator_solution_path, 'configSchema.json'),os.path.join(operator_src_path, 'configSchema.json'))
     copyfile(os.path.join(operator_solution_path, operator_script),os.path.join(operator_src_path, 'old_'+operator_script))
 
-    with open(os.path.join(operator_src_path,operator_script),'w') as operatorFile :
+    with open(script_src_path,'w') as operatorFile :
         firstblock = r"""import sdi_utils.gensolution as gs
 import sdi_utils.set_logging as slog
 
@@ -216,10 +230,10 @@ except NameError:
         class config:
             ## Meta data
             config_params = dict()
-            version = '0.0.1'
         """
         operatorFile.write(firstblock)
-        operatorFile.writelines("{:4}tags = {}\n".format('',str(operator_dict['tags'])))
+        operatorFile.writelines("{:4}version = {}\n".format('', new_version))
+        operatorFile.writelines("{:12}tags = {}\n".format('',str(operator_dict['tags'])))
         operatorFile.writelines("{:12}operator_description = \"{}\"\n".format('',os.path.basename(operator_folder)))
         for name,defs in schema_dict['properties'].items() :
             if name == 'codelanguage' or name == 'script' :
@@ -297,8 +311,11 @@ def main() :
     args = parser.parse_args()
     # testing args
     #args = parser.parse_args(['--project', '../newproject','--force'])
+
+    os.chdir('../np')
+    #args = parser.parse_args(['--project', '.'])
     #args = parser.parse_args(['--version', '0.0.3','--debug','--force'])
-    args = parser.parse_args(['--reverse','--debug','--package','pandasOperators-0.0.16','--operator','pandas.toCSV'])
+    #args = parser.parse_args(['--reverse','--debug','--package','pandasOperators-0.0.16','--operator','pandas.cleanseHeuristics'])
 
     version = args.version
     debug = args.debug
@@ -317,19 +334,28 @@ def main() :
 
     ###############################################################################################################
     ### makes project directories
+    ### if --project is dir then the folder name is used as project name
+    ### else         the project path is created
     ###############################################################################################################
     if args.project:
-        projpathdir = os.path.dirname(args.project)
-        projpath = args.project
-        projname = os.path.basename(args.project)
-        if not os.path.isdir(projpathdir) :
+        projpathdir = os.path.abspath(os.path.join(args.project, os.pardir))
+        if not os.path.isdir(projpathdir):
             logging.error('Path to new project does not exist:  ' + projpathdir)
             exit(-1)
+
+        projpath = args.project
+        if not os.path.isabs(projpath):
+            projpath = os.path.abspath(projpath)
+
+        projname = os.path.basename(projpath)
+        if not os.path.isdir(projpath) :
+            logging.info("New project path is created: {}".format(projpath))
+            os.mkdir(projpath)
+
         logging.info('Prepares folder structure at <{}> for project <{}>'.format(projpath,projname))
 
-        os.mkdir(projpath)
         src_path = os.path.join(projpath, 'src')
-        logging.info('Creates sdi_utils-directory: ' + src_path)
+        logging.info('Creates src-directory: ' + src_path)
         os.mkdir(src_path)
         src_project_path = os.path.join(src_path,projname)
         logging.info('Creates package-directory: ' + src_project_path)
@@ -409,8 +435,10 @@ def main() :
     ### reverse solution
     ###############################################################################################################
     if args.reverse :
-        project_path = os.path.dirname(os.getcwd())
-        reverse_solution(project_path,package=package,operator_folder=operator_folder)
+        #project_path = os.path.dirname(os.getcwd()) # for testing only
+        project_path = os.getcwd()
+        logging.debug('Project path: ' + project_path)
+        reverse_solution(project_path,package=package,operator_folder=operator_folder,override=args.force)
 
 if __name__ == '__main__':
     main()

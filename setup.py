@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="sdi_utils",
-    version="0.0.28",
+    version="0.0.43",
     author="Thorsten Hapke",
     author_email="thorsten.hapke@sap.com",
     description="List of SAP DI helper functions like gensolution (package locally developed operators,textfield_parser, time_monitoring",
