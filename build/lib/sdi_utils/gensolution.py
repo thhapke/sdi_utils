@@ -171,7 +171,7 @@ def reverse_solution(project_path, package, operator_folder,override=False) :
             logging.warning('Overwrite File: ' + script_src_path)
 
     found_version = re.match('.+(\d+)\.(\d+)\.(\d+).*',package)
-    new_version = '0.0.1'
+    new_version = "'0.0.1'"
     if found_version and not new_version == '0.0.1' :
         new_version ="'{}.{}.{}'".format(found_version[1],found_version[2],int(found_version[3])+1)
 
@@ -199,7 +199,7 @@ def reverse_solution(project_path, package, operator_folder,override=False) :
 
     with open(script_src_path,'w') as operatorFile :
         firstblock = r"""import sdi_utils.gensolution as gs
-import sdi_utils.set_logging as slog
+from  sdi_utils import set_logging
 
 try:
     api
@@ -233,11 +233,18 @@ except NameError:
         """
         operatorFile.write(firstblock)
         operatorFile.writelines("{:4}version = {}\n".format('', new_version))
-        operatorFile.writelines("{:12}tags = {}\n".format('',str(operator_dict['tags'])))
+        if not 'tags' in operator_dict.keys() :
+            operatorFile.writelines("{:12}tags = \{\}\n".format(''))
+        else :
+            operatorFile.writelines("{:12}tags = {}\n".format('', str(operator_dict['tags'])))
+
         operatorFile.writelines("{:12}operator_description = \"{}\"\n".format('',os.path.basename(operator_folder)))
         for name,defs in schema_dict['properties'].items() :
             if name == 'codelanguage' or name == 'script' :
                 continue
+            if not name in operator_dict['config'].keys() :
+                operator_dict['config'][name] = 'None'
+                logging.warning('operator.json has no default value for: {}'.format(name))
             if defs['type'] == 'string' :
                 operatorFile.writelines("{:12}{} = '{}'\n".format('', name, operator_dict['config'][name]))
             else :
@@ -248,7 +255,7 @@ except NameError:
         ret_list, ret_str = make_data_list(operator_dict['outports'])
 
         operatorFile.write("\n\ndef process({}) :\n\n".format(args_str))
-        operatorFile.write("{:4}logger, log_stream = slog.set_logging('DEBUG')\n\n".format(''))
+        operatorFile.write("{:4}logger, log_stream = set_logging('DEBUG')\n\n".format(''))
         operatorFile.write("{:4}# start custom process definition\n".format(''))
 
         for op in ret_list :
@@ -311,8 +318,6 @@ def main() :
     args = parser.parse_args()
     # testing args
     #args = parser.parse_args(['--project', '../newproject','--force'])
-
-    os.chdir('../np')
     #args = parser.parse_args(['--project', '.'])
     #args = parser.parse_args(['--version', '0.0.3','--debug','--force'])
     #args = parser.parse_args(['--reverse','--debug','--package','pandasOperators-0.0.16','--operator','pandas.cleanseHeuristics'])

@@ -3,28 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="849904c2-7d13-49e7-8bdb-607989122955" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.22-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.22.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.23-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.23.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.24-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.24.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.25-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.25.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.26-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.26.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.27-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.27.tar.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.28-py3-none-any.whl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/sdi_utils-0.0.28.tar.gz" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdi_utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/gensolution.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/bin/chardetect" beforeDir="false" afterPath="$PROJECT_DIR$/venv/bin/chardetect" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/easy-install.pth" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/easy-install.pth" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +150,7 @@
       <option name="presentableId" value="Default" />
       <updated>1574573931507</updated>
       <workItem from="1574573932614" duration="13457000" />
-      <workItem from="1574671648873" duration="37644000" />
+      <workItem from="1574671648873" duration="43261000" />
     </task>
     <servers />
   </component>
@@ -207,12 +189,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sdi_utils/gensolution.py</url>
-          <line>345</line>
+          <line>350</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sdi_utils/gensolution.py</url>
-          <line>315</line>
+          <line>320</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
       </breakpoints>
