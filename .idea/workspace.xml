@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="849904c2-7d13-49e7-8bdb-607989122955" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/gensolution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-    </list>
+    <list default="true" id="849904c2-7d13-49e7-8bdb-607989122955" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
