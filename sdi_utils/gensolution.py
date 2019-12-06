@@ -192,10 +192,18 @@ def reverse_solution(project_path, package, operator_folder,override=False) :
     os.makedirs(operator_src_path, exist_ok=True)
 
     logging.debug('Copy files to src-directory for operator (README.md, operator.json, configSchema.json')
-    copyfile(os.path.join(operator_solution_path, "README.md"), os.path.join(operator_src_path, "README.md"))
+    if os.path.isfile(os.path.join(operator_solution_path, "README.md")) :
+        copyfile(os.path.join(operator_solution_path, "README.md"), os.path.join(operator_src_path, "README.md"))
+    else :
+        logging.warning("There is no <README.md> file to copy.")
     copyfile(os.path.join(operator_solution_path, 'operator.json'), os.path.join(operator_src_path, 'operator.json'))
     copyfile(os.path.join(operator_solution_path, 'configSchema.json'),os.path.join(operator_src_path, 'configSchema.json'))
     copyfile(os.path.join(operator_solution_path, operator_script),os.path.join(operator_src_path, 'old_'+operator_script))
+    if os.path.isfile(os.path.join(operator_solution_path, operator_dict['iconsrc'])) :
+        copyfile(os.path.join(operator_solution_path, operator_dict['iconsrc']), os.path.join(operator_src_path, operator_dict['iconsrc']))
+    else :
+        logging.warning("There is no icon-file to copy: {}".format(operator_dict['iconsrc']))
+
 
     with open(script_src_path,'w') as operatorFile :
         firstblock = r"""import sdi_utils.gensolution as gs
@@ -278,7 +286,7 @@ except NameError:
             iplist = list()
             for i, ip in enumerate(operator_dict['inports']):
                 iplist.append("inports[{}]['name']".format(i))
-            setpcallback = "api.set_port_callback({}, call_on_input)".format(', '.join(iplist))
+            setpcallback = "api.set_port_callback([{}], call_on_input)".format(', '.join(iplist))
         else :
             setpcallback = "api.set_port_callback(inports[0]['name'], call_on_input)"
         operatorFile.write('\n#'+setpcallback+'\n\n')
