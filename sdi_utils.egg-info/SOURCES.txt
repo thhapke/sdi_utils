@@ -11,3 +11,5 @@ sdi_utils.egg-info/dependency_links.txt
 sdi_utils.egg-info/entry_points.txt
 sdi_utils.egg-info/requires.txt
 sdi_utils.egg-info/top_level.txt
+src/__init__.py
+src/sdi_pandas/__init__.py

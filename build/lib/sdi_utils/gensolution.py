@@ -6,6 +6,7 @@ import subprocess
 import requests
 import logging
 import argparse
+import importlib.util
 
 from shutil import copyfile, move, rmtree
 
@@ -327,8 +328,8 @@ def main() :
     # testing args
     #args = parser.parse_args(['--project', '../newproject','--force'])
     #args = parser.parse_args(['--project', '.'])
-    #args = parser.parse_args(['--version', '0.0.3','--debug','--force'])
-    #args = parser.parse_args(['--reverse','--debug','--package','pandasOperators-0.0.16','--operator','pandas.cleanseHeuristics'])
+    args = parser.parse_args(['--version', '0.0.3','--debug','--force'])
+    #args = parser.parse_args(['--reverse','--debug','--package','pandasOperators-0.0.16','--operator','sdi_pandas.cleanseHeuristics'])
 
     version = args.version
     debug = args.debug
@@ -396,18 +397,22 @@ def main() :
     ###############################################################################################################
     if not args.reverse :
         project_path = os.getcwd()                              # root path of the whole project
+        logging.debug('Current working directory: {}'.format(os.getcwd()))
         src_path = os.path.join(project_path,'src')             # path of the src
         solution_path = os.path.join(project_path, "solution", "operators")
 
         ### clear solution folder to avoid ambiguities
-        if os.path.isdir(solution_path)  and os.listdir(solution_path) :
-            logging.warning('Solution path <solution/operators/> not empty')
-            if clear_solution_path :
-                logging.info('Remove subdirectory <solution/operators>')
-                rmtree(solution_path, ignore_errors=False, onerror=None)
-            else :
-                logging.error('Either clear directory <solutions/operators/> manually or run with option --clear')
-                exit(-1)
+        if os.path.isdir(solution_path) :
+            subdirs = [ f for f in os.listdir(solution_path) if os.path.isdir(f) ]
+            if  subdirs :
+                logging.warning('Solution path <solution/operators/> not empty')
+                if clear_solution_path :
+                    logging.info('Remove subdirectory <solution/operators>')
+                    rmtree(solution_path, ignore_errors=False, onerror=None)
+                else :
+                    logging.error('Either clear directory {} manually or run with option --force'.format(solution_path))
+                    logging.debug('List of directories in solution/operator folder: ' + str(os.listdir(solution_path)))
+                    exit(-1)
 
         ### generate the json files and copy them to solution directory
         for root, dirs, files in os.walk(src_path):
@@ -418,11 +423,19 @@ def main() :
                 if f in exclude_files :
                     continue
                 if re.match(r'.+\.py$',f) :
-                    logging.info ('Build files of : {} in {}'.format(f,root))
-                    module_path = os.path.join(root[len(project_path) + 1:],f)[:-3]
-                    module = module_path.replace(os.path.sep,'.')
-                    logging.debug('Module: ' + module)
-                    m = __import__(module,fromlist=module)
+                    logging.debug('Read specs of {}'.format(os.path.join(root,f)))
+                    spec = importlib.util.spec_from_file_location("src", os.path.join(root,f))
+                    m = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(m)
+
+                    #module_path = os.path.join(root[len(project_path) + 1:],f)[:-3]
+                    #logging.debug('Module path: {}'.format(module_path))
+                    #module = module_path.replace(os.path.sep,'.')
+                    #pkg = '.'
+                    #logging.debug('import module: {}  package:{}'.format(module,pkg))
+                    #m = importlib.import_module(module,package=pkg)
+                    #m = importlib.import_module('.sdi_pandas.fromCSV.fromCSV',package='src')
+
                     gensolution(os.path.join(root,f),config = m.api.config,inports = m.inports,outports=m.outports)
 
         ###  creating operator solutions for uploading

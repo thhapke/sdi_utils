@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: sdi-utils
-Version: 0.0.49
+Version: 0.0.50
 Summary: List of SAP DI helper functions like gensolution (package locally developed operators,textfield_parser, time_monitoring
 Home-page: https://github.com/thhapke/gensolution
 Author: Thorsten Hapke
