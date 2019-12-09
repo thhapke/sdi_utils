@@ -4,23 +4,26 @@
     "inports": [
         {
             "name": "input",
-            "type": "message"
+            "type": "message",
+            "description": "Input data"
         }
     ],
     "outports": [
         {
             "name": "output",
-            "type": "message"
+            "type": "message",
+            "description": "Output data"
         },
         {
             "name": "log",
-            "type": "string"
+            "type": "string",
+            "description": "Logging"
         }
     ],
     "config": {
         "$type": "http://sap.com/vflow/customOperatorTemplate.configSchema.json",
         "script": "file://customOperatorTemplate.py",
-        "var1": "foo",
+        "var1": "own foo",
         "var2": "bar"
     },
     "tags": {

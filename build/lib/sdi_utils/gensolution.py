@@ -62,21 +62,34 @@ def gensolution(script_path, config, inports, outports, override_readme = False,
     # create README (but only if not exists to prevent overriding manual additions
     readme_file = os.path.join(operator_path, 'README.md')
     if not os.path.exists(readme_file) or override_readme :
-        logging.info('Write README.md')
-        readme = "# " +  operator_id + ' - ' + '\n\n'
-        readme += "## Inport" + '\n\n'
-        for ip in opjson['inports'] :
-            readme += "* " + ip["name"] + '  (Type: ' +  ip["type"] + ")\n"
-        readme += "\n"
-        readme += "## outports" + '\n\n'
-        for ip in opjson['outports'] :
-            readme += "* " + ip["name"] + '  (Type: ' +  ip["type"] + ")\n"
-        readme += "\n"
-        readme += "## Config" + '\n\n'
-        for ic in config.config_params.values() :
-            readme += "* " + ic['title'] + "  (Type: " + ic['type'] + ")  -  " + ic['description'] + "\n"
         with open(readme_file, 'w') as rmfile:
-            rmfile.write(readme)
+            logging.info('Write README.md')
+            rmfile.write("# {} - {} (Version: {})\n\n".format(config.operator_description,operator_id,config.version))
+            if config.operator_description_long :
+                rmfile.writelines(config.operator_description_long+'\n\n')
+            rmfile.write("## Inport" + '\n\n')
+            for ip in opjson['inports'] :
+                desc = '' if not 'description' in ip.keys() else ip['description']
+                rmfile.write("* **{}** (Type: {}) {}\n".format(ip["name"],ip["type"],desc))
+            rmfile.write('\n'+'## outports' + '\n\n')
+            for ip in opjson['outports'] :
+                desc = '' if not 'description' in ip.keys() else ip['description']
+                rmfile.write("* **{}** (Type: {}) {}\n".format(ip["name"],ip["type"],desc))
+            rmfile.write('\n'+'## Config' + '\n\n')
+            for name,ic in config.config_params.items() :
+                rmfile.write("* **{}** - {} (Type: {}) {}\n".format(name,ic["title"],ic["type"],ic["description"]))
+            rmfile.write("\n\n")
+            if config.tags :
+                rmfile.write("# Tags\n")
+                for t,v in config.tags.items():
+                    rmfile.write("{} : {}".format(t,v))
+            rmfile.write("\n\n")
+            if config.add_readme :
+                for k,s in config.add_readme.items() :
+                    rmfile.write("# {}\n".format(k))
+                    rmfile.write("{}\n\n".format(s))
+
+        rmfile.close()
 
     # create dirs and copy data
     operator_solution_path = os.path.join(project_path, 'solution', 'operators', package_name + '_' + config.version, 'content', \

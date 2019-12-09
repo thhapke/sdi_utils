@@ -14,9 +14,14 @@ except NameError:
             ## Meta data
             tags = {'python36': ''}  # tags that helps to select the appropriate container
             operator_description = 'Custom Operator Template'
+            operator_description_long='Template Operator that provides the framework for a custom operator that includes ' \
+                                      'all the information needed for generating the descriptive json-files and the ' \
+                                      'README.md.'
             version = "0.0.1"  # for creating the manifest.json
-            config_params = dict()
+            add_readme = dict()
+            add_readme["References"] ="[Download template](https://raw.githubusercontent.com/thhapke/gensolution/master/diutil/customOperatorTemplate.py)"
 
+            config_params = dict()
             ## config paramter
             var1 = 'foo'
             config_params['var1'] = {'title': 'Variable1', 'description': 'Variable 1 for test', 'type': 'string'}
@@ -59,8 +64,8 @@ def process(msg):
     logger.debug('End time: ' + time_monitor.elapsed_time())
     return api.Message(attributes={'name':'concat','type':'str'},body=result),log_stream.getvalue()
 
-inports = [{"name":"input","type":"message"}]
-outports = [{"name":"output","type":"message"},{"name":"log","type":"string"}]
+inports = [{"name":"input","type":"message","description":"Input data"}]
+outports = [{"name":"output","type":"message","description":"Output data"},{"name":"log","type":"string","description":"Logging"}]
 
 def call_on_input(msg) :
     new_msg, log = process(msg)
@@ -83,7 +88,7 @@ def main() :
     print('Body: ', str(new_msg.body))
     print('Logging: ')
     print(log)
-    gs.gensolution(os.path.realpath(__file__), config, inports, outports)
+    gs.gensolution(os.path.realpath(__file__), config, inports, outports,override_readme=True)
 
 
 
