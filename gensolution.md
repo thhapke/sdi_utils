@@ -1,4 +1,4 @@
-# genjson
+# gensolution
 Generates the **SAP Data Intelligence (SAP DI)** solution files that enables to locally code new custom python operators and prepares for uploading to an **SAP DI** instance as a solution. 
 
 A specific folder structure is required in order use the *gensolution* that complies to a general *github* repository setup. This can be setup with ```gensolution --project```.
@@ -50,7 +50,6 @@ optional arguments:
 The following code is reduced to the bare minimum you need for local (offline) development of operators. 
 
 ```
-
 def process(msg):
 
     # start custom code
@@ -80,6 +79,8 @@ except NameError:
             # operator infos necessary for solution import
             tags = {'python36': ''}  # tags that helps to select the appropriate container
             operator_description = 'Read File from Container'
+            operator_description_long = 'Some more lines of description (Used in README.md)'
+
             version = "0.0.2"  # for creating the manifest.json
             config_params = dict()
 
@@ -107,8 +108,8 @@ except NameError:
 
 
 # list input and output ports with specified types for creating operator.json
-inports = [{"name":"input","type":"message"}]
-outports = [{"name":"output","type":"message"}]
+inports = [{"name":"input","type":"message","description":"Some descriptive text"}]
+outports = [{"name":"output","type":"message","description":"Some descriptive text"}]
 
 # Triggers the request for every message - will be un-commented with gensolution or do it manually
 api.set_port_callback(inports[0]["name"], process)
@@ -122,6 +123,5 @@ if __name__ == '__main__':
 
     print("Attributes: ",msg.attributes)
     print("Body: ",msg.body)
-    ```
 ```
 
