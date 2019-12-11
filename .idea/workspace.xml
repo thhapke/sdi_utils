@@ -3,18 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="849904c2-7d13-49e7-8bdb-607989122955" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdi_utils/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/gensolution.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/customOperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/customOperatorTemplate/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/customOperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/customOperatorTemplate/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/customOperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/customOperatorTemplate/customOperatorTemplate.py" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/customOperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/customOperatorTemplate/customOperatorTemplate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/solution/operators/customOperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/customOperatorTemplate/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/solution/operators/customOperatorTemplate_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/customOperatorTemplate/operator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customOperatorTemplate/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/customOperatorTemplate/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customOperatorTemplate/customOperatorTemplate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/customOperatorTemplate/customOperatorTemplate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/customOperatorTemplate/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/customOperatorTemplate/operator.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -165,7 +153,7 @@
       <updated>1574573931507</updated>
       <workItem from="1574573932614" duration="13457000" />
       <workItem from="1574671648873" duration="46070000" />
-      <workItem from="1575643811188" duration="16935000" />
+      <workItem from="1575643811188" duration="17120000" />
     </task>
     <servers />
   </component>
