@@ -441,14 +441,6 @@ def main() :
                     m = importlib.util.module_from_spec(spec)
                     spec.loader.exec_module(m)
 
-                    #module_path = os.path.join(root[len(project_path) + 1:],f)[:-3]
-                    #logging.debug('Module path: {}'.format(module_path))
-                    #module = module_path.replace(os.path.sep,'.')
-                    #pkg = '.'
-                    #logging.debug('import module: {}  package:{}'.format(module,pkg))
-                    #m = importlib.import_module(module,package=pkg)
-                    #m = importlib.import_module('.sdi_pandas.fromCSV.fromCSV',package='src')
-
                     gensolution(os.path.join(root,f),config = m.api.config,inports = m.inports,outports=m.outports)
 
         ###  creating operator solutions for uploading
