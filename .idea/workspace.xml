@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="849904c2-7d13-49e7-8bdb-607989122955" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/gensolution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdi_utils/gensolution.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/gensolution.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,7 +20,7 @@
   <component name="ProjectId" id="1U38UCESkF7iBDelS35UYRFpC7D" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
@@ -157,6 +160,8 @@
       <workItem from="1575643811188" duration="17120000" />
       <workItem from="1576050212135" duration="364000" />
       <workItem from="1576233112753" duration="175000" />
+      <workItem from="1576247676956" duration="1806000" />
+      <workItem from="1576408528584" duration="1479000" />
     </task>
     <servers />
   </component>
@@ -181,17 +186,17 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sdi_utils/gensolution.py</url>
-          <line>158</line>
+          <line>165</line>
           <option name="timeStamp" value="5" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sdi_utils/gensolution.py</url>
-          <line>372</line>
+          <line>379</line>
           <option name="timeStamp" value="13" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/sdi_utils/gensolution.py</url>
-          <line>342</line>
+          <line>349</line>
           <option name="timeStamp" value="14" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">

@@ -88,8 +88,13 @@ def gensolution(script_path, config, inports, outports, override_readme = False,
                 for k,s in config.add_readme.items() :
                     rmfile.write("# {}\n".format(k))
                     rmfile.write("{}\n\n".format(s))
-
         rmfile.close()
+
+        # create __init__.py
+        init_name = os.path.join(operator_path, '__init__.py')
+        if not os.path.exists(init_name) :
+            with open(init_name, 'w') as init_file :
+                init_file.close()
 
     # create dirs and copy data
     operator_solution_path = os.path.join(project_path, 'solution', 'operators', package_name + '_' + config.version, 'content', \
@@ -99,6 +104,8 @@ def gensolution(script_path, config, inports, outports, override_readme = False,
     copyfile(os.path.join(operator_path,"README.md"),os.path.join(operator_solution_path,"README.md"))
     copyfile(os.path.join(operator_path, 'operator.json'), os.path.join(operator_solution_path, 'operator.json'))
     copyfile(os.path.join(operator_path, 'configSchema.json'), os.path.join(operator_solution_path, 'configSchema.json'))
+    copyfile(os.path.join(operator_path, '__init__.py'),os.path.join(operator_solution_path, '__init__.py'))
+
     if svg_files :
         svg_file =  os.path.basename(svg_files[0])
         copyfile(os.path.join(operator_path, svg_file),os.path.join(operator_solution_path, svg_file))
@@ -341,7 +348,7 @@ def main() :
     # testing args
     #args = parser.parse_args(['--project', '../newproject','--force'])
     #args = parser.parse_args(['--project', '.'])
-    args = parser.parse_args(['--version', '0.0.3','--debug','--force'])
+    #args = parser.parse_args(['--version', '0.0.3','--debug','--force'])
     #args = parser.parse_args(['--reverse','--debug','--package','pandasOperators-0.0.16','--operator','sdi_pandas.cleanseHeuristics'])
 
     version = args.version
@@ -440,14 +447,6 @@ def main() :
                     spec = importlib.util.spec_from_file_location("src", os.path.join(root,f))
                     m = importlib.util.module_from_spec(spec)
                     spec.loader.exec_module(m)
-
-                    #module_path = os.path.join(root[len(project_path) + 1:],f)[:-3]
-                    #logging.debug('Module path: {}'.format(module_path))
-                    #module = module_path.replace(os.path.sep,'.')
-                    #pkg = '.'
-                    #logging.debug('import module: {}  package:{}'.format(module,pkg))
-                    #m = importlib.import_module(module,package=pkg)
-                    #m = importlib.import_module('.sdi_pandas.fromCSV.fromCSV',package='src')
 
                     gensolution(os.path.join(root,f),config = m.api.config,inports = m.inports,outports=m.outports)
 
