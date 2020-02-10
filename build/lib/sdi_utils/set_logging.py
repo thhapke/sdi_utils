@@ -13,8 +13,13 @@ def set_logging(name='operator',loglevel = logging.INFO, stream_output = True) :
             loglevel = map_logs[loglevel]
         except KeyError :
             raise ValueError('Unknown logging level. Valid values: INFO, DEBUG, WARNING, ERROR')
+    elif isinstance(loglevel, bool) :
+        if loglevel == True :
+            loglevel == logging.DEBUG
+        else :
+            loglevel == logging.INFO
 
-    format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    format = '%(asctime)s ;  %(levelname)s ; %(name)s ; %(message)s'
     logging.basicConfig(level=loglevel,format=format,datefmt='%H:%M:%S')
 
     logger = logging.getLogger(name=name)
@@ -24,7 +29,9 @@ def set_logging(name='operator',loglevel = logging.INFO, stream_output = True) :
     if stream_output :
         sh = logging.StreamHandler(stream=log_stream)
         sh.setFormatter(logging.Formatter(format, datefmt='%H:%M:%S'))
+        sh.setLevel(loglevel)
         logger.addHandler(sh)
+        logger.info('Logger setup')
 
     # stderr
     #if stderr_output :
@@ -35,7 +42,12 @@ def set_logging(name='operator',loglevel = logging.INFO, stream_output = True) :
     return logger, log_stream
 
 def main() :
-    logger, log_stream = set_logging(name = 'Test', loglevel='DEBUG')
+    logger, log_stream = set_logging(name = 'Test', loglevel='INFO')
+    logger.debug('Message debug level')
+    for h in logger.handlers :
+        h.setLevel(logging.DEBUG)
+        logger.setLevel(logging.DEBUG)
+        #logger.addHandler(h)
     logger.debug('Message debug level')
     logger.info('Message info level')
 

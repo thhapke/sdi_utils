@@ -1,0 +1,43 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_utils_operators.scrapy.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "spider": {
+            "title": "Spider",
+            "description": "Spider for the command 'scrapy crawl <spider>'",
+            "type": "string"
+        },
+        "filename": {
+            "title": "filename",
+            "description": "Filename to read",
+            "type": "string"
+        },
+        "project_dir": {
+            "title": "Project Directory",
+            "description": "Scrapy project directory on container",
+            "type": "string"
+        },
+        "start_cmd": {
+            "title": "Start command",
+            "description": "Start command",
+            "type": "boolean"
+        },
+        "json_string_output": {
+            "title": "JSON String output",
+            "description": "Sends JSON string to <string> port",
+            "type": "boolean"
+        }
+    }
+}

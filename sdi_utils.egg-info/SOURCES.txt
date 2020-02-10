@@ -12,4 +12,10 @@ sdi_utils.egg-info/entry_points.txt
 sdi_utils.egg-info/requires.txt
 sdi_utils.egg-info/top_level.txt
 src/__init__.py
-src/sdi_pandas/__init__.py
+src/customOperatorTemplate/__init__.py
+src/customOperatorTemplate/customOperatorTemplate.py
+src/sdi_utils_operators/__init__.py
+src/sdi_utils_operators/gate/__init__.py
+src/sdi_utils_operators/gate/gate.py
+src/sdi_utils_operators/parseLog/__init__.py
+src/sdi_utils_operators/parseLog/parseLog.py

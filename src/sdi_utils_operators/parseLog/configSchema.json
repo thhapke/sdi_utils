@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_utils_operators.parseLog.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "marker_map": {
+            "title": "List of marker",
+            "description": "List of keywords of operators that send an integer to output",
+            "type": "string"
+        },
+        "sleep": {
+            "title": "Sleep",
+            "description": "Time before starting next processing step",
+            "type": "integer"
+        },
+        "separator": {
+            "title": "Separator",
+            "description": "Separates fields of logging stream",
+            "type": "string"
+        }
+    }
+}

@@ -23,6 +23,7 @@
     "config": {
         "$type": "http://sap.com/vflow/customOperatorTemplate.configSchema.json",
         "script": "file://customOperatorTemplate.py",
+        "debug_mode": true,
         "var1": "own foo",
         "var2": "bar"
     },

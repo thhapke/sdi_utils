@@ -9,22 +9,20 @@ plogger.setLevel(logging.INFO)
 
 class progress :
 
-    def __init__(self,max_num=1,step_size=1,freq=1) :
+    def __init__(self,max_num=1,step_size=1) :
         self.inc = -1
-        self.freq = freq
         self.step_size = step_size
         self.max = max_num
         self.time_start = time.time()
         self.time_last = self.time_start
         self.time_end_projected = time.time()
         self.strtime_end_projected = time.strftime("%H:%M:%S", time.localtime(self.time_end_projected))
-
         plogger.debug("Start time: " + time.strftime('%H:%M:%S  %Y-%m-%d '))
 
     # called within a loop to state past time and projected end time
     def monitor(self):
         self.inc += 1
-        if self.inc % self.freq == 0:
+        if self.inc % self.step_size == 0:
             time_taken = time.time() - self.time_start
             if self.inc != 0 :
                 self.time_end_projected = time_taken / (self.inc*self.step_size) * self.max + self.time_start

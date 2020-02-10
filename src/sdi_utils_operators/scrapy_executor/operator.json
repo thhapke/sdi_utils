@@ -1,0 +1,41 @@
+{
+    "description": "scrapy executor",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "trigger",
+            "type": "string",
+            "description": "Trigger"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "stderr",
+            "type": "string",
+            "description": "Stderr"
+        },
+        {
+            "name": "data",
+            "type": "message",
+            "description": "data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.scrapy_executor.configSchema.json",
+        "script": "file://scapy_executor.py",
+        "debug_mode": true,
+        "cmd": "None",
+        "scrapy_dir": "None"
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": "",
+        "scrapy": ""
+    },
+    "iconsrc": "Scrapy.svg"
+}

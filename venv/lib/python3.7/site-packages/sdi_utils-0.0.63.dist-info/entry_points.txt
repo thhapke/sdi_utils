@@ -1,0 +1,3 @@
+[console_scripts]
+gensolution = sdi_utils.gensolution:main
+

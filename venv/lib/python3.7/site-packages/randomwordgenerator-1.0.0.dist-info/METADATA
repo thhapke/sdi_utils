@@ -1,0 +1,16 @@
+Metadata-Version: 2.1
+Name: randomwordgenerator
+Version: 1.0.0
+Summary: Python 3 Random Word Generator Library
+Home-page: https://github.com/SaiWebApps/RandomWordGenerator
+Author: Sairam Krishnan
+Author-email: sairambkrishnan@gmail.com
+License: MIT
+Download-URL: https://github.com/SaiWebApps/RandomWordGenerator/tarball/1.0.0
+Keywords: Python,random-word
+Platform: UNKNOWN
+Requires-Dist: requests
+
+UNKNOWN
+
+

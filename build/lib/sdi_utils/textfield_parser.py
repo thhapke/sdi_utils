@@ -158,7 +158,13 @@ def read_relations(text,sep=',',relation_map=None):
 
 def number_test(str) :
     if str :
-        if str.isdigit() :
+        if re.match('True',str) :
+            return True
+        elif re.match('False', str):
+            return False
+        elif re.match('None',str) :
+            return None
+        elif str.isdigit() :
             return int(str)
         else :
             try :
@@ -196,12 +202,12 @@ if __name__ == '__main__':
     ### value lists
     value_str = "'Mercedes':expensive, German, respectable; Audi:'sportive, German, technology-advanced'; \
                     VW : 'people', 9,'solid', No1; Citroen:cool, Fantomas, CV2, elastic ; 'Rolls Rocye': royal,  \
-                    British, 'very expensive', black, 8"
+                    British, 'very expensive', black, 8, True"
 
     print('Value lists: ' + str(read_dict_of_list(value_str)))
 
     ### map
-    maplist = "'Mercedes':expensive, Audi:'sportive', VW : 'people', Citroen:cool, 'Rolls Rocye': royal, 'Cars':6"
+    maplist = "'Mercedes':expensive, Audi:'sportive', VW : 'people', Citroen:cool, 'Rolls Rocye': royal, 'Cars':6, 'eco':'False'"
     print('Map :' + str(read_dict(maplist)))
 
     ### maps of maps

@@ -10,10 +10,10 @@ import importlib.util
 
 from shutil import copyfile, move, rmtree
 
-exclude_files = ['__init__.py']
-exclude_dirs = ['__pycache__']
+exclude_files = ['__init__.py','setup.py']
+exclude_dirs = ['__pycache__','dist','build']
 
-def gensolution(script_path, config, inports, outports, override_readme = False, tar = False) :
+def gensolution(script_path, config, inports, outports, override_readme = False, tar = False, version = None) :
 
     script_path = os.path.abspath(script_path)
     drive, project_path = os.path.splitdrive(script_path)
@@ -97,7 +97,9 @@ def gensolution(script_path, config, inports, outports, override_readme = False,
                 init_file.close()
 
     # create dirs and copy data
-    operator_solution_path = os.path.join(project_path, 'solution', 'operators', package_name + '_' + config.version, 'content', \
+    if not version :
+        version = config.version
+    operator_solution_path = os.path.join(project_path, 'solution', 'operators', package_name + '_' + version, 'content', \
                                           'files' ,'vflow' ,'subengines' ,'com' ,'sap', 'python36', 'operators', operator_path_name)
     os.makedirs(operator_solution_path, exist_ok=True)
     logging.info('Copy operator files to: ' + operator_solution_path)
@@ -118,7 +120,10 @@ def gensolution(script_path, config, inports, outports, override_readme = False,
         with open(os.path.join(operator_solution_path, script_filename), 'w') as write_fn:
             line = read_fn.readline()
             while line :
-                line = re.sub(r'^#api.set_port_callback', 'api.set_port_callback', line)
+                line = re.sub(r'^#\s*api.set_port_callback', 'api.set_port_callback', line)
+                line = re.sub(r'^#\s*api.add_generator', 'api.add_generator', line)
+                line = re.sub(r'^#\s*api.add_timer', 'api.add_timer', line)
+                line = re.sub(r'^#\s*api.add_shutdown_handler', 'api.add_shutdown_handler', line)
                 if re.match(r'if __name__ == \'__main__\'',line) or re.match(r'if __name__ == \"__main__\"',line) :
                     break
                 #if re.match(r'import sdi_utils',line) :
@@ -130,9 +135,9 @@ def gensolution(script_path, config, inports, outports, override_readme = False,
     read_fn.close()
 
     # create manifest
-    manifest = {"name": package_name, "version": config.version, "format": "2", "dependencies": []}
+    manifest = {"name": package_name, "version": version, "format": "2", "dependencies": []}
     root_solution_path = os.path.join(project_path, 'solution', 'operators')
-    manifest_filename = os.path.join(root_solution_path, package_name +'_' + config.version, 'manifest.json')
+    manifest_filename = os.path.join(root_solution_path, package_name +'_' + version, 'manifest.json')
     logging.info('Write manifest.json ')
     with open(manifest_filename, 'w') as manifestfile:
         json.dump(manifest, manifestfile, indent=4)
@@ -341,7 +346,7 @@ def main() :
     parser.add_argument('--zip',action='store_true', help='Zipping solution folder ')
     parser.add_argument('--force', action='store_true', help='Removes subdirectories from <solution/operators>')
     parser.add_argument('--reverse',action='store_true',help='Ceates a custom operator script from solution package')
-    parser.add_argument('--package', help='<package name> for reverse custom operator creation')
+    parser.add_argument('--package', help='<package name> package in src for solution generation or for reverse custom operator creation')
     parser.add_argument('--operator', help='<package.operator folder> for reverse custom operator creation')
 
     args = parser.parse_args()
@@ -416,6 +421,9 @@ def main() :
     ### build solution
     ###############################################################################################################
     if not args.reverse :
+        if not version :
+            logging.error('Option --version required for generating a solution')
+            exit(-1)
         project_path = os.getcwd()                              # root path of the whole project
         logging.debug('Current working directory: {}'.format(os.getcwd()))
         src_path = os.path.join(project_path,'src')             # path of the src
@@ -435,7 +443,7 @@ def main() :
                     exit(-1)
 
         ### generate the json files and copy them to solution directory
-        for root, dirs, files in os.walk(src_path):
+        for root, dirs, files in os.walk(os.path.join(src_path,package)):
             for d in dirs:
                 if d in exclude_dirs :
                     continue
@@ -447,13 +455,15 @@ def main() :
                     spec = importlib.util.spec_from_file_location("src", os.path.join(root,f))
                     m = importlib.util.module_from_spec(spec)
                     spec.loader.exec_module(m)
-
-                    gensolution(os.path.join(root,f),config = m.api.config,inports = m.inports,outports=m.outports)
+                    inports = m.inports if hasattr(m, 'inports') else None
+                    gensolution(os.path.join(root,f),config = m.api.config,inports = inports,outports=m.outports,version = version)
 
         ###  creating operator solutions for uploading
         if zip_flag :
+            logging.debug('Zip solution: {}'.format(solution_path))
             for d in os.listdir(solution_path):
-                if d in exclude_dirs or re.match(r'.+.zip',d) :  # Zips are interpreted as directories
+                if d in exclude_dirs or re.match(r'.+.zip',d) or re.match(r'^\..+',d) :  # Zips are interpreted as directories
+                    logging.debug('Zip skipped: {}'.format(d))
                     continue
                 source_dir = os.path.join(solution_path, d)
                 logging.debug('Building solution of folder: ' + source_dir)
