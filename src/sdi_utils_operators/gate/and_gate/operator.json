@@ -1,0 +1,29 @@
+{
+    "description": "AND Gate",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input1",
+            "type": "any",
+            "description": "Trigger, content not used"
+        },
+        {
+            "name": "input2",
+            "type": "any",
+            "description": "Trigger, content not used"
+        }
+    ],
+    "outports": [
+        {
+            "name": "trigger",
+            "type": "string",
+            "description": "Trigger next process step"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.gate.and_gate.configSchema.json",
+        "script": "file://and_gate.py"
+    },
+    "tags": {},
+    "iconsrc": "and_gate.svg"
+}

@@ -66,12 +66,15 @@ def process(log_str) :
                 pat = f'.*<{marker[m]}><(\d+)>'
                 match_key = re.match(f'.*<{marker[m]}><(\d+)>',fields[3])
                 if match_key :
-                    api.send(outports[1]['name'],match_key.group(1))
+                    index = match_key.group(1)
+                    api.send(outports[1]['name'],str(index))
+                    api.send(outports[2]['name'],int(index))
 
 
 inports = [{"name":"log","type":"string","description":"Input log statements"}]
 outports = [{"name":"log","type":"string","description":"Output of unchanged log statements"},\
-            {"name":"index","type":"integer","description":"Control index"}]
+            {"name":"string_string","type":"string","description":"Control string"},\
+            {"name":"index","type":"int64","description":"Control index"}]
 
 def call_on_input(log) :
     api.send(outports[0]['name'], log)

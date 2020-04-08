@@ -1,0 +1,38 @@
+{
+    "description": "String Collector",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "string",
+            "type": "string",
+            "description": "Input string"
+        },
+        {
+            "name": "trigger",
+            "type": "any",
+            "description": "Trigger input"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Log strings"
+        },
+        {
+            "name": "string",
+            "type": "string",
+            "description": "Output collected string"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.string_collector.configSchema.json",
+        "script": "file://string_collector.py",
+        "debug_mode": true,
+        "threshold_size": 1000
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "string_collector.svg"
+}

@@ -1,0 +1,28 @@
+{
+    "description": "testoperator",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message.table"
+        }
+    ],
+    "outports": [
+        {
+            "name": "output",
+            "type": "message.table"
+        },
+        {
+            "name": "log",
+            "type": "string"
+        }
+    ],
+    "icon": "puzzle-piece",
+    "config": {
+        "$type": "http://sap.com/vflow/testoperator.configSchema.json",
+        "script": "def process(msg) :\n    pass"
+    },
+    "tags": {
+        "sdi_utils": ""
+    }
+}
