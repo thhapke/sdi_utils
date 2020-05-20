@@ -1,0 +1,28 @@
+{
+    "description": "HTTP File Download",
+    "component": "com.sap.system.python3Operator",
+    "inports": [],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging"
+        },
+        {
+            "name": "csv",
+            "type": "message.file",
+            "description": "url file"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.HTTPdownload.configSchema.json",
+        "script": "file://HTTPdownload.py",
+        "debug_mode": true,
+        "url": "None"
+    },
+    "tags": {
+        "sdi_utils": "",
+        "requests": ""
+    },
+    "iconsrc": "HTTPdownload.svg"
+}

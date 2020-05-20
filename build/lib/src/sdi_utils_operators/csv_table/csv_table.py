@@ -71,7 +71,7 @@ def process(msg):
         api.config.has_header = True
         changed_header = True
 
-    att_dict['operator'] = 'csv_to_table'
+    att_dict['operator'] = 'csv_table'
     logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode)
 
     # ONLY DUE TO BUG
@@ -161,5 +161,5 @@ if __name__ == '__main__':
     test_operator()
     gs.gensolution(os.path.realpath(__file__), api.config, inports, outports)
     #subprocess.run(["vctl", "solution", "bundle", '/Users/d051079/OneDrive - SAP SE/GitHub/sdi_utils/src',\
-    #                          "-t", 'csv_to_table'])
+    #                          "-t", 'csv_table'])
         

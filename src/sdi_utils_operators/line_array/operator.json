@@ -4,7 +4,7 @@
     "inports": [
         {
             "name": "stream",
-            "type": "message",
+            "type": "message.file",
             "description": "Input csv byte or string"
         }
     ],

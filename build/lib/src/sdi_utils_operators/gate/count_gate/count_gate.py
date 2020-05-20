@@ -61,9 +61,14 @@ logger, log_stream = slog.set_logging('Gate', loglevel=api.config.debug_mode)
 def call_on_message(msg):
     global counter
     logger, log_stream = slog.set_logging('Gate', loglevel=api.config.debug_mode)
-
     counter += 1
-    if counter >= api.config.limit:
+
+    if ('batch' in msg.attributes and msg.attributes['batch']['last'] == True) or \
+        ('message.lastBatch' in msg.attributes and msg.attributes['message.lastBatch'] == True)  :
+        api.send(outports[2]['name'], msg)
+        api.send(outports[1]['name'], '1')
+        logger.info('Last batch in attributes')
+    elif counter >= api.config.limit:
         time.sleep(api.config.sleep)
         api.send(outports[2]['name'], msg)
         api.send(outports[1]['name'], '1')

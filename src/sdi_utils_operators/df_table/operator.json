@@ -1,0 +1,35 @@
+{
+    "description": "df to table",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "table",
+            "type": "message.table",
+            "description": "Output data as table"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.df_table.configSchema.json",
+        "script": "file://df_table.py",
+        "debug_mode": true,
+        "reset_index": true,
+        "table_name": "table"
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "df_table.svg"
+}

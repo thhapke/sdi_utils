@@ -74,7 +74,7 @@ def process(msg) :
 
     global result_jdict
 
-    att_dict['operator'] = 'json_dict'
+    att_dict['operator'] = 'dict_json'
     logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode,stream_output=True)
     logger.info("Process started. Logging level: {}".format(logger.level))
 

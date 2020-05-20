@@ -3,7 +3,7 @@ import json
 import os
 import re
 import csv
-import codecs
+import subprocess
 
 import sdi_utils.gensolution as gs
 import sdi_utils.set_logging as slog
@@ -42,6 +42,7 @@ except NameError:
             config_params = dict()
             tags = {'sdi_utils':''}
             version = "0.0.1"
+            operator_name = 'csv_dict'
             operator_description = "csv stream to dict"
             operator_description_long = "Converts csv stream to dict"
             add_readme = dict()
@@ -72,13 +73,10 @@ def process(msg):
     logger.info("Process started")
     time_monitor = tp.progress()
 
-    logger.info('Filename: {} index: {}  count: {}  endofSeq: {}'.format(msg.attributes["storage.filename"], \
-                                                                         msg.attributes["storage.fileIndex"], \
-                                                                         msg.attributes["storage.fileCount"], \
-                                                                         msg.attributes["storage.endOfSequence"]))
+    logger.debug('Attributes: {}'.format(str(att_dict)))
 
-    str = msg.body.decode('utf-8')
-    csv_io = io.StringIO(str)
+    str_decode = msg.body.decode('utf-8')
+    csv_io = io.StringIO(str_decode)
     dictreader = csv.DictReader(csv_io, delimiter=api.config.separator)
 
     col_dict = tfp.read_dict(api.config.column_dict)
@@ -102,19 +100,8 @@ def process(msg):
         dict_list = [x for x in dictreader]
         result_dicts.extend(dict_list)
 
-    att_dict['batch.index'] = att_dict['storage.fileIndex']
-    att_dict['batch.number'] = att_dict['storage.fileCount']
-
-    progress_str = '<BATCH ENDED><1>'
-    if 'storage.fileIndex' in att_dict and 'storage.fileCount' in att_dict and 'storage.endOfSequence' in att_dict:
-        if att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount']:
-            progress_str = '<BATCH ENDED><{}>'.format(att_dict['storage.fileCount'])
-        else:
-            progress_str = '<BATCH IN-PROCESS><{}/{}>'.format(att_dict['storage.fileIndex'] + 1,
-                                                              att_dict['storage.fileCount'])
-    logger.debug('Process ended: {}  - {}  '.format(progress_str, time_monitor.elapsed_time()))
-    if msg.attributes["storage.endOfSequence"] or api.config.collect == False:
-        att_dict['batch.last'] = True
+    logger.debug('Process ended: {}'.format(time_monitor.elapsed_time()))
+    if msg.attributes['message.lastBatch'] or api.config.collect == False:
         msg = api.Message(attributes=att_dict, body=result_dicts)
         api.send(outports[1]['name'], msg)
 
@@ -127,24 +114,24 @@ def process(msg):
     api.send(outports[0]['name'], log_stream.getvalue())
 
 
-inports = [{'name': 'stream', 'type': 'message',"description":"Input csv byte or string"}]
+inports = [{'name': 'stream', 'type': 'message.file',"description":"Input file message"}]
 outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
             {'name': 'data', 'type': 'message.dicts',"description":"Output data as list of dictionaries"}]
 
 
 #api.set_port_callback(inports[0]['name'], process)
 
-def main() :
+def test_operator() :
     config = api.config
     config.debug_mode = True
     config.collect = False
     config.separator = ','
     config.column_dict = 'index:keyword'
 
-    fname = '/Users/Shared/data/onlinemedia/keywords/keywords.csv'
+    fname = '/Users/Shared/data/onlinemedia/repository/lexicon.csv'
 
     fbase = fname.split('.')[0]
-    attributes = {'format': 'csv', "storage.filename": fbase, 'storage.endOfSequence': True, \
+    attributes = {'format': 'csv', "storage.filename": fbase, 'message.lastBatch': True, \
                   'storage.fileIndex': 0, 'storage.fileCount': 1,'process_list':[]}
     csvstream = open(fname, mode='rb').read()
     msg = api.Message(attributes=attributes, body=csvstream)
@@ -152,6 +139,12 @@ def main() :
 
 
 if __name__ == '__main__':
-    main()
-    #gs.gensolution(os.path.realpath(__file__), config, inports, outports)
+    test_operator()
+    if True :
+        gs.gensolution(os.path.realpath(__file__), api.config, inports, outports)
+        solution_name = api.config.operator_name+'_'+api.config.version
+
+        subprocess.run(["vctl", "solution", "bundle", '/Users/d051079/OneDrive - SAP SE/GitHub/sdi_utils/solution/operators/sdi_utils_operators_0.0.1',\
+                                  "-t", solution_name])
+        subprocess.run(["mv", solution_name+'.zip', '../../../solution/operators'])
         

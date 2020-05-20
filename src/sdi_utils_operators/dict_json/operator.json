@@ -1,0 +1,32 @@
+{
+    "description": "dict to JSON-string",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "dict",
+            "type": "message",
+            "description": "Input dict"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "json",
+            "type": "message",
+            "description": "Output JSON-string"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.json_dict.configSchema.json",
+        "script": "file://dict_json.py",
+        "debug_mode": true
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "dict_json.svg"
+}

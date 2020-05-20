@@ -16,7 +16,7 @@ def read_value(text,test_number = True):
     return  val
 
 #### READ LIST
-def read_list(text,value_list=None,sep = ',',modifier_list_not=None,test_number = True):
+def read_list(text,value_list=None,sep = ',',modifier_list_not=None,test_number = True, ignore_quotes = False):
 
     if not text or text.upper() == 'NONE':
         return None
@@ -42,7 +42,10 @@ def read_list(text,value_list=None,sep = ',',modifier_list_not=None,test_number 
     result_list = list()
     elem_list = text.split(sep)
     for x in  elem_list:
-        elem = x.strip().strip("'\"")
+        if ignore_quotes :
+            elem = x.strip()
+        else:
+            elem = x.strip().strip("'\"")
         if test_number :
             elem = number_test(elem)
         result_list.append(elem)
@@ -80,14 +83,18 @@ def read_dict_of_list(text,inner_sep = ',',outer_sep = ';',map_sep=':',test_numb
 
 
 #### READ DICT
-def read_dict(text, sep =',', map_sep=':', test_number = True):
+def read_dict(text, sep =',', map_sep=':', test_number = True, ignore_quotes = False):
     if not text or text.upper() == 'NONE':
         return None
     list_maps = [x.strip() for x in text.split(sep)]
     map_dict = dict()
     for cm in list_maps :
-        key = cm.split(map_sep)[0].strip().strip("'\"")
-        value = cm.split(map_sep)[1].strip().strip("'\"")
+        if ignore_quotes :
+            key = cm.split(map_sep)[0].strip()
+            value = cm.split(map_sep)[1].strip()
+        else :
+            key = cm.split(map_sep)[0].strip().strip("'\"")
+            value = cm.split(map_sep)[1].strip().strip("'\"")
         if test_number :
             key = number_test(key)
             value = number_test(value)

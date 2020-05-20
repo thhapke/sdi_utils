@@ -4,7 +4,7 @@
     "inports": [
         {
             "name": "stream",
-            "type": "message",
+            "type": "message.file",
             "description": "Input json byte or string"
         }
     ],
@@ -24,7 +24,7 @@
         "$type": "http://sap.com/vflow/sdi_utils_operators.json_dict.configSchema.json",
         "script": "file://json_dict.py",
         "debug_mode": true,
-        "collect": true
+        "collect": false
     },
     "tags": {
         "sdi_utils": ""

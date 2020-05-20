@@ -4,8 +4,8 @@
     "inports": [
         {
             "name": "stream",
-            "type": "message",
-            "description": "Input csv byte or string"
+            "type": "message.file",
+            "description": "Input file message"
         }
     ],
     "outports": [
@@ -24,9 +24,9 @@
         "$type": "http://sap.com/vflow/sdi_utils_operators.csv_dict.configSchema.json",
         "script": "file://csv_dict.py",
         "debug_mode": true,
-        "collect": true,
-        "separator": ";",
-        "column_dict": "key_col_header:value_col_header"
+        "collect": false,
+        "separator": ",",
+        "column_dict": "index:keyword"
     },
     "tags": {
         "sdi_utils": ""

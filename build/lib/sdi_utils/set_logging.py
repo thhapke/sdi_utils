@@ -2,13 +2,12 @@ import logging
 from io import StringIO
 
 
-map_logs = {'DEBUG':logging.DEBUG,'INFO':logging.INFO,'WARNING':logging.WARNING,'ERROR':logging.ERROR,'CRITICAL':logging.CRITICAL}
 
 ### set logger for strerr and to StringIO
 def set_logging(name='operator',loglevel = logging.INFO, stream_output = True) :
 
     # to prevent the necessity to import logging only for passing the loglevel a string argument is
-    
+
     log_level = logging.INFO
     if isinstance(loglevel,str) :
         try :

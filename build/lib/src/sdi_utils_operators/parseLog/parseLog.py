@@ -86,12 +86,12 @@ def main() :
     config = api.config
     config.separator = ';'
     config.sleep = 1
-    config.marker_map = 'fromCSV : BATCH ENDED, dropColumns : BATCH IN PROCESS'
+    config.marker_map = 'csv_df : BATCH ENDED, dropColumns : BATCH IN PROCESS'
 
-    test_str = r"""10:20:06 ; INFO ; fromCSV ; Process started
-10:20:06 ; INFO ; fromCSV ; Filename: AT_NO2.csv index: 1 count: 2 endofSeq: True
-10:20:06 ; DEBUG ; fromCSV ; Process ended: <BATCH ENDED><2> - 0m 0.178s ( 0: 0:0.2)
-10:20:06 ; DEBUG ; fromCSV ; Process ended: <BATCH IN PROCESS> <1>- 0m 0.178s ( 0: 0:0.2)
+    test_str = r"""10:20:06 ; INFO ; csv_df ; Process started
+10:20:06 ; INFO ; csv_df ; Filename: AT_NO2.csv index: 1 count: 2 endofSeq: True
+10:20:06 ; DEBUG ; csv_df ; Process ended: <BATCH ENDED><2> - 0m 0.178s ( 0: 0:0.2)
+10:20:06 ; DEBUG ; csv_df ; Process ended: <BATCH IN PROCESS> <1>- 0m 0.178s ( 0: 0:0.2)
 10:20:06 ; INFO ; dropColumns ; Process started
 10:20:06 ; DEBUG ; dropColumns ; Columns: Index(['country_code', 'pollutant', 'x', 'y', 'coordsys', 'datetime', 'value', 'altitude'], dtype='object')
 10:20:06 ; DEBUG ; dropColumns ; Process ended: <BATCH IN PROCESS> <2>- 0m 0.178s ( 0: 0:0.2)

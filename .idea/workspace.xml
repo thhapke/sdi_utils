@@ -2,57 +2,111 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="849904c2-7d13-49e7-8bdb-607989122955" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict/csv_dict.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/filter_today.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/filter_today.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate/count_gate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/line_array/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/line_array/line_array.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/string_collector/string_collector.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/csv_table.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/csv_to_table.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize/pivotize.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize/pivotize.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/configSchema.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/csv_to_table.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/operator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/customOperatorTemplate/dict_df/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/customOperatorTemplate/dict_df/configSchema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/customOperatorTemplate/dict_df/dict_table-ex.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/customOperatorTemplate/dict_df/dict_table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/customOperatorTemplate/dict_df/dict_table.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/customOperatorTemplate/dict_df/operator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/HTTPdownload/HTTPdownload.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/df_table/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/df_table/configSchema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/df_table/df_table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/df_table/df_table.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/df_table/operator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_df/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_df/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_df/configSchema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_df/dict_df.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_df/operator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_json/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_json/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_json/dict_json.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_json/operator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_table/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_table/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_table/dict_table.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_table/operator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/filter_date/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/filter_date/configSchema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/json_df/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/json_df/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/json_df/configSchema.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/json_df/json_df.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/json_df/operator.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table_csv/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table_csv/table_csv.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/set_logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/set_logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/sdi_utils/textfield_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/sdi_utils/textfield_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/csv_dict/csv_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/csv_dict/csv_dict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/csv_table/csv_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/csv_table/csv_table.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/gate/count_gate/count_gate.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/gate/count_gate/count_gate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/json_dict/json_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/json_dict/json_dict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/line_array/line_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/line_array/line_array.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/parseLog/parseLog.py" beforeDir="false" afterPath="$PROJECT_DIR$/build/lib/src/sdi_utils_operators/parseLog/parseLog.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/PKG-INFO" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/SOURCES.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/SOURCES.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdi_utils.egg-info/top_level.txt" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils.egg-info/top_level.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/sdi_utils/set_logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/set_logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sdi_utils/textfield_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/sdi_utils/textfield_parser.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/gate/Gate.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/gate/and_gate/and_gate.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/gate/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/gate/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate/configSchema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/gate/gate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/gate/and_gate/and_gate.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/gate/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate/operator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy/Scrapy.svg" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/scrapy_executor/Scrapy.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy/configSchema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy/operator.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy/scapy.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy_executor/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/scrapy_executor/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy_executor/Scrapy.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy_executor/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/scrapy_executor/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy_executor/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/scrapy_executor/configSchema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy_executor/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/scrapy_executor/operator.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/scrapy_executor/scapy_executor.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/scrapy_executor/scapy_executor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/stream_to_json/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/stream_to_json/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/stream_to_json/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict/configSchema.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/stream_to_json/json_stream_to_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/json_dict/json_dict.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/stream_to_json/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/csv_table_0.0.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_table/dict_table.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/filter_today_0.0.1.zip" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_json/dict_json.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_utils_operators/filter_today/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/filter_date/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_utils_operators/filter_today/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/pivotize/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_utils_operators/filter_today/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_json/configSchema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_utils_operators/filter_today/filter_today.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_utils_operators/filter_today/filter_today.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/filter_date/filter_date.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_utils_operators/filter_today/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.1/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.21.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.22.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/sdi_utils_operators_0.0.23.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/solution/operators/table_0.0.2.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/customOperatorTemplate/eduardo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict/csv_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict/csv_dict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/customOperatorTemplate/dict_df/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/dict_table/configSchema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/filter_today.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/filter_date/filter_date.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/filter_today.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/filter_date/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate/count_gate.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate/count_gate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/json_dict/json_dict.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/json_dict/json_dict.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/json_dict/jsondict.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/json_dict/jsondict.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/json_dict/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/json_dict/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/line_array/line_array.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/line_array/line_array.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/line_array/line_array.svg" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/line_array/line_array.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/line_array/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/line_array/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/parseLog/parseLog.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/parseLog/parseLog.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/configSchema.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/csv_table.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/csv_to_table.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/operator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/pivotize/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/HTTPdownload/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/pivotize/configSchema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/pivotize/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize/pivotize.py" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/pivotize/pivotize.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize/pivotize.svg" beforeDir="false" afterPath="$PROJECT_DIR$/deprecated/pivotize/pivotize.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table_csv/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/df_table/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/configSchema.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table_csv/configSchema.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/csv_to_table.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table_csv/table_csv.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/operator.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/sdi_utils_operators/table_csv/operator.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/table_to_csv.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils-0.0.63.dist-info/INSTALLER" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils-0.0.63.dist-info/METADATA" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils-0.0.63.dist-info/RECORD" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils-0.0.63.dist-info/WHEEL" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils-0.0.63.dist-info/entry_points.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils-0.0.63.dist-info/top_level.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils/set_logging.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils/set_logging.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils/textfield_parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/sdi_utils/textfield_parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/src/sdi_utils_operators/gate/gate.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/src/sdi_utils_operators/parseLog/parseLog.py" beforeDir="false" afterPath="$PROJECT_DIR$/venv/lib/python3.7/site-packages/src/sdi_utils_operators/parseLog/parseLog.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -79,18 +133,18 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/deprecated" />
+      <recent name="$PROJECT_DIR$/src/sdi_utils_operators" />
       <recent name="$PROJECT_DIR$/src/sdi_utils_operators/table" />
       <recent name="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate" />
       <recent name="$PROJECT_DIR$/src/sdi_utils_operators/json_dict" />
-      <recent name="$PROJECT_DIR$/deprecated" />
-      <recent name="$PROJECT_DIR$/src/sdi_utils_operators/scrapy2" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/sdi_utils_operators" />
+      <recent name="$PROJECT_DIR$/src/customOperatorTemplate" />
+      <recent name="$PROJECT_DIR$/src" />
       <recent name="$PROJECT_DIR$/src/sdi_utils_operators/table" />
       <recent name="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize" />
-      <recent name="$PROJECT_DIR$/src/sdi_utils_operators/gate/and_gate" />
-      <recent name="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -105,8 +159,8 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.filter_today">
-    <configuration name="csv_table (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+  <component name="RunManager" selected="Python.df_csv">
+    <configuration name="csv_df" type="PythonConfigurationType" factoryName="Python">
       <module name="sdi_utils" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -114,12 +168,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/csv_table" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/csv_df" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/csv_table/csv_table.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/csv_df/csv_df.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -128,7 +182,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="csv_to_table (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="df_csv" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sdi_utils" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -136,12 +190,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/df_csv" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table/csv_to_table.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/df_csv/df_csv.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -150,7 +204,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="csv_to_table" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="df_table" type="PythonConfigurationType" factoryName="Python">
       <module name="sdi_utils" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -158,12 +212,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/df_table" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv/csv_to_table.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/df_table/df_table.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -172,7 +226,29 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="filter_today" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="filter_date (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sdi_utils" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/filter_date" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/filter_date/filter_date.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="filter_date" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sdi_utils" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -185,7 +261,7 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/filter_today.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/filter_today/filter_date.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -194,7 +270,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="json_dict" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="json_df" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="sdi_utils" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -202,12 +278,34 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/json_dict" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/json_df" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/json_dict/json_dict.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/json_df/json_df.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="table_csv" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="sdi_utils" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/sdi_utils_operators/table_csv" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/sdi_utils_operators/table_csv/table_csv.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -217,19 +315,21 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.csv_table (1)" />
-      <item itemvalue="Python.csv_to_table" />
-      <item itemvalue="Python.csv_to_table (1)" />
-      <item itemvalue="Python.json_dict" />
-      <item itemvalue="Python.filter_today" />
+      <item itemvalue="Python.df_table" />
+      <item itemvalue="Python.csv_df" />
+      <item itemvalue="Python.df_csv" />
+      <item itemvalue="Python.json_df" />
+      <item itemvalue="Python.table_csv" />
+      <item itemvalue="Python.filter_date" />
+      <item itemvalue="Python.filter_date (1)" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.filter_today" />
-        <item itemvalue="Python.json_dict" />
-        <item itemvalue="Python.csv_to_table (1)" />
-        <item itemvalue="Python.csv_to_table" />
-        <item itemvalue="Python.csv_table (1)" />
+        <item itemvalue="Python.df_csv" />
+        <item itemvalue="Python.filter_date (1)" />
+        <item itemvalue="Python.filter_date" />
+        <item itemvalue="Python.table_csv" />
+        <item itemvalue="Python.json_df" />
       </list>
     </recent_temporary>
   </component>
@@ -265,7 +365,15 @@
       <workItem from="1583754216981" duration="748000" />
       <workItem from="1584248146033" duration="14999000" />
       <workItem from="1585572235787" duration="1351000" />
-      <workItem from="1585713674426" duration="9849000" />
+      <workItem from="1585713674426" duration="10588000" />
+      <workItem from="1586632178614" duration="1134000" />
+      <workItem from="1586840469690" duration="24194000" />
+      <workItem from="1587480377107" duration="1152000" />
+      <workItem from="1588741782301" duration="10045000" />
+      <workItem from="1588920017984" duration="14590000" />
+      <workItem from="1589210145961" duration="6221000" />
+      <workItem from="1589287134237" duration="5510000" />
+      <workItem from="1589691420569" duration="19599000" />
     </task>
     <servers />
   </component>
@@ -340,23 +448,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate/count_gate.py</url>
-          <line>64</line>
-          <option name="timeStamp" value="47" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate/count_gate.py</url>
-          <line>109</line>
+          <line>114</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/sdi_utils_operators/json_dict/json_dict.py</url>
-          <line>110</line>
-          <option name="timeStamp" value="51" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/sdi_utils_operators/json_dict/json_dict.py</url>
-          <line>52</line>
-          <option name="timeStamp" value="52" />
+          <url>file://$PROJECT_DIR$/src/sdi_utils_operators/df_csv/df_csv.py</url>
+          <line>79</line>
+          <option name="timeStamp" value="50" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -369,27 +467,40 @@
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/sdi_utils$pivotize.coverage" NAME="pivotize Coverage Results" MODIFIED="1584250052523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/table/pivotize" />
     <SUITE FILE_PATH="coverage/sdi_utils$gate__1_.coverage" NAME="gate (1) Coverage Results" MODIFIED="1580973754564" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/gate" />
-    <SUITE FILE_PATH="coverage/sdi_utils$line_array.coverage" NAME="line_array Coverage Results" MODIFIED="1581665747082" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/line_array" />
+    <SUITE FILE_PATH="coverage/sdi_utils$df_csv.coverage" NAME="df_csv Coverage Results" MODIFIED="1589893952048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/df_csv" />
+    <SUITE FILE_PATH="coverage/sdi_utils$dict_table.coverage" NAME="dict_table Coverage Results" MODIFIED="1588995255713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/dict_table" />
+    <SUITE FILE_PATH="coverage/sdi_utils$table_csv.coverage" NAME="table_csv Coverage Results" MODIFIED="1589805328664" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/table_csv" />
+    <SUITE FILE_PATH="coverage/sdi_utils$line_array.coverage" NAME="line_array Coverage Results" MODIFIED="1589287302532" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/line_array" />
     <SUITE FILE_PATH="coverage/sdi_utils$outputgen.coverage" NAME="outputgen Coverage Results" MODIFIED="1581133412654" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdi_utils" />
     <SUITE FILE_PATH="coverage/sdi_utils$json_stream_to_dict.coverage" NAME="json_stream_to_dict Coverage Results" MODIFIED="1581275024348" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/stream_to_json" />
-    <SUITE FILE_PATH="coverage/sdi_utils$count_gate.coverage" NAME="count_gate Coverage Results" MODIFIED="1581848804839" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate" />
-    <SUITE FILE_PATH="coverage/sdi_utils$filter_today.coverage" NAME="filter_today Coverage Results" MODIFIED="1586150807514" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/filter_today" />
+    <SUITE FILE_PATH="coverage/sdi_utils$count_gate.coverage" NAME="count_gate Coverage Results" MODIFIED="1587032968153" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/gate/count_gate" />
+    <SUITE FILE_PATH="coverage/sdi_utils$df_to_csv.coverage" NAME="df_to_csv Coverage Results" MODIFIED="1589211323413" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/df_to_csv" />
+    <SUITE FILE_PATH="coverage/sdi_utils$json_df.coverage" NAME="json_df Coverage Results" MODIFIED="1589794689756" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/json_df" />
+    <SUITE FILE_PATH="coverage/sdi_utils$filter_today.coverage" NAME="filter_today Coverage Results" MODIFIED="1586855735284" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/filter_today" />
+    <SUITE FILE_PATH="coverage/sdi_utils$df_table.coverage" NAME="df_table Coverage Results" MODIFIED="1589804447984" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/df_table" />
     <SUITE FILE_PATH="coverage/sdi_utils$csv_table__1_.coverage" NAME="csv_table (1) Coverage Results" MODIFIED="1584260824471" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/csv_table" />
     <SUITE FILE_PATH="coverage/sdi_utils$string_collector.coverage" NAME="string_collector Coverage Results" MODIFIED="1581803121313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/string_collector" />
     <SUITE FILE_PATH="coverage/sdi_utils$gate.coverage" NAME="gate Coverage Results" MODIFIED="1580849515017" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/gate" />
     <SUITE FILE_PATH="coverage/sdi_utils$gensolution.coverage" NAME="gensolution Coverage Results" MODIFIED="1575725318844" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/" />
-    <SUITE FILE_PATH="coverage/sdi_utils$csv_table.coverage" NAME="csv_table Coverage Results" MODIFIED="1584250602352" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/csv_tabke" />
+    <SUITE FILE_PATH="coverage/sdi_utils$csv_table.coverage" NAME="csv_table Coverage Results" MODIFIED="1589291663578" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/csv_table" />
+    <SUITE FILE_PATH="coverage/sdi_utils$filter_date.coverage" NAME="filter_date Coverage Results" MODIFIED="1589872823295" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/filter_today" />
     <SUITE FILE_PATH="coverage/sdi_utils$scapy2.coverage" NAME="scapy2 Coverage Results" MODIFIED="1581227341692" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/scrapy_executor" />
     <SUITE FILE_PATH="coverage/sdi_utils$customOperatorTemplate.coverage" NAME="customOperatorTemplate Coverage Results" MODIFIED="1580882351531" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/customOperatorTemplate" />
+    <SUITE FILE_PATH="coverage/sdi_utils$HTTPdownload.coverage" NAME="HTTPdownload Coverage Results" MODIFIED="1589140790681" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/HTTPdownload" />
     <SUITE FILE_PATH="coverage/sdi_utils$call_proc.coverage" NAME="call_proc Coverage Results" MODIFIED="1580984597596" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdi_utils" />
+    <SUITE FILE_PATH="coverage/sdi_utils$table_to_csv.coverage" NAME="table_to_csv Coverage Results" MODIFIED="1588996058206" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv" />
     <SUITE FILE_PATH="coverage/sdi_utils$parseLog.coverage" NAME="parseLog Coverage Results" MODIFIED="1581093768423" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/parseLog" />
     <SUITE FILE_PATH="coverage/sdi_utils$csv_to_table__1_.coverage" NAME="csv_to_table (1) Coverage Results" MODIFIED="1584612610237" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table" />
-    <SUITE FILE_PATH="coverage/sdi_utils$csv_dict.coverage" NAME="csv_dict Coverage Results" MODIFIED="1581511713029" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict" />
-    <SUITE FILE_PATH="coverage/sdi_utils$json_dict.coverage" NAME="json_dict Coverage Results" MODIFIED="1586010860218" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/json_dict" />
+    <SUITE FILE_PATH="coverage/sdi_utils$filter_date__1_.coverage" NAME="filter_date (1) Coverage Results" MODIFIED="1589893433167" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/filter_date" />
+    <SUITE FILE_PATH="coverage/sdi_utils$csv_dict.coverage" NAME="csv_dict Coverage Results" MODIFIED="1586862137159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/csv_dict" />
+    <SUITE FILE_PATH="coverage/sdi_utils$json_dict.coverage" NAME="json_dict Coverage Results" MODIFIED="1588771450246" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/json_dict" />
+    <SUITE FILE_PATH="coverage/sdi_utils$dict_df.coverage" NAME="dict_df Coverage Results" MODIFIED="1589287213724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/dict_df" />
     <SUITE FILE_PATH="coverage/sdi_utils$scapy.coverage" NAME="scapy Coverage Results" MODIFIED="1581318610183" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/scrapy" />
     <SUITE FILE_PATH="coverage/sdi_utils$jsonstream_dict.coverage" NAME="jsonstream_dict Coverage Results" MODIFIED="1581322886693" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/jsonstream_dict" />
     <SUITE FILE_PATH="coverage/sdi_utils$set_logging.coverage" NAME="set_logging Coverage Results" MODIFIED="1581922240523" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdi_utils" />
-    <SUITE FILE_PATH="coverage/sdi_utils$csv_to_table.coverage" NAME="csv_to_table Coverage Results" MODIFIED="1584612590248" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/table/table_to_csv" />
+    <SUITE FILE_PATH="coverage/sdi_utils$csv_to_df.coverage" NAME="csv_to_df Coverage Results" MODIFIED="1589293939313" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/csv_to_df" />
+    <SUITE FILE_PATH="coverage/sdi_utils$csv_to_table.coverage" NAME="csv_to_table Coverage Results" MODIFIED="1586875518860" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/table/csv_to_table" />
+    <SUITE FILE_PATH="coverage/sdi_utils$csv_df.coverage" NAME="csv_df Coverage Results" MODIFIED="1589294756204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/csv_df" />
     <SUITE FILE_PATH="coverage/sdi_utils$textfield_parser.coverage" NAME="textfield_parser Coverage Results" MODIFIED="1576826013521" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/sdi_utils" />
     <SUITE FILE_PATH="coverage/sdi_utils$scapy_executor.coverage" NAME="scapy_executor Coverage Results" MODIFIED="1580990402797" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/src/sdi_utils_operators/scrapy_executor" />
   </component>

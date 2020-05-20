@@ -1,0 +1,33 @@
+{
+    "description": "JSON stream to DataFrame",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "stream",
+            "type": "message.file",
+            "description": "Input json byte or string"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Output DataFrame"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.json_df.configSchema.json",
+        "script": "file://json_df.py",
+        "debug_mode": true,
+        "collect": true
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "json_df.svg"
+}

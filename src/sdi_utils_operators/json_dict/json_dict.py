@@ -2,7 +2,7 @@ import io
 import json
 import os
 import re
-import html
+import subprocess
 
 import sdi_utils.gensolution as gs
 import sdi_utils.set_logging as slog
@@ -37,6 +37,7 @@ except NameError:
             tags = {'sdi_utils':''}
             version = "0.0.1"
             operator_description = "JSON stream to dict"
+            operator_name = 'json_dict'
             operator_description_long = "Converts json stream to dict"
             add_readme = dict()
             debug_mode = True
@@ -49,25 +50,6 @@ except NameError:
 
 result_jdict = list()
 
-def test_last_batch (attributes, collect = False) :
-    if not collect :
-        progress_str = '<BATCH ENDED><1>'
-        return True, progress_str
-    elif ('batch.number' in attributes and 'batch.index' in attributes) or \
-        ('storage.fileCount' in attributes and 'storage.fileIndex' in attributes) :
-        # just in case the batch attributes are not set
-        if not 'batch.number' in attributes or not 'batch.index' in attributes :
-            attributes['batch.index'] = attributes['storage.fileIndex']
-            attributes['batch.number'] = attributes['storage.fileCount']
-        if attributes['batch.index'] + 1 == attributes['batch.number'] :
-            progress_str = '<BATCH ENDED><{}>'.format(attributes['batch.number'])
-            return True, progress_str
-        else:
-            progress_str = '<BATCH IN-PROCESS><{}/{}>'.format(attributes['batch.index'] + 1,
-                                                              attributes['batch.number'])
-            return False, progress_str
-    else :
-        raise ValueError('For collecting data batch.index or storage.fileIndex is necessary in Message attributes.')
 
 def process(msg) :
     att_dict = msg.attributes
@@ -78,10 +60,7 @@ def process(msg) :
     logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode,stream_output=True)
     logger.info("Process started. Logging level: {}".format(logger.level))
 
-    logger.info('Filename: {} index: {}  count: {}  endofSeq: {}'.format(msg.attributes["storage.filename"], \
-                                                                         msg.attributes["storage.fileIndex"], \
-                                                                         msg.attributes["storage.fileCount"], \
-                                                                         msg.attributes["storage.endOfSequence"]))
+    logger.debug('Attributes: {}'.format(str(msg.attributes)))
 
     if msg.body == None:
         logger.info('Process ended.')
@@ -107,8 +86,11 @@ def process(msg) :
 
     logger.debug('Collect mode: {}'.format(api.config.collect))
 
-    result, progress_str = test_last_batch(attributes=att_dict, collect=api.config.collect)
-    if result == True :
+    if  (api.config.collect == False) or \
+        ('message.lastBatch' in att_dict and att_dict['message.lastBatch'] == True) or \
+        ('batch.index' in att_dict and  att_dict['batch.index'] + 1 == att_dict['batch.number']) or \
+        ('storage.fileIndex' in att_dict and att_dict['storage.fileIndex'] + 1 == att_dict['storage.fileCount']) :
+
         msg = api.Message(attributes=att_dict,body=result_jdict)
         api.send(outports[1]['name'], msg)
         logger.info('Msg send to port: {}'.format(outports[1]['name']))
@@ -117,7 +99,7 @@ def process(msg) :
     api.send(outports[0]['name'], log_stream.getvalue())
 
 
-inports = [{'name': 'stream', 'type': 'message',"description":"Input json byte or string"}]
+inports = [{'name': 'stream', 'type': 'message.file',"description":"Input json byte or string"}]
 outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
             {'name': 'data', 'type': 'message.dicts',"description":"Output data as list of dictionaries"}]
 
@@ -143,5 +125,11 @@ def test_operator() :
 
 if __name__ == '__main__':
     test_operator()
-    #gs.gensolution(os.path.realpath(__file__), config, inports, outports)
+    if True :
+        gs.gensolution(os.path.realpath(__file__), api.config, inports, outports)
+        solution_name = api.config.operator_name+'_'+api.config.version
+        subprocess.run(["vctl", "solution", "bundle", '/Users/d051079/OneDrive - SAP SE/GitHub/sdi_utils/solution/operators/sdi_utils_operators_0.0.1',\
+                                  "-t", solution_name])
+
+        subprocess.run(["mv", solution_name+'.zip', '../../../solution/operators'])
         
