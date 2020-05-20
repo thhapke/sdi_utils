@@ -1,3 +1,0 @@
-deprecated
-sdi_utils
-src
