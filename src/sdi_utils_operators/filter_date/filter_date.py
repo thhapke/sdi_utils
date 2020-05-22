@@ -34,7 +34,7 @@ except NameError:
             version = "0.0.1"
             operator_name = 'filter_date'
             operator_description = "Filter date string"
-            operator_description_long = "Filters the names with today substring."
+            operator_description_long = "Filters filenames with date pattern (yyyy-mm-dd or yyyymmdd)."
             add_readme = dict()
             debug_mode = True
             config_params['debug_mode'] = {'title': 'Debug mode',
@@ -81,18 +81,21 @@ def process(msg):
     file_date = None
     if re.search('\d{4}-\d{2}-\d{2}',filename) :
         file_date_str = re.search('\d{4}-\d{2}-\d{2}',filename).group(0)
-        logger.info('Date string found in filename: {}'.format(file_date_str))
         file_date = datetime.strptime(file_date_str, "%Y-%m-%d")
+        logger.info('Date found in filename: {}'.format(file_date.strftime("%Y-%m-%d")))
     elif re.search('(\d{4})(\d{2})(\d{2})', filename):
         dates = re.search('(\d{4})(\d{2})(\d{2})', filename)
-        if dates.group(0) > 1900 and dates.group(0) < 2050 and
-
+        try :
+            file_date = datetime(year=int(dates.group(1)), month = int(dates.group(2)), day = int(dates.group(3)))
+            logger.info('Date found in filename: {}'.format(file_date.strftime("%Y-%m-%d")))
+        except ValueError:
+            file_date = None
     else :
         logger.info('No date pattern found in filename: {}'.format(filename))
 
     if file_date and file_date >= start_date and file_date <= end_date :
         count +=1
-        logger.info('Date in filename is within given range: {} ({} - {})'.format(file_date_str,start_date_str,end_date_str))
+        logger.info('Date in filename is within given range: {} ({} - {})'.format(file_date.strftime("%Y-%m-%d"),start_date_str,end_date_str))
         fmsg = api.Message(attributes = msg.attributes, body=filename)
         api.send(outports[2]['name'],fmsg)
 
@@ -122,9 +125,10 @@ def test_operator() :
     process(api.Message(attributes={'file':{'path':'/folder/file-2020-02-06'},'message.lastBatch':True},body = []))
     process(api.Message(attributes={'file':{'path':'/folder/file-20200207'},'message.lastBatch':True},body = []))
     process(api.Message(attributes={'file':{'path':'/folder/file-20200515'},'message.lastBatch':True},body = []))
+    process(api.Message(attributes={'file': {'path': '/folder/file-20201315'}, 'message.lastBatch': True}, body=[]))
 
 if __name__ == '__main__':
-    test_operator()
+    #test_operator()
 
     if True :
         subprocess.run(["rm", '-r',
