@@ -36,7 +36,7 @@ except NameError:
             version = "0.0.17"
             tags = {'pandas': '','sdi_utils':''}
             operator_name = 'csv_df'
-            operator_description = "From CSV to DataFrame"
+            operator_description = "csv to df"
             operator_description_long = "Creating a DataFrame with csv-data passed through inport."
             add_readme = dict()
             add_readme[
@@ -45,7 +45,7 @@ except NameError:
             debug_mode = True
             config_params['debug_mode'] = {'title': 'Debug mode', 'description': 'Sending debug level information to log port',
                                            'type': 'boolean'}
-            collect = True
+            collect = False
             config_params['collect'] = {'title': 'Collect data', 'description': 'Collect data before sending it to the output port',
                                            'type': 'boolean'}
             index_cols = 'None'
@@ -154,6 +154,9 @@ def process(msg):
 
     ##### Read string from buffer
     logger.debug("Read from input")
+    api.send(outports[0]["name"],log_stream.getvalue())
+    log_stream.seek(0)
+    log_stream.truncate()
     df = pd.read_csv(csv_io, api.config.separator, usecols=use_cols, dtype=typemap, decimal=api.config.decimal, \
                      nrows=nrows, **kwargs)
 

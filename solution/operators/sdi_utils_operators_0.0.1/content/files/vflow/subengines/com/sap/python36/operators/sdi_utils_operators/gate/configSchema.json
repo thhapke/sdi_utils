@@ -1,0 +1,33 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_utils_operators.gate.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "limit": {
+            "title": "Limit",
+            "description": "Limit after which the message is send",
+            "type": "integer"
+        },
+        "sleep": {
+            "title": "Sleep",
+            "description": "Time before starting next processing step",
+            "type": "integer"
+        },
+        "attribute": {
+            "title": "Attribute",
+            "description": "Attribute that keeps a number used as limit, e.g. storage.fileCount",
+            "type": "string"
+        }
+    }
+}

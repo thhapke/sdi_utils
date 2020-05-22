@@ -1,0 +1,47 @@
+{
+    "description": "csv to df",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "csv",
+            "type": "message.file",
+            "description": "Input byte or string csv"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Output data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.csv_df.configSchema.json",
+        "script": "file://csv_df.py",
+        "debug_mode": true,
+        "collect": false,
+        "index_cols": "None",
+        "separator": ",",
+        "use_columns": "None",
+        "limit_rows": 0,
+        "downcast_int": false,
+        "downcast_float": false,
+        "df_name": "DataFrame",
+        "decimal": ".",
+        "dtypes": "None",
+        "data_from_filename": "None",
+        "todatetime": "None",
+        "utc": true,
+        "keyword_args": "'error_bad_lines'= True, 'low_memory' = False, compression = None, thousands = None "
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "csv_df.svg"
+}

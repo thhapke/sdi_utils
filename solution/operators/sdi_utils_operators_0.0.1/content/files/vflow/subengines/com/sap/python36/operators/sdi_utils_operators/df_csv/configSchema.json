@@ -34,6 +34,11 @@
             "description": "Rename columns (map)",
             "type": "string"
         },
+        "select_columns": {
+            "title": "Select Columns",
+            "description": "Select columns.",
+            "type": "string"
+        },
         "keyword_args": {
             "title": "Keyword Arguments",
             "description": "Mapping of key-values passed as arguments \"to read_csv\"",

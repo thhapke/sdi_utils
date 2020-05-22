@@ -1,0 +1,88 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_utils_operators.csv_df.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "collect": {
+            "title": "Collect data",
+            "description": "Collect data before sending it to the output port",
+            "type": "boolean"
+        },
+        "index_cols": {
+            "title": "Index Columns",
+            "description": "Index columns of dataframe",
+            "type": "string"
+        },
+        "separator": {
+            "title": "Separator of CSV",
+            "description": "Separator of CSV",
+            "type": "string"
+        },
+        "use_columns": {
+            "title": "Use columns from CSV",
+            "description": "Use columns from CSV (list)",
+            "type": "string"
+        },
+        "limit_rows": {
+            "title": "Limit number of rows",
+            "description": "Limit number of rows for testing purpose",
+            "type": "number"
+        },
+        "downcast_int": {
+            "title": "Downcast integers",
+            "description": "Downcast integers from int64 to int with smallest memory footprint",
+            "type": "boolean"
+        },
+        "downcast_float": {
+            "title": "Downcast float datatypes",
+            "description": "Downcast float64 to float32 datatypes",
+            "type": "boolean"
+        },
+        "df_name": {
+            "title": "DataFrame name",
+            "description": "DataFrame name for debugging reasons",
+            "type": "string"
+        },
+        "decimal": {
+            "title": "Decimals separator",
+            "description": "Decimals separator",
+            "type": "string"
+        },
+        "dtypes": {
+            "title": "Data Types of Columns",
+            "description": "Data Types of Columns (list of maps)",
+            "type": "string"
+        },
+        "data_from_filename": {
+            "title": "Data from Filename",
+            "description": "Data from Filename",
+            "type": "string"
+        },
+        "todatetime": {
+            "title": "To Datetime",
+            "description": "To Datetime",
+            "type": "string"
+        },
+        "utc": {
+            "title": "Use UTC",
+            "description": "If true utc is used for time conversion",
+            "type": "boolean"
+        },
+        "keyword_args": {
+            "title": "Keyword Arguments",
+            "description": "Mapping of key-values passed as arguments \"to read_csv\"",
+            "type": "string"
+        }
+    }
+}

@@ -34,7 +34,7 @@ except NameError:
             version = '0.0.1'
             tags = {'pandas': '','sdi_utils':''}
             operator_name = 'df_csv'
-            operator_description = "To CSV from DataFrame"
+            operator_description = "DF to CSV"
             operator_description_long = "Creates a csv-formatted data passed to outport as message with the csv-string as body."
             add_readme = dict()
             add_readme["References"] = r"""[pandas doc: to_csv](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.to_csv.html)"""
@@ -54,6 +54,9 @@ except NameError:
 
             rename = 'None'
             config_params['rename'] = {'title': 'Rename Columns','description': 'Rename columns (map)','type': 'string'}
+
+            select_columns = 'None'
+            config_params['select_columns'] = {'title': 'Select Columns','description': 'Select columns.','type': 'string'}
 
             keyword_args = "None"
             config_params['keyword_args'] = {'title': 'Keyword Arguments',
@@ -85,6 +88,12 @@ def process(msg) :
     for col in col_dt :
         df[col] = df[col].dt.strftime('%Y-%m-%d')
 
+    select_columns = tfp.read_list(api.config.select_columns)
+    if select_columns :
+        print(df.columns)
+        print(select_columns)
+        df = df[select_columns]
+
     kwargs = tfp.read_dict(text=api.config.keyword_args, map_sep='=')
     if not kwargs == None :
         data_str = df.to_csv(sep=api.config.separator, index=api.config.write_index, **kwargs)
@@ -97,13 +106,13 @@ def process(msg) :
     logger.debug('Process ended: {}'.format(time_monitor.elapsed_time()))
 
     api.send(outports[0]['name'],log_stream.getvalue())
-    api.send(outports[1]['name'],data_str)
+    api.send(outports[1]['name'],api.Message(attributes=att_dict,body = data_str))
 
 
 
 inports = [{'name': 'data', 'type': 'message.DataFrame',"description":"Input data"}]
 outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
-            {'name': 'csv', 'type': 'string',"description":"Output data as csv"}]
+            {'name': 'csv', 'type': 'message',"description":"Output data as csv"}]
 
 
 
@@ -115,6 +124,7 @@ def test_operator() :
     config.write_index = False
     config.reset_index = True
     config.rename = 'icol:index, col3: column3'
+    config.select_columns = "index, 'col 2', names"
     api.set_config(config)
 
     df = pd.DataFrame({'icol': [1, 2, 3, 4, 5], 'col 2': ['2020-01-01', '2020-02-01', '2020-01-31', '2020-01-28','2020-04-12'],\
@@ -126,8 +136,9 @@ def test_operator() :
     msg = api.Message(attributes=attributes,body=df)
     process(msg)
 
-    str_list = '\n'.join(api.queue)
-    print(str_list)
+    str_list = [d.body for d in api.queue]
+    str_str = '\n'.join(str_list)
+    print(str_str)
     #out_file = '/Users/Shared/data/test/json_df.csv'
     #df.to_csv(out_file,index=False)
 

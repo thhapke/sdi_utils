@@ -78,18 +78,23 @@ def process(msg):
     logger.debug('Body: {}'.format(str(msg.body)))
     logger.info('Filename: {}'.format(filename))
 
-    date_found = re.search('\d{4}-\d{2}-\d{2}',filename)
-    if date_found :
-        file_date_str = date_found.group(0)
+    file_date = None
+    if re.search('\d{4}-\d{2}-\d{2}',filename) :
+        file_date_str = re.search('\d{4}-\d{2}-\d{2}',filename).group(0)
         logger.info('Date string found in filename: {}'.format(file_date_str))
         file_date = datetime.strptime(file_date_str, "%Y-%m-%d")
-        if file_date >= start_date and file_date <= end_date :
-            count +=1
-            logger.info('Date in filename is within given range: {} ({} - {})'.format(file_date_str,start_date_str,end_date_str))
-            fmsg = api.Message(attributes = msg.attributes, body=filename)
-            api.send(outports[2]['name'],fmsg)
+    elif re.search('(\d{4})(\d{2})(\d{2})', filename):
+        dates = re.search('(\d{8})(\d{2})(\d{2})', filename)
+        date_found = False
     else :
         logger.info('No date pattern found in filename: {}'.format(filename))
+
+    if file_date and file_date >= start_date and file_date <= end_date :
+        count +=1
+        logger.info('Date in filename is within given range: {} ({} - {})'.format(file_date_str,start_date_str,end_date_str))
+        fmsg = api.Message(attributes = msg.attributes, body=filename)
+        api.send(outports[2]['name'],fmsg)
+
 
     if msg.attributes['message.lastBatch']:
         api.send(outports[1]['name'], count)
@@ -113,15 +118,7 @@ def test_operator() :
     config.end_date = '2020-03-31'
     api.set_config(config)
 
-    in_dir = '/Users/Shared/data/onlinemedia/crawled_texts'
-    files_in_dir = [f for f in os.listdir(in_dir) if os.path.isfile(os.path.join(in_dir, f)) and re.match('.*json', f)]
-    for i, fname in enumerate(files_in_dir):
-        fbase = fname.split('.')[0]
-        eos = True if len(files_in_dir) == i + 1 else False
-        attributes = {'format': 'csv', "storage.filename": fbase, 'storage.endOfSequence': eos, \
-                      'storage.fileIndex': i, 'storage.fileCount': len(files_in_dir),'process_list':[]}
-        attributes = {'file':{'path':fname}, 'message.lastBatch':eos}
-        msg = api.Message(attributes=attributes, body=fname)
-        process(msg)
-
+    process(api.Message(attributes={'file':{'path':'/folder/file-2020-02-06'},'message.lastBatch':True},body = []))
+    process(api.Message(attributes={'file':{'path':'/folder/file-20200207'},'message.lastBatch':True},body = []))
+    process(api.Message(attributes={'file':{'path':'/folder/file-20200515'},'message.lastBatch':True},body = []))
 

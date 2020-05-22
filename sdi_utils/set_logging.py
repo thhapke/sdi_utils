@@ -1,7 +1,7 @@
 import logging
 from io import StringIO
 
-
+map_logs = {'CRITICAL':50,'ERROR':40,'WARNING':30,'INFO':20,'DEBUG':10,'NOTSET':0}
 
 ### set logger for strerr and to StringIO
 def set_logging(name='operator',loglevel = logging.INFO, stream_output = True) :

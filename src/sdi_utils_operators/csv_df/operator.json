@@ -1,5 +1,5 @@
 {
-    "description": "From CSV to DataFrame",
+    "description": "csv to df",
     "component": "com.sap.system.python3Operator",
     "inports": [
         {
@@ -24,7 +24,7 @@
         "$type": "http://sap.com/vflow/sdi_utils_operators.csv_df.configSchema.json",
         "script": "file://csv_df.py",
         "debug_mode": true,
-        "collect": true,
+        "collect": false,
         "index_cols": "None",
         "separator": ",",
         "use_columns": "None",

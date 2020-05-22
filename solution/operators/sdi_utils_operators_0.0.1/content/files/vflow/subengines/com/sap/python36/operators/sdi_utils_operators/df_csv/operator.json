@@ -1,5 +1,5 @@
 {
-    "description": "To CSV from DataFrame",
+    "description": "DF to CSV",
     "component": "com.sap.system.python3Operator",
     "inports": [
         {
@@ -16,7 +16,7 @@
         },
         {
             "name": "csv",
-            "type": "string",
+            "type": "message",
             "description": "Output data as csv"
         }
     ],
@@ -28,6 +28,7 @@
         "separator": ",",
         "reset_index": false,
         "rename": "None",
+        "select_columns": "None",
         "keyword_args": "None"
     },
     "tags": {
