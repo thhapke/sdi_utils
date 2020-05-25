@@ -1,0 +1,34 @@
+{
+    "description": "Line to array",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "stream",
+            "type": "message.file",
+            "description": "Input csv byte or string"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "data",
+            "type": "message.list",
+            "description": "Output data as list"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.line_array.configSchema.json",
+        "script": "file://line_array.py",
+        "debug_mode": true,
+        "collect": true,
+        "lexicographical": false
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "line_array.svg"
+}
