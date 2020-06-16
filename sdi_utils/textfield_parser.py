@@ -5,9 +5,16 @@ import logging
 tflogger = logging.getLogger('textfield_parser')
 
 #### split text with quotes
+# 1. find quote indices and separator indices
+# 2. ignore all separator indices within quotes (only even number of quote indices less than sep index)
 def split_text(text,sep) :
     sep_indices = [m.start() for m in re.finditer(sep, text)]
-    quote_indices = [m.start() for m in re.finditer("'", text)]
+    quote_indices = [m.start() for m in re.finditer("'", text) if m.start() == 0 or text[m.start()-1] != '\\' ]
+
+    if sep == ',' :
+        print('\nSPLIT text for: {} - {} '.format(sep,text))
+        for q in quote_indices :
+            print(text[q-1:])
 
     list_seps = list()
     for s_index in sep_indices :
@@ -17,8 +24,12 @@ def split_text(text,sep) :
     list_texts = list()
     last_index = 0
     for i,s_index in enumerate(list_seps) :
-        list_texts.append(text[last_index+1:s_index])
+        if last_index == 0 :
+            list_texts.append(text[:s_index].strip())
+        else :
+            list_texts.append(text[last_index+1:s_index].strip())
         last_index = s_index
+    list_texts.append(text[last_index + 1:].strip())
 
     return list_texts
 
@@ -83,7 +94,6 @@ def read_dict_of_list(text,inner_sep = ',',outer_sep = ';',map_sep=':',test_numb
     if not text or text.upper() == 'NONE':
         return None
 
-
     vo_lists = [x.strip().strip("'\"") for x in text.strip().split(outer_sep)]
 
     value_list_dict = dict()
@@ -103,11 +113,7 @@ def read_dict_of_list(text,inner_sep = ',',outer_sep = ';',map_sep=':',test_numb
 
 
 #### READ DICT
-<<<<<<< HEAD
-# 1. find quote indices and separator indices
-# 2. ignore all separator indices within quotes (only even number of quote indices less than sep index)
-=======
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
+
 def read_dict(text, sep =',', map_sep=':', test_number = True, ignore_quotes = False):
     if not text or text.upper() == 'NONE':
         return None
@@ -121,8 +127,9 @@ def read_dict(text, sep =',', map_sep=':', test_number = True, ignore_quotes = F
             key = cm.split(map_sep)[0].strip()
             value = cm.split(map_sep)[1].strip()
         else :
-            key = cm.split(map_sep)[0].strip().strip("'\"")
-            value = cm.split(map_sep)[1].strip().strip("'\"")
+            mapping = split_text(cm,map_sep)
+            key = mapping[0].strip().strip("'\"")
+            value = mapping[1].strip().strip("'\"")
         if test_number :
             key = number_test(key)
             value = number_test(value)
@@ -246,11 +253,11 @@ if __name__ == '__main__':
     print('Value lists: ' + str(read_dict_of_list(value_str)))
 
     ### map
-    maplist = "'Mercedes':expensive, Audi:'sportive, expensive', VW : 'people, humble', Citroen:cool, 'Rolls Rocye': royal, 'Cars':6, 'eco':'False'"
-    print('Map :' + str(read_dict(maplist)))
+    maplist = "Mercedes:expensive, Audi:'sportive, \'expensive', VW : 'people, humble: except', Citroen:cool, 'Rolls Rocye': 'royal: pretended', 'Cars':6, 'eco':'False'"
+    print('\nMap: \ninput: {}\nouput: {}\n'.format(maplist,read_dict(maplist)))
 
     maplist = "Mercedes:expensive, Audi:sportive, VW : people"
-    print('Map2 :' + str(read_dict(maplist)))
+    print('\nMap: \ninput: {}\nouput: {}\n'.format(maplist,read_dict(maplist)))
 
     ### maps of maps
     dictdict = "'High Class':{'Mercedes':expensive, 'BWM':'sporty};'Sport Class':{ Porsche:'None',Ferrari:special}; \
