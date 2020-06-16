@@ -1,0 +1,35 @@
+{
+    "description": "Drop duplicates of Dataframe",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Output data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.drop_duplicates.configSchema.json",
+        "script": "file://drop_duplicates.py",
+        "debug_mode": true,
+        "subset": "None",
+        "keyword_args": "None"
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "pandas.svg"
+}

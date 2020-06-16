@@ -123,3 +123,15 @@ def test_operator() :
     api.call(config=config, csvstream = msg)
 
 
+<<<<<<< HEAD:build/lib/src/sdi_utils_operators/line_array/line_array.py
+if __name__ == '__main__':
+    main()
+    if True :
+        gs.gensolution(os.path.realpath(__file__), api.config, inports, outports)
+        solution_name = api.config.operator_name+'_'+api.config.version
+
+        subprocess.run(["vctl", "solution", "bundle", '/Users/d051079/OneDrive - SAP SE/GitHub/sdi_utils/solution/operators/sdi_utils_operators_0.0.1',\
+                                  "-t", solution_name])
+        subprocess.run(["mv", solution_name+'.zip', '../../../solution/operators'])
+=======
+>>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780:solution/operators/sdi_utils_operators_0.0.1/content/files/vflow/subengines/com/sap/python36/operators/sdi_utils_operators/line_array/line_array.py

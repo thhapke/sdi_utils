@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 8px; fill: rgb(245, 161, 40);" cx="170.352" cy="335.576" rx="48.227" ry="51.574" transform="matrix(0.120207, 0.992749, -1.013849, -0.054055, 742.788757, -21.767853)"/>
+  <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 8px; fill: rgb(245, 161, 40);" cx="164.145" cy="300.611" rx="46.47" ry="46.199" transform="matrix(0.080017, -0.996793, 1.014277, -0.137782, -247.698822, 338.17514)"/>
+  <ellipse style="stroke: rgb(0, 0, 0); stroke-width: 8px; fill: rgb(245, 161, 40);" cx="252.113" cy="250.876" rx="229" ry="186.308"/>
+  <ellipse style="" cx="756.48" cy="881.204" rx="77.466" ry="44.102" transform="matrix(0.825191, -0.564854, 0.773398, 0.68244, -1163.219849, 70.643433)"/>
+  <circle style="stroke: rgb(255, 255, 255); fill: none;" cx="186.81" cy="238.11" r="5.589" transform="matrix(3.61263, -0.688695, 0.963987, 3.054278, -739.661682, -369.8078)"/>
+  <ellipse style="" cx="756.48" cy="881.204" rx="77.466" ry="44.102" transform="matrix(-0.825191, -0.564854, -0.773398, 0.68244, 1664.468872, 69.280998)"/>
+  <circle style="stroke: rgb(255, 255, 255); fill: none;" cx="186.81" cy="238.11" r="5.589" transform="matrix(-3.61263, -0.688695, -0.963987, 3.054278, 1240.910889, -371.170258)"/>
+  <path style="fill: rgb(216, 216, 216); stroke: rgb(0, 0, 0);" d="M 146.745 348.515"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 5px;" d="M 254.869 325.048 C 315.812 325.048 333.253 334.846 317.042 376.332" transform="matrix(-0.807624, 0.589698, -0.589698, -0.807624, 728.876526, 463.599731)"/>
+  <ellipse style="" cx="250.162" cy="330.059" rx="28.271" ry="15.609"/>
+  <path style="fill: none; stroke: rgb(0, 0, 0); stroke-width: 6px;" d="M 181.112 377.515 C 242.055 377.515 259.497 367.715 243.285 326.228" transform="matrix(0.807624, 0.589698, -0.589698, 0.807624, 248.870819, -59.129784)"/>
+</svg>

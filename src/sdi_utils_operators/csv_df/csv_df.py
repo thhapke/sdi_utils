@@ -119,8 +119,13 @@ def process(msg):
 
     att_dict = msg.attributes
 
+<<<<<<< HEAD
+    att_dict['operator'] = 'csv_df'
+    logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode)
+=======
     att_dict['operator'] = 'dict_table'
     logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode,stream_output=True)
+>>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
     logger.info("Process started. Logging level: {}".format(logger.level))
     time_monitor = tp.progress()
     logger.debug('Attributes: {}'.format(str(msg.attributes)))

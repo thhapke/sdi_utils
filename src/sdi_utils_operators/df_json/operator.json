@@ -1,0 +1,34 @@
+{
+    "description": "df to json",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "json",
+            "type": "message",
+            "description": "Output JSON string"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.df_json.configSchema.json",
+        "script": "file://df_json.py",
+        "debug_mode": true,
+        "reset_index": false
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "df_json.svg"
+}

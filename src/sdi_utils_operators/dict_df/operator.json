@@ -23,7 +23,12 @@
     "config": {
         "$type": "http://sap.com/vflow/sdi_utils_operators.dict_df.configSchema.json",
         "script": "file://dict_df.py",
+<<<<<<< HEAD
+        "debug_mode": true,
+        "rename": "None"
+=======
         "debug_mode": true
+>>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
     },
     "tags": {
         "sdi_utils": "",

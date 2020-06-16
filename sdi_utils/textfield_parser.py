@@ -4,6 +4,23 @@ import logging
 
 tflogger = logging.getLogger('textfield_parser')
 
+#### split text with quotes
+def split_text(text,sep) :
+    sep_indices = [m.start() for m in re.finditer(sep, text)]
+    quote_indices = [m.start() for m in re.finditer("'", text)]
+
+    list_seps = list()
+    for s_index in sep_indices :
+        if not len([ mi for mi in quote_indices if mi < s_index]) % 2 :
+            list_seps.append(s_index)
+
+    list_texts = list()
+    last_index = 0
+    for i,s_index in enumerate(list_seps) :
+        list_texts.append(text[last_index+1:s_index])
+        last_index = s_index
+
+    return list_texts
 
 #### READ Value
 def read_value(text,test_number = True):
@@ -24,7 +41,7 @@ def read_list(text,value_list=None,sep = ',',modifier_list_not=None,test_number 
     if not modifier_list_not:
         modifier_list_not = ['!', '~', 'not', 'Not', 'NOT']
 
-    text = text.strip()
+    #text = text.strip()
 
     # test for all
     if len(text) < 4 and ('all' in text or 'All' in text or 'ALL' in text) :
@@ -40,7 +57,8 @@ def read_list(text,value_list=None,sep = ',',modifier_list_not=None,test_number 
         negation = True
 
     result_list = list()
-    elem_list = text.split(sep)
+    #elem_list = text.split(sep)
+    elem_list = split_text(text, sep)
     for x in  elem_list:
         if ignore_quotes :
             elem = x.strip()
@@ -64,6 +82,8 @@ def read_list(text,value_list=None,sep = ',',modifier_list_not=None,test_number 
 def read_dict_of_list(text,inner_sep = ',',outer_sep = ';',map_sep=':',test_number = True):
     if not text or text.upper() == 'NONE':
         return None
+
+
     vo_lists = [x.strip().strip("'\"") for x in text.strip().split(outer_sep)]
 
     value_list_dict = dict()
@@ -83,10 +103,18 @@ def read_dict_of_list(text,inner_sep = ',',outer_sep = ';',map_sep=':',test_numb
 
 
 #### READ DICT
+<<<<<<< HEAD
+# 1. find quote indices and separator indices
+# 2. ignore all separator indices within quotes (only even number of quote indices less than sep index)
+=======
+>>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
 def read_dict(text, sep =',', map_sep=':', test_number = True, ignore_quotes = False):
     if not text or text.upper() == 'NONE':
         return None
-    list_maps = [x.strip() for x in text.split(sep)]
+
+    list_maps = split_text(text,sep)
+
+    #list_maps = [x.strip() for x in text.split(sep)]
     map_dict = dict()
     for cm in list_maps :
         if ignore_quotes :
@@ -197,6 +225,7 @@ if __name__ == '__main__':
     text = "'Hello', 'a list', with , 5, 5.6, separated by , me"
     not_text = "Not Mercedes, Renault, Citroen, Peugeaut, 'Rolls Royce'"
     list2 = ['Mercedes', 'Audi', 'VW', 'Skoda', 'Renault', 'Citroen', 'Peugeot', 'Rolls Royce']
+    list_text3 = "'Mercedes', 'Audi, Volkswagen', 'VW, Volkswagen', 'Skoda, Volkswagen', 'Renault', 'Citroen, PSA', 'Peugeot', 'Rolls Royce'"
     print('Value: ' + str(read_value(text_1)))
     print('Value Number: ' + str(read_value(text_1,test_number=True)))
     print('Not: ' + str(read_list(not_text, list2)))
@@ -206,6 +235,9 @@ if __name__ == '__main__':
 
     print('ALL: ',str(read_list('ALL',list2)))
 
+    vlist = read_list(list_text3)
+    print('List with quotes and separators in quotes: \n{} -> \n{}'.format(list_text3,vlist))
+
     ### value lists
     value_str = "'Mercedes':expensive, German, respectable; Audi:'sportive, German, technology-advanced'; \
                     VW : 'people', 9,'solid', No1; Citroen:cool, Fantomas, CV2, elastic ; 'Rolls Rocye': royal,  \
@@ -214,8 +246,11 @@ if __name__ == '__main__':
     print('Value lists: ' + str(read_dict_of_list(value_str)))
 
     ### map
-    maplist = "'Mercedes':expensive, Audi:'sportive', VW : 'people', Citroen:cool, 'Rolls Rocye': royal, 'Cars':6, 'eco':'False'"
+    maplist = "'Mercedes':expensive, Audi:'sportive, expensive', VW : 'people, humble', Citroen:cool, 'Rolls Rocye': royal, 'Cars':6, 'eco':'False'"
     print('Map :' + str(read_dict(maplist)))
+
+    maplist = "Mercedes:expensive, Audi:sportive, VW : people"
+    print('Map2 :' + str(read_dict(maplist)))
 
     ### maps of maps
     dictdict = "'High Class':{'Mercedes':expensive, 'BWM':'sporty};'Sport Class':{ Porsche:'None',Ferrari:special}; \

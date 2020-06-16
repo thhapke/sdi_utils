@@ -24,8 +24,8 @@
         "$type": "http://sap.com/vflow/sdi_utils_operators.line_array.configSchema.json",
         "script": "file://line_array.py",
         "debug_mode": true,
-        "collect": true,
-        "lexicographical": false
+        "collect": false,
+        "lexicographical": true
     },
     "tags": {
         "sdi_utils": ""

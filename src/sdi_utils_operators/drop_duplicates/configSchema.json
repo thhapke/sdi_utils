@@ -1,0 +1,28 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_utils_operators.drop_duplicates.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "subset": {
+            "title": "Subset of columns",
+            "description": "Subset of columns for duplicates check.",
+            "type": "string"
+        },
+        "keyword_args": {
+            "title": "Keyword Arguments",
+            "description": "Mapping of key-values passed as arguments \"to read_csv\"",
+            "type": "string"
+        }
+    }
+}
