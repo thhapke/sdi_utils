@@ -21,7 +21,7 @@
         }
     ],
     "config": {
-        "$type": "http://sap.com/vflow/sdi_utils_operators.json_dict.configSchema.json",
+        "$type": "http://sap.com/vflow/sdi_utils_operators.dict_json.configSchema.json",
         "script": "file://dict_json.py",
         "debug_mode": true
     },

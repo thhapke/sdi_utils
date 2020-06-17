@@ -44,11 +44,7 @@ def process(msg) :
     att_dict = msg.attributes
 
     att_dict['operator'] = 'json_dict'
-<<<<<<< HEAD
     logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode)
-=======
-    logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode,stream_output=True)
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
     logger.info("Process started. Logging level: {}".format(logger.level))
 
     logger.debug('Attributes: {}'.format(str(msg.attributes)))
@@ -78,7 +74,7 @@ def test_operator() :
 
 
 if __name__ == '__main__':
-    test_operator()
+    #test_operator()
     if True :
         gs.gensolution(os.path.realpath(__file__), api.config, inports, outports)
         solution_name = api.config.operator_name+'_'+api.config.version

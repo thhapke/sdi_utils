@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
     "description": "json to df",
-=======
-    "description": "JSON stream to DataFrame",
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
     "component": "com.sap.system.python3Operator",
     "inports": [
         {
@@ -27,12 +23,7 @@
     "config": {
         "$type": "http://sap.com/vflow/sdi_utils_operators.json_df.configSchema.json",
         "script": "file://json_df.py",
-<<<<<<< HEAD
         "debug_mode": true
-=======
-        "debug_mode": true,
-        "collect": true
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
     },
     "tags": {
         "sdi_utils": ""

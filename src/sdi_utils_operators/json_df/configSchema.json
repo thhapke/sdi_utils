@@ -13,14 +13,6 @@
             "title": "Debug mode",
             "description": "Sending debug level information to log port",
             "type": "boolean"
-<<<<<<< HEAD
-=======
-        },
-        "collect": {
-            "title": "Collect data",
-            "description": "Collect data before sending it to the output port",
-            "type": "boolean"
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
         }
     }
 }

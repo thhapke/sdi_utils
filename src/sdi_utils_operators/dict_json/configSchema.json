@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
-    "$id": "http://sap.com/vflow/sdi_utils_operators.json_dict.configSchema.json",
+    "$id": "http://sap.com/vflow/sdi_utils_operators.dict_json.configSchema.json",
     "type": "object",
     "properties": {
         "codelanguage": {

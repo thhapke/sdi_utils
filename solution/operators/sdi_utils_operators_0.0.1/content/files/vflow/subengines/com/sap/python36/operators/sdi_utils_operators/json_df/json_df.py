@@ -18,22 +18,23 @@ except NameError:
     class api:
 
         queue = list()
+
         class Message:
-            def __init__(self,body = None,attributes = ""):
+            def __init__(self, body=None, attributes=""):
                 self.body = body
                 self.attributes = attributes
-                
-        def send(port,msg) :
-            if port == outports[1]["name"] :
+
+        def send(port, msg):
+            if port == outports[1]["name"]:
                 api.queue.append(msg)
 
         def set_config(config):
             api.config = config
-    
+
         class config:
             ## Meta data
             config_params = dict()
-            tags = {'sdi_utils':''}
+            tags = {'sdi_utils': ''}
             version = "0.0.1"
             operator_description = "json to df"
             operator_name = 'json_df'
@@ -45,41 +46,39 @@ except NameError:
                                            'type': 'boolean'}
 
 
-
-def process(msg) :
+def process(msg):
     att_dict = msg.attributes
 
     att_dict['operator'] = 'json_df'
-    logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode,stream_output=True)
+    logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode)
     logger.info("Process started. Logging level: {}".format(logger.level))
 
     logger.debug('Attributes: {}'.format(str(msg.attributes)))
 
     jdict = json.loads(msg.body)
-    if not isinstance(jdict,list) :
+    if not isinstance(jdict, list):
         jdict = [jdict]
 
     df = pd.DataFrame(jdict)
-    logger.debug('DataFrame created: {} - {}'.format(df.shape[0],df.shape[1]))
+    logger.debug('DataFrame created: {} - {}'.format(df.shape[0], df.shape[1]))
 
-    msg = api.Message(attributes=att_dict,body=df)
+    msg = api.Message(attributes=att_dict, body=df)
     api.send(outports[1]['name'], msg)
     logger.info('Msg send to port: {}'.format(outports[1]['name']))
     api.send(outports[0]['name'], log_stream.getvalue())
 
 
-inports = [{'name': 'stream', 'type': 'message.file',"description":"Input json byte or string"}]
-outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
-            {'name': 'data', 'type': 'message.DataFrame',"description":"Output DataFrame"}]
+inports = [{'name': 'stream', 'type': 'message.file', "description": "Input json byte or string"}]
+outports = [{'name': 'log', 'type': 'string', "description": "Logging data"}, \
+            {'name': 'data', 'type': 'message.DataFrame', "description": "Output DataFrame"}]
 
 
 api.set_port_callback(inports[0]['name'], process)
 
 def test_operator() :
-    config = api.config
-    config.debug_mode = True
-    config.collect = False
-    api.set_config(config)
+
+    api.config.debug_mode = True
+    api.config.collect = False
 
     in_dir = '/Users/Shared/data/onlinemedia/crawled_texts'
     files_in_dir = [f for f in os.listdir(in_dir) if os.path.isfile(os.path.join(in_dir, f)) and re.match('.*json', f)]

@@ -20,17 +20,13 @@ except NameError:
                 self.attributes = attributes
                 
         def send(port,msg) :
-<<<<<<< HEAD
+
             if port == outports[2]['name'] :
                 print('Attributes: {}'.format(msg.attributes))
                 print('Filename: {}'.format(msg.body))
             elif port == outports[1]['name'] :
                 print('Files processed: {}'.format(msg))
-=======
-            if port == outports[1]['name'] :
-                print('Number of files to be processed: {}'.format(msg))
 
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
 
         def set_config(config):
             api.config = config
@@ -58,17 +54,12 @@ except NameError:
                                            'type': 'string'}
 
 
-<<<<<<< HEAD
+
 file_msg_list = list()
 
 def process(msg):
     global file_msg_list
-=======
-count = 0
 
-def process(msg):
-    global count
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
     att_dict = msg.attributes
 
     att_dict['operator'] = 'filter_date'
@@ -79,27 +70,19 @@ def process(msg):
     logger.debug("Today string: {}".format(today_str))
 
     start_date_str = tfp.read_value(api.config.start_date)
-<<<<<<< HEAD
     if start_date_str == None:
-=======
-    if start_date_str == None :
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
         start_date_str = today_str
     start_date = datetime.strptime(start_date_str, "%Y-%m-%d")
 
     end_date_str = tfp.read_value(api.config.end_date)
-<<<<<<< HEAD
+
     if end_date_str == None:
-=======
-    if end_date_str == None :
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
         end_date_str = today_str
     end_date = datetime.strptime(end_date_str, "%Y-%m-%d")
 
     filename = msg.attributes['file']['path']
     logger.debug('Attributes: {}'.format(str(msg.attributes)))
     logger.debug('Body: {}'.format(str(msg.body)))
-<<<<<<< HEAD
 
     file_date = None
     if re.search('\d{4}-\d{2}-\d{2}', filename):
@@ -132,35 +115,7 @@ def process(msg):
             m.attributes['message.lastBatch'] = True if i == len(file_msg_list) - 1 else False
             logger.info('File send to outport: {}'.format(m.attributes['file']['path']))
             api.send(outports[2]['name'], m)
-=======
-    logger.info('Filename: {}'.format(filename))
 
-    file_date = None
-    if re.search('\d{4}-\d{2}-\d{2}',filename) :
-        file_date_str = re.search('\d{4}-\d{2}-\d{2}',filename).group(0)
-        file_date = datetime.strptime(file_date_str, "%Y-%m-%d")
-        logger.info('Date found in filename: {}'.format(file_date.strftime("%Y-%m-%d")))
-    elif re.search('(\d{4})(\d{2})(\d{2})', filename):
-        dates = re.search('(\d{4})(\d{2})(\d{2})', filename)
-        try :
-            file_date = datetime(year=int(dates.group(1)), month = int(dates.group(2)), day = int(dates.group(3)))
-            logger.info('Date found in filename: {}'.format(file_date.strftime("%Y-%m-%d")))
-        except ValueError:
-            file_date = None
-    else :
-        logger.info('No date pattern found in filename: {}'.format(filename))
-
-    if file_date and file_date >= start_date and file_date <= end_date :
-        count +=1
-        logger.info('Date in filename is within given range: {} ({} - {})'.format(file_date.strftime("%Y-%m-%d"),start_date_str,end_date_str))
-        fmsg = api.Message(attributes = msg.attributes, body=filename)
-        api.send(outports[2]['name'],fmsg)
-
-
-    if msg.attributes['message.lastBatch']:
-        api.send(outports[1]['name'], count)
-        logger.info('Number of files: {}'.format(count))
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
 
     api.send(outports[0]['name'], log_stream.getvalue())
 
@@ -180,23 +135,14 @@ def test_operator() :
     config.end_date = '2020-03-31'
     api.set_config(config)
 
-<<<<<<< HEAD
     process(api.Message(attributes={'file':{'path':'/folder/file-20200206'},'message.lastBatch':False},body = []))
     process(api.Message(attributes={'file':{'path':'/folder/file-20200207'},'message.lastBatch':False},body = []))
     process(api.Message(attributes={'file':{'path':'/folder/file-20200515'},'message.lastBatch':False},body = []))
     process(api.Message(attributes={'file': {'path': '/folder/file-20201215'}, 'message.lastBatch': True}, body=[]))
 
 if __name__ == '__main__':
-    test_operator()
-=======
-    process(api.Message(attributes={'file':{'path':'/folder/file-2020-02-06'},'message.lastBatch':True},body = []))
-    process(api.Message(attributes={'file':{'path':'/folder/file-20200207'},'message.lastBatch':True},body = []))
-    process(api.Message(attributes={'file':{'path':'/folder/file-20200515'},'message.lastBatch':True},body = []))
-    process(api.Message(attributes={'file': {'path': '/folder/file-20201315'}, 'message.lastBatch': True}, body=[]))
-
-if __name__ == '__main__':
     #test_operator()
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
+
 
     if True :
         subprocess.run(["rm", '-r',
