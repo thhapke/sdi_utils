@@ -139,7 +139,7 @@ def test_operator() :
 
 
 if __name__ == '__main__':
-    test_operator()
+    #test_operator()
     if True :
         gs.gensolution(os.path.realpath(__file__), api.config, inports, outports)
         solution_name = api.config.operator_name+'_'+api.config.version

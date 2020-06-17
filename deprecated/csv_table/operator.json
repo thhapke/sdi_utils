@@ -1,0 +1,35 @@
+{
+    "description": "csv to table",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "stream",
+            "type": "message.file",
+            "description": "Input csv byte or string"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "data",
+            "type": "message.table",
+            "description": "Output data as table"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.csv_table.configSchema.json",
+        "script": "file://csv_table.py",
+        "debug_mode": true,
+        "collect": false,
+        "has_header": true,
+        "separator": ","
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "csv_table.svg"
+}

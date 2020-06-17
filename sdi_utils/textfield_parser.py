@@ -11,11 +11,6 @@ def split_text(text,sep) :
     sep_indices = [m.start() for m in re.finditer(sep, text)]
     quote_indices = [m.start() for m in re.finditer("'", text) if m.start() == 0 or text[m.start()-1] != '\\' ]
 
-    if sep == ',' :
-        print('\nSPLIT text for: {} - {} '.format(sep,text))
-        for q in quote_indices :
-            print(text[q-1:])
-
     list_seps = list()
     for s_index in sep_indices :
         if not len([ mi for mi in quote_indices if mi < s_index]) % 2 :
@@ -29,7 +24,10 @@ def split_text(text,sep) :
         else :
             list_texts.append(text[last_index+1:s_index].strip())
         last_index = s_index
-    list_texts.append(text[last_index + 1:].strip())
+    if last_index == 0 :
+        list_texts.append(text[:].strip())
+    else:
+        list_texts.append(text[last_index + 1:].strip())
 
     return list_texts
 
@@ -115,6 +113,9 @@ def read_dict_of_list(text,inner_sep = ',',outer_sep = ';',map_sep=':',test_numb
 #### READ DICT
 
 def read_dict(text, sep =',', map_sep=':', test_number = True, ignore_quotes = False):
+
+    # replace \\' with \' and \\" with \"
+
     if not text or text.upper() == 'NONE':
         return None
 
@@ -253,7 +254,7 @@ if __name__ == '__main__':
     print('Value lists: ' + str(read_dict_of_list(value_str)))
 
     ### map
-    maplist = "Mercedes:expensive, Audi:'sportive, \'expensive', VW : 'people, humble: except', Citroen:cool, 'Rolls Rocye': 'royal: pretended', 'Cars':6, 'eco':'False'"
+    maplist = r"Mercedes:expensive, Audi:'\'sportive, \'expensive', VW : 'people, humble: except', Citroen:cool, 'Rolls Rocye': 'royal: pretended', 'Cars':6, 'eco':'False'"
     print('\nMap: \ninput: {}\nouput: {}\n'.format(maplist,read_dict(maplist)))
 
     maplist = "Mercedes:expensive, Audi:sportive, VW : people"

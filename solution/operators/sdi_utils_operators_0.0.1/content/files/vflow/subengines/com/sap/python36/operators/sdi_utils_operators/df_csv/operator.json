@@ -1,9 +1,5 @@
 {
-<<<<<<< HEAD
     "description": "df to csv",
-=======
-    "description": "DF to CSV",
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
     "component": "com.sap.system.python3Operator",
     "inports": [
         {
@@ -33,10 +29,7 @@
         "reset_index": false,
         "rename": "None",
         "select_columns": "None",
-<<<<<<< HEAD
         "bool_to_int": true,
-=======
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
         "keyword_args": "None"
     },
     "tags": {

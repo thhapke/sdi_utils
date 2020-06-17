@@ -30,6 +30,7 @@ except NameError:
             config_params = dict()
             tags = {'sdi_utils':'', 'pandas':''}
             version = "0.1.0"
+
             operator_description = "dict to df"
             operator_name = 'dict_df'
             operator_description_long = "Converts dict to DataFrame"
@@ -43,6 +44,7 @@ except NameError:
             config_params['rename'] = {'title': 'Rename columns',
                                            'description': 'Rename columns by provided map',
                                            'type': 'string'}
+
 
 
 def process(msg) :
@@ -63,6 +65,7 @@ def process(msg) :
         df.rename(columns = rename_cols,inplace=True)
 
     logger.debug('DataFrame Shape: {} - {}'.format(df.shape[0],df.shape[1]))
+
     api.send(outports[0]['name'], log_stream.getvalue())
     api.send(outports[1]['name'], api.Message(attributes=att_dict,body=df))
 
@@ -78,6 +81,7 @@ def test_operator() :
 
     api.config.debug_mode = True
     #api.config.rename = "name: first_name, age: AGE"
+
 
     data = [{'name': 'Anna', 'age': 25, 'born': '1995-03-14'}, {'name': 'Berta', 'age': 31, 'born': '1989-08-14'},
             {'name': 'Cecilia', 'age': 41, 'born': '1979-08-14'}]

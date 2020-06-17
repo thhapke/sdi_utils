@@ -39,14 +39,11 @@
             "description": "Select columns.",
             "type": "string"
         },
-<<<<<<< HEAD
         "bool_to_int": {
             "title": "Convert boolean to int",
             "description": "Converting boolean value to integer.",
             "type": "boolean"
         },
-=======
->>>>>>> 0d439ca11170e5fac25ea8602f1db9ef507eb780
         "keyword_args": {
             "title": "Keyword Arguments",
             "description": "Mapping of key-values passed as arguments \"to read_csv\"",

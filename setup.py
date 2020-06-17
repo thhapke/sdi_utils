@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 setuptools.setup(
     name="sdi_utils",
 
-    version="0.0.79",
+    version="0.0.82",
 
     author="Thorsten Hapke",
     author_email="thorsten.hapke@sap.com",
