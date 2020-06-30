@@ -1,0 +1,33 @@
+{
+    "description": "Prepare Write",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "data",
+            "type": "message.DataFrame",
+            "description": "Prep data"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.repl_prep_write.configSchema.json",
+        "script": "file://repl_prep_write.py",
+        "debug_mode": true,
+        "drop_replication_cols": false
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "repl_prep_write.svg"
+}

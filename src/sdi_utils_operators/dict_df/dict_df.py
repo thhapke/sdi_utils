@@ -21,7 +21,7 @@ except NameError:
                 self.attributes = attributes
                 
         def send(port,msg) :
-            if port == outports[1]['name'] :
+            if port == outports[1]['name'] or port == outports[2]['name'] :
                 print(msg.attributes)
                 print(msg.body)
 
@@ -45,6 +45,12 @@ except NameError:
                                            'description': 'Rename columns by provided map',
                                            'type': 'string'}
 
+            send_empty = True
+            config_params['send_empty'] = {'title': 'Send empty Dataframe to \'outport\'.',
+                                           'description': 'Send empty Dataframe to outport or status to \'error port\'.',
+                                           'type': 'boolean'}
+
+
 
 
 def process(msg) :
@@ -66,13 +72,21 @@ def process(msg) :
 
     logger.debug('DataFrame Shape: {} - {}'.format(df.shape[0],df.shape[1]))
 
+
+    att_dict['data_outcome'] = '0' if df.shape[0] == 0 else '1'
+
+    if df.shape[0] == 0 & api.config.send_empty == False :
+        api.send(outports[2]['name'],api.Message(attributes=att_dict,body = att_dict['data_outcome']))
+    else :
+        api.send(outports[1]['name'], api.Message(attributes=att_dict,body=df))
+
     api.send(outports[0]['name'], log_stream.getvalue())
-    api.send(outports[1]['name'], api.Message(attributes=att_dict,body=df))
 
 
 inports = [{'name': 'dict', 'type': 'message',"description":"Input dict"}]
 outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
-            {'name': 'table', 'type': 'message.DataFrame',"description":"Output table"}]
+            {'name': 'df', 'type': 'message.DataFrame',"description":"Output df"},
+            {'name': 'error', 'type': 'message',"description":"Error status"}]
 
 
 #api.set_port_callback(inports[0]['name'], process)
@@ -80,6 +94,7 @@ outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
 def test_operator() :
 
     api.config.debug_mode = True
+    api.config.send_empty = False
     #api.config.rename = "name: first_name, age: AGE"
 
 
@@ -88,6 +103,8 @@ def test_operator() :
     msg = api.Message(attributes={'format': 'json'}, body=data)
     process(msg)
 
+    msg = api.Message(attributes={'format': 'json'}, body={})
+    process(msg)
 
 if __name__ == '__main__':
     #test_operator()

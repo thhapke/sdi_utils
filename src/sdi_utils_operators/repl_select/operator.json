@@ -1,0 +1,37 @@
+{
+    "description": "Repl. Select",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "trigger",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "sql",
+            "type": "string",
+            "description": "sql statement"
+        },
+        {
+            "name": "msg",
+            "type": "message",
+            "description": "message with sql statement"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.repl_select.configSchema.json",
+        "script": "file://repl_select.py",
+        "debug_mode": true
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "repl_select.svg"
+}

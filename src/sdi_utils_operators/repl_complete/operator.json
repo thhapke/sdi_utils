@@ -1,0 +1,37 @@
+{
+    "description": "Repl. Complete",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message.file",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "sql",
+            "type": "string",
+            "description": "sql statement"
+        },
+        {
+            "name": "msg",
+            "type": "message",
+            "description": "msg with sql statement"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.repl_complete.configSchema.json",
+        "script": "file://repl_complete.py",
+        "debug_mode": true
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "repl_complete.svg"
+}

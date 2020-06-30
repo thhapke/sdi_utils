@@ -1,0 +1,42 @@
+{
+    "description": "merge attributes",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "message1",
+            "type": "message",
+            "description": "Input message1"
+        },
+        {
+            "name": "message2",
+            "type": "message",
+            "description": "Input message2"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "message1",
+            "type": "message",
+            "description": "Output message1"
+        },
+        {
+            "name": "message2",
+            "type": "message",
+            "description": "Output message2"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.merge_attributes.configSchema.json",
+        "script": "file://merge_attributes.py",
+        "debug_mode": true
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "merge_attributes.svg"
+}

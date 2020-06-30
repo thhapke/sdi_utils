@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-06/schema#",
-    "$id": "http://sap.com/vflow/sdi_utils_operators.dict_df.configSchema.json",
+    "$id": "http://sap.com/vflow/sdi_utils_operators.repl_prep_write.configSchema.json",
     "type": "object",
     "properties": {
         "codelanguage": {
@@ -14,14 +14,9 @@
             "description": "Sending debug level information to log port",
             "type": "boolean"
         },
-        "rename": {
-            "title": "Rename columns",
-            "description": "Rename columns by provided map",
-            "type": "string"
-        },
-        "send_empty": {
-            "title": "Send empty Dataframe to 'outport'.",
-            "description": "Send empty Dataframe to outport or status to 'error port'.",
+        "drop_replication_cols": {
+            "title": "Drop Replication columns",
+            "description": "Drop Replication columns.",
             "type": "boolean"
         }
     }

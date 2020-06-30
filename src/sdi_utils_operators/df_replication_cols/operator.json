@@ -1,0 +1,34 @@
+{
+    "description": "Adding replciation columns",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "table",
+            "type": "message.DataFrame",
+            "description": "DataFrame"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "table",
+            "type": "message.DataFrame",
+            "description": "DataFrame with replication columns"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.df_replication_cols.configSchema.json",
+        "script": "file://df_replication_cols.py",
+        "debug_mode": true,
+        "package_size": 1000
+    },
+    "tags": {
+        "pandas": "",
+        "sdi_utils": ""
+    },
+    "iconsrc": "df_replication_cols.svg"
+}

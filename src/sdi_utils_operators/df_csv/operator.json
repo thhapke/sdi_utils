@@ -29,6 +29,7 @@
         "reset_index": false,
         "rename": "None",
         "select_columns": "None",
+        "datetime_conversion": false,
         "bool_to_int": true,
         "keyword_args": "None"
     },

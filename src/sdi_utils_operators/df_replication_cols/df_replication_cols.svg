@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <rect x="30.142" y="83.653" width="226.552" height="220.191" style="fill: rgb(216, 216, 216); stroke-width: 11px; stroke: rgb(90, 90, 90);"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="30.142" y1="117.575" x2="256.907" y2="117.447"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="30.142" y1="179.539" x2="256.907" y2="179.411"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="29.929" y1="148.557" x2="256.694" y2="148.429"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="30.142" y1="210.521" x2="256.907" y2="210.393"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="30.142" y1="241.503" x2="256.907" y2="241.376"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="29.929" y1="272.485" x2="256.694" y2="272.358"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="82.575" y1="83.653" x2="82.793" y2="303.844"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="134.73" y1="307.79" x2="134.923" y2="83.653" transform="matrix(-1, 0, 0, -1, 269.653015, 391.442993)"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="186.836" y1="303.844" x2="187.806" y2="83.653" transform="matrix(-1, 0, 0, -1, 374.641998, 387.497009)"/>
+  <rect x="100.213" y="229.759" width="226.552" height="220.191" style="fill: rgb(216, 216, 216); stroke-width: 11px; stroke: rgb(90, 90, 90);"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="100.213" y1="263.68" x2="326.978" y2="263.553"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="100.213" y1="325.645" x2="326.978" y2="325.517"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="100" y1="294.663" x2="326.765" y2="294.535"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="100.213" y1="356.627" x2="326.978" y2="356.499"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="100.213" y1="387.609" x2="326.978" y2="387.482"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="100" y1="418.591" x2="326.765" y2="418.464"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="152.646" y1="229.759" x2="152.864" y2="449.95"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="204.801" y1="453.896" x2="204.994" y2="229.759" transform="matrix(-1, 0, 0, -1, 409.794983, 683.655029)"/>
+  <line style="stroke: rgb(86, 85, 85); stroke-width: 10px;" x1="256.907" y1="449.95" x2="257.877" y2="229.759" transform="matrix(-1, 0, 0, -1, 514.783997, 679.709045)"/>
+  <rect x="326.765" y="229.759" width="107.109" height="220.191" style="fill: rgb(216, 216, 216); stroke-width: 11px; stroke: rgb(245, 161, 40);"/>
+  <line style="stroke-width: 10px; stroke: rgb(245, 161, 40);" x1="361.006" y1="229.759" x2="361.224" y2="449.95"/>
+  <line style="stroke-width: 10px; stroke: rgb(245, 161, 40);" x1="399.849" y1="229.759" x2="400.067" y2="449.95"/>
+  <line style="stroke-width: 10px; stroke: rgb(245, 161, 40);" x1="326.978" y1="263.553" x2="433.874" y2="263.426"/>
+  <line style="stroke-width: 10px; stroke: rgb(245, 161, 40);" x1="326.765" y1="294.535" x2="433.661" y2="294.408"/>
+  <line style="stroke-width: 10px; stroke: rgb(245, 161, 40);" x1="326.978" y1="325.517" x2="433.874" y2="325.39"/>
+  <line style="stroke-width: 10px; stroke: rgb(245, 161, 40);" x1="326.765" y1="356.499" x2="433.661" y2="356.372"/>
+  <line style="stroke-width: 10px; stroke: rgb(245, 161, 40);" x1="326.765" y1="387.482" x2="433.661" y2="387.355"/>
+  <line style="stroke-width: 10px; stroke: rgb(245, 161, 40);" x1="326.765" y1="418.464" x2="433.661" y2="418.337"/>
+</svg>

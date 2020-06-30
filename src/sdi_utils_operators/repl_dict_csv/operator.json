@@ -1,5 +1,5 @@
 {
-    "description": "dict to df",
+    "description": "dict to csv",
     "component": "com.sap.system.python3Operator",
     "inports": [
         {
@@ -15,9 +15,9 @@
             "description": "Logging data"
         },
         {
-            "name": "df",
-            "type": "message.DataFrame",
-            "description": "Output df"
+            "name": "csv",
+            "type": "message.file",
+            "description": "Output csv string"
         },
         {
             "name": "error",
@@ -26,15 +26,15 @@
         }
     ],
     "config": {
-        "$type": "http://sap.com/vflow/sdi_utils_operators.dict_df.configSchema.json",
-        "script": "file://dict_df.py",
+        "$type": "http://sap.com/vflow/sdi_utils_operators.repl_dict_csv.configSchema.json",
+        "script": "file://repl_dict_csv.py",
         "debug_mode": true,
-        "rename": "None",
-        "send_empty": true
+        "separator": ",",
+        "bool_to_int": true,
+        "drop_replication_cols": true
     },
     "tags": {
-        "sdi_utils": "",
-        "pandas": ""
+        "sdi_utils": ""
     },
-    "iconsrc": "dict_df.svg"
+    "iconsrc": "repl_dict_csv.svg"
 }
