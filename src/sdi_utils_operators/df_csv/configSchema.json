@@ -53,6 +53,11 @@
             "title": "Keyword Arguments",
             "description": "Mapping of key-values passed as arguments \"to read_csv\"",
             "type": "string"
+        },
+        "sort_columns": {
+            "title": "Sort Columns alphabetically",
+            "description": "Sort Columns alphabetically",
+            "type": "boolean"
         }
     }
 }

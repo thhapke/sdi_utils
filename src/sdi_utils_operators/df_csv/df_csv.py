@@ -25,9 +25,6 @@ except NameError:
             if port == outports[1]['name']:
                 api.queue.append(msg)
 
-        def set_config(config):
-            api.config = config
-
         class config:
             ## Meta data
             config_params = dict()
@@ -76,6 +73,11 @@ except NameError:
             config_params['keyword_args'] = {'title': 'Keyword Arguments',
                                              'description': 'Mapping of key-values passed as arguments \"to read_csv\"',
                                              'type': 'string'}
+
+            sort_columns = False
+            config_params['sort_columns'] = {'title': 'Sort Columns alphabetically',
+                                             'description': 'Sort Columns alphabetically',
+                                             'type': 'boolean'}
 
 
 def process(msg):
@@ -147,6 +149,11 @@ def process(msg):
         #df.dropna(inplace=True)
         logger.debug('DataFrame shape: {} - {}'.format(df.shape[0], df.shape[1]))
 
+        # to ensure that the df has always the same order
+        # when reading from DB this can sometimes change
+        if api.config.sort_columns :
+            df = df.reindex(sorted(df.columns), axis=1)
+
         kwargs = tfp.read_dict(text=api.config.keyword_args, map_sep='=')
 
         if not kwargs == None:
@@ -176,13 +183,13 @@ outports = [{'name': 'log', 'type': 'string', "description": "Logging data"}, \
 
 
 def test_operator():
-    config = api.config
-    config.write_index = False
-    config.reset_index = True
-    config.rename = 'icol:index, col3: column3'
-    config.select_columns = "index, 'col 2', names, bool"
-    config.bool_to_int = True
-    api.set_config(config)
+
+    api.config.write_index = False
+    api.config.reset_index = True
+    api.config.rename = 'icol:index, col3: column3'
+    api.config.select_columns = "index, 'col 2', names, bool"
+    api.config.bool_to_int = True
+    api.config.sort_columns = True
 
     df = pd.DataFrame(
         {'icol': [1, 2, 3, 4, 5], 'col 2': ['2020-01-01', '2020-02-01', '2020-01-31', '2020-01-28', '2020-04-12'], \

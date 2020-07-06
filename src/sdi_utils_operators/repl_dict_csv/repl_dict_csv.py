@@ -11,6 +11,8 @@ import sdi_utils.set_logging as slog
 import sdi_utils.textfield_parser as tfp
 import sdi_utils.tprogress as tp
 
+import random
+
 try:
     api
 except NameError:
@@ -53,39 +55,56 @@ except NameError:
                                            'description': 'Drop Replication columns.',
                                            'type': 'boolean'}
 
+            drop_header = True
+            config_params['drop_header'] = {'title': 'Drop header',
+                                           'description': 'Drop header (not only for the first run).',
+                                           'type': 'boolean'}
 
 
+list_dicts = set()
 
 def process(msg) :
-    att_dict = msg.attributes
+    global list_dicts
 
-    att_dict['operator'] = 'repl_dict_csv'
-    logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode)
+    att = dict()
+    att['operator'] = 'repl_dict_csv'
+    att['table'] = msg.attributes['table']
+    att['base_table'] = msg.attributes['base_table']
+    att['latency'] = msg.attributes['latency']
+    att['data_outcome'] = msg.attributes['data_outcome']
+    att['pid'] = msg.attributes['pid']
+
+    logger, log_stream = slog.set_logging(att['operator'], loglevel=api.config.debug_mode)
     logger.info("Process started. Logging level: {}".format(logger.level))
-    logger.debug('Attributes: {}'.format(str(msg.attributes)))
+    logger.debug('Attributes: {}  - {}'.format(str(msg.attributes),str(msg.attributes)))
     time_monitor = tp.progress()
 
     df = pd.DataFrame(msg.body)
     logger.debug('DataFrame Shape: {} - {}'.format(df.shape[0],df.shape[1]))
 
+    # for resilience test
+    #if random.random() < 0.05 :
+    #    logger.debug('Planned crash: {}')
+    #    raise SystemExit('Planned Crash')
+
     # For empty data records no csv send but to error status
     if df.shape[0] == 0  :
-        att_dict['data_outcome'] = False
-        api.send(outports[2]['name'],api.Message(attributes=att_dict,body = att_dict['data_outcome']))
+        att['data_outcome'] = False
+        api.send(outports[2]['name'],api.Message(attributes=att,body = att['data_outcome']))
         logger.info('No data received, msg to port error_status sent.')
         logger.info('Process ended: {}'.format(time_monitor.elapsed_time()))
         api.send(outports[0]['name'], log_stream.getvalue())
         return 0
-    att_dict['data_outcome'] = True
+    att['data_outcome'] = True
 
-    package_id_list = df['PACKAGEID'].unique().tolist()
+    package_id_list = df['DIREPL_PACKAGEID'].unique().tolist()
     if len(package_id_list) > 1:
         logger.error('More than \'1\' package id.')
         raise ValueError('More than \'1\' package id: {}'.format(package_id_list))
-    att_dict['packageid'] = package_id_list[0]
+    att['packageid'] = package_id_list[0]
 
     if api.config.drop_replication_cols:
-        df = df.drop(columns=['PACKAGEID', 'STATUS', 'UPDATED','PID'])
+        df = df.drop(columns=['DIREPL_PACKAGEID', 'DIREPL_STATUS', 'DIREPL_UPDATED','DIREPL_PID'])
 
     if api.config.bool_to_int :
         bool_cols = df.select_dtypes(include='bool').columns
@@ -99,13 +118,27 @@ def process(msg) :
         sep = ','
     logger.debug('to_csv - delimiter: {}'.format(sep))
 
-    data_str = df.to_csv(sep=sep, index=False)
+    # always sort the columns alphabetically because DB columns do not have an order
+    df = df.reindex(sorted(df.columns), axis=1)
 
-    att_dict['file'] = {'connection':{"configurationType": "Connection Management", "connectionID": ""},"path": "", "size": 0}
-    api.send(outports[1]['name'], api.Message(attributes=att_dict,body=data_str))
+    # drop headers if it is part of multiple calls (key: table name and cols)
+    if api.config.drop_header :
+        data_str = df.to_csv(sep=sep, index=False,header=False)
+    else :
+        col_str = att['base_table'] + '-' + ' '.join(df.columns.tolist())
+        if col_str in list_dicts :
+            data_str = df.to_csv(sep=sep, index=False,header=False)
+        else :
+            data_str = df.to_csv(sep=sep, index=False)
+            list_dicts.add(col_str)
+
+    att['file'] = {'connection':{"configurationType": "Connection Management", "connectionID": ""},"path": "", "size": 0}
+    api.send(outports[1]['name'], api.Message(attributes=att,body=data_str))
 
     logger.debug('Process ended: {}'.format(time_monitor.elapsed_time()))
-    api.send(outports[0]['name'], log_stream.getvalue())
+    log = log_stream.getvalue()
+    if len(log) > 0 :
+        api.send(outports[0]['name'], log )
 
 
 inports = [{'name': 'dict', 'type': 'message',"description":"Input dict"}]
@@ -122,17 +155,17 @@ def test_operator() :
     api.config.drop_replication_cols = True
 
 
-    data = [{'name': 'Anna', 'age': 25, 'born': '1995-03-14', 'PACKAGEID':1, 'UPDATED':'2020-06-27','STATUS':'B','PID':'123'},\
-            {'name': 'Berta', 'age': 31, 'born': '1989-08-14', 'PACKAGEID':1, 'UPDATED':'2020-06-27','STATUS':'B','PID':'123'},
-            {'name': 'Cecilia', 'age': 41, 'born': '1979-08-14', 'PACKAGEID':1, 'UPDATED':'2020-06-27','STATUS':'B','PID':'123'}]
-    msg = api.Message(attributes={'format': 'json'}, body=data)
+    data = [{'name': 'Anna', 'age': 25, 'born': '1995-03-14', 'DIREPL_PACKAGEID':1, 'DIREPL_UPDATED':'2020-06-27','DIREPL_STATUS':'B','DIREPL_PID':'123'},\
+            {'name': 'Berta', 'age': 31, 'born': '1989-08-14', 'DIREPL_PACKAGEID':1, 'DIREPL_UPDATED':'2020-06-27','DIREPL_STATUS':'B','DIREPL_PID':'123'},
+            {'name': 'Cecilia', 'age': 41, 'born': '1979-08-14', 'DIREPL_PACKAGEID':1, 'DIREPL_UPDATED':'2020-06-27','DIREPL_STATUS':'B','DIREPL_PID':'123'}]
+    msg = api.Message(attributes={'pid': 123123213, 'table':'REPL_TABLE','base_table':'REPL_TABLE','latency':30,'data_outcome':True}, body=data)
     process(msg)
 
-    msg = api.Message(attributes={'format': 'json'}, body={})
+    msg = api.Message(attributes={'pid': 123123213, 'table':'REPL_TABLE','base_table':'REPL_TABLE','latency':30,'data_outcome':True}, body={})
     process(msg)
 
 if __name__ == '__main__':
-    #test_operator()
+    test_operator()
     if True:
         subprocess.run(["rm", '-r',
                         '/Users/d051079/OneDrive - SAP SE/GitHub/sdi_utils/solution/operators/sdi_utils_operators_' + api.config.version])

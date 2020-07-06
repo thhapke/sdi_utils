@@ -18,6 +18,16 @@
             "title": "Periodicity (s)",
             "description": "Periodicity (s).",
             "type": "integer"
+        },
+        "parallelization": {
+            "title": "Fraction of tables to parallelize",
+            "description": "Periodicity (s).",
+            "type": "number"
+        },
+        "round_trips_to_stop": {
+            "title": "Roundtips to stop",
+            "description": "Fraction of tables to parallelize.",
+            "type": "integer"
         }
     }
 }

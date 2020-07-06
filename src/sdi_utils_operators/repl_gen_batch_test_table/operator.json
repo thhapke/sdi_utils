@@ -1,0 +1,36 @@
+{
+    "description": "Generate Batch Test Tables",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "data",
+            "type": "message",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "csv",
+            "type": "message",
+            "description": "msg with csv"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.repl_gen_batch_test_table.configSchema.json",
+        "script": "file://repl_gen_batch_test_table.py",
+        "debug_mode": true,
+        "num_rows": 100,
+        "package_size": 5,
+        "num_tables": 10,
+        "base_table_name": "\"REPLICATION\".\"TEST_TABLE\""
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "repl_gen_batch_test_table.svg"
+}

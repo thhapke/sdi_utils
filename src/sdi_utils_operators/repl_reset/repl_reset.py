@@ -45,30 +45,33 @@ except NameError:
 
 def process(msg):
 
-    att_dict = msg.attributes
-    att_dict['operator'] = 'repl_reset'
-    logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode)
+    att = {}
+    att['operator'] = 'repl_reset'
+    att['table'] = msg.attributes['table']
+    att['base_table'] = msg.attributes['base_table']
+    att['latency'] = msg.attributes['latency']
+    att['data_outcome'] = msg.attributes['data_outcome']
+    logger, log_stream = slog.set_logging(att['operator'], loglevel=api.config.debug_mode)
 
     logger.info("Process started. Logging level: {}".format(logger.level))
     time_monitor = tp.progress()
-    logger.debug('Attributes: {}'.format(str(att_dict)))
+    logger.debug('Attributes: {} - {}'.format(str(msg.attributes),str(att)))
 
     data = msg.body
-    repl_table = data['TABLE']
-    latency = data['LATENCY']
-    att_dict['replication_table'] = repl_table
-    att_dict['latency'] = latency
 
-    update_sql = 'UPDATE {table} SET \"STATUS\" = \'W\' WHERE  \"STATUS\" = \'B\' '\
-                 'AND \"UPDATED\" < ADD_SECONDS(CURRENT_UTCTIMESTAMP,-{latency}) '.format(table=repl_table,latency=latency)
+    update_sql = 'UPDATE {table} SET \"DIREPL_STATUS\" = \'W\' WHERE  \"DIREPL_STATUS\" = \'B\' '\
+                 'AND \"DIREPL_UPDATED\" < ADD_SECONDS(CURRENT_UTCTIMESTAMP,-{latency}) '.format(table=att['table'],latency=att['latency'])
 
     logger.info('Update statement: {}'.format(update_sql))
-    att_dict['update_sql'] = update_sql
+    att['update_sql'] = update_sql
 
     logger.debug('Process ended: {}'.format(time_monitor.elapsed_time()))
-    api.send(outports[0]['name'], log_stream.getvalue())
     api.send(outports[1]['name'], update_sql)
-    api.send(outports[2]['name'], api.Message(attributes=att_dict,body=update_sql))
+    api.send(outports[2]['name'], api.Message(attributes=att,body=update_sql))
+
+    log = log_stream.getvalue()
+    if len(log) > 0 :
+        api.send(outports[0]['name'], log )
 
 
 inports = [{'name': 'data', 'type': 'message', "description": "Input data"}]
@@ -80,7 +83,7 @@ outports = [{'name': 'log', 'type': 'string', "description": "Logging data"}, \
 
 def test_operator():
 
-    msg = api.Message(attributes={'table':'repl_table'},body={'TABLE':'repl_table','LATENCY':20})
+    msg = api.Message(attributes={'table':'repl_table','base_table':'repl_table','latency':30,'data_outcome':True},body={'TABLE':'repl_table','LATENCY':20})
     process(msg)
 
     for st in api.queue :

@@ -27,9 +27,6 @@ except NameError:
             if port == outports[0]['name']:
                 api.queue.append(msg)
 
-        def set_config(config):
-            api.config = config
-
         class config:
             ## Meta data
             config_params = dict()
@@ -68,9 +65,6 @@ except NameError:
             config_params['downcast_float'] = {'title': 'Downcast float datatypes',
                                                'description': 'Downcast float64 to float32 datatypes',
                                                'type': 'boolean'}
-            df_name = 'DataFrame'
-            config_params['df_name'] = {'title': 'DataFrame name',
-                                        'description': 'DataFrame name for debugging reasons', 'type': 'string'}
 
             decimal = '.'
             config_params['decimal'] = {'title': 'Decimals separator', 'description': 'Decimals separator',
@@ -78,6 +72,7 @@ except NameError:
             dtypes = 'None'
             config_params['dtypes'] = {'title': 'Data Types of Columns',
                                        'description': 'Data Types of Columns (list of maps)', 'type': 'string'}
+
             data_from_filename = 'None'
             config_params['data_from_filename'] = {'title': 'Data from Filename', 'description': 'Data from Filename',
                                                    'type': 'string'}
@@ -90,6 +85,9 @@ except NameError:
             config_params['keyword_args'] = {'title': 'Keyword Arguments',
                                              'description': 'Mapping of key-values passed as arguments \"to read_csv\"',
                                              'type': 'string'}
+            test_column = 'None'
+            config_params['test_column'] = {'title': 'Test columm', 'description': 'Sums up test_column',
+                                           'type': 'string'}
 
 
 def downcast(df, data_type, to_type):
@@ -204,15 +202,19 @@ def process(msg):
     for i in range(0, example_rows):
         logger.debug('Row {}: {}'.format(i,str([str(i)[:10].ljust(10) for i in df.iloc[i, :].tolist()])))
 
-    logger.debug('Process ended: {}  '.format(time_monitor.elapsed_time()))
-
-    api.send(outports[0]['name'],log_stream.getvalue())
-
     logger.info('Collecting incoming data: {}'.format(api.config.collect))
     if not api.config.collect or ('message.lastBatch' in msg.attributes and msg.attributes['message.lastBatch'] == True) :
         logger.debug('Send data to outport')
+        test_column = tfp.read_value(api.config.test_column)
+        if test_column :
+            sumup = df[test_column].sum()
+            att_dict['Test_Column'] = {'name':test_column,'sum':sumup}
+            logger.info('Testcolumn \'{}\': {}'.format(test_column,sumup))
         api.send(outports[1]['name'], api.Message(attributes=att_dict, body=result_df))
 
+
+    logger.debug('Process ended: {}  '.format(time_monitor.elapsed_time()))
+    api.send(outports[0]['name'],log_stream.getvalue())
 
 inports = [{'name': 'csv', 'type': 'message.file',"description":"Input byte or string csv"}]
 outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
@@ -222,23 +224,22 @@ outports = [{'name': 'log', 'type': 'string',"description":"Logging data"}, \
 #api.set_port_callback(inports[0]['name'], process)
 
 def test_operator():
-    config = api.config
-    config.debug_mode = True
-    config.use_columns = "'Exportdatum','Postleitzahl','Ort','Ortsteil','Verbrauchsstufe','Rang','Gesamtpreis','Anbietername'"
-    config.downcast_float = True
-    config.downcast_int = True
-    config.dtypes = "'Gesamtpreis':'float32','Postleitzahl':'uint32','Verbrauchsstufe':'uint16'"
-    config.separator = ';'
-    config.index_cols = "None"
-    config.limit_rows = 0
-    config.df_name = 'DataFrame'
-    config.decimal = '.'
-    config.utc = False
-    config.collect = False
-    config.todatetime = 'Exportdatum : %Y-%m-%d'
-    config.keyword_args = "'error_bad_lines'= True, 'low_memory' = False, compression = None, comment = '#'"
 
-    api.set_config(config)
+    api.config.debug_mode = True
+    api.config.use_columns = "'Exportdatum','Postleitzahl','Ort','Ortsteil','Verbrauchsstufe','Rang','Gesamtpreis','Anbietername'"
+    api.config.downcast_float = True
+    api.config.downcast_int = True
+    api.config.dtypes = "'Gesamtpreis':'float32','Postleitzahl':'uint32','Verbrauchsstufe':'uint16'"
+    api.config.separator = ';'
+    api.config.index_cols = "None"
+    api.config.limit_rows = 0
+    api.config.decimal = '.'
+    api.config.utc = False
+    api.config.collect = False
+    api.config.todatetime = 'Exportdatum : %Y-%m-%d'
+    api.config.test_column = 'Postleitzahl'
+    api.config.keyword_args = "'error_bad_lines'= True, 'low_memory' = False, compression = None, comment = '#'"
+
 
     in_dir = '/Users/Shared/data/OptRanking/portal1_samples25'
     files_in_dir = [f for f in os.listdir(in_dir) if os.path.isfile(os.path.join(in_dir, f)) and re.match('.*csv', f)]

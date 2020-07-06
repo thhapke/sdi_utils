@@ -46,27 +46,32 @@ except NameError:
 
 def process(msg):
 
-    att_dict = msg.attributes
-    att_dict['operator'] = 'repl_select'
-    logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode)
+    att = {}
+    att['operator'] = 'repl_select'
+    att['table'] = msg.attributes['table']
+    att['base_table'] = msg.attributes['base_table']
+    att['latency'] = msg.attributes['latency']
+    att['data_outcome'] = msg.attributes['data_outcome']
+    att['pid'] = msg.attributes['pid']
+    logger, log_stream = slog.set_logging(att['operator'], loglevel=api.config.debug_mode)
 
     logger.info("Process started. Logging level: {}".format(logger.level))
     time_monitor = tp.progress()
-    logger.debug('Attributes: {}'.format(str(att_dict)))
+    logger.debug('Attributes: {} - {}'.format(str(msg.attributes),str(att)))
 
-    repl_table = att_dict['replication_table']
-    pid = att_dict['pid']
-
-    select_sql = 'SELECT * FROM {table} WHERE \"STATUS\" = \'B\' AND  \"PID\" = \'{pid}\' '.\
-        format(table=repl_table,pid= pid)
-    att_dict['select_sql'] = select_sql
-    msg = api.Message(attributes=att_dict,body = select_sql)
+    select_sql = 'SELECT * FROM {table} WHERE \"DIREPL_STATUS\" = \'B\' AND  \"DIREPL_PID\" = \'{pid}\' '.\
+        format(table=att['table'],pid= att['pid'])
+    att['select_sql'] = select_sql
+    msg = api.Message(attributes=att,body = select_sql)
 
     logger.info('SELECT statement: {}'.format(select_sql))
     logger.debug('Process ended: {}'.format(time_monitor.elapsed_time()))
-    api.send(outports[0]['name'], log_stream.getvalue())
     api.send(outports[1]['name'], select_sql)
     api.send(outports[2]['name'], msg)
+
+    log = log_stream.getvalue()
+    if len(log) > 0 :
+        api.send(outports[0]['name'], log )
 
 
 inports = [{'name': 'trigger', 'type': 'message', "description": "Input data"}]
@@ -78,7 +83,7 @@ outports = [{'name': 'log', 'type': 'string', "description": "Logging data"}, \
 
 def test_operator():
 
-    msg = api.Message(attributes={'pid': 123123213, 'replication_table':'REPL_TABLE'},body='')
+    msg = api.Message(attributes={'pid': 123123213, 'table':'REPL_TABLE','base_table':'REPL_TABLE','latency':30,'data_outcome':True},body='')
     process(msg)
 
     for m in api.queue:
@@ -87,7 +92,7 @@ def test_operator():
 
 
 if __name__ == '__main__':
-    #test_operator()
+    test_operator()
     if True:
         subprocess.run(["rm", '-r',
                         '/Users/d051079/OneDrive - SAP SE/GitHub/sdi_utils/solution/operators/sdi_utils_operators_' + api.config.version])

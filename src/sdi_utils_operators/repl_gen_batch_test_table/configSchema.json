@@ -1,0 +1,38 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$id": "http://sap.com/vflow/sdi_utils_operators.repl_gen_batch_test_table.configSchema.json",
+    "type": "object",
+    "properties": {
+        "codelanguage": {
+            "type": "string"
+        },
+        "script": {
+            "type": "string"
+        },
+        "debug_mode": {
+            "title": "Debug mode",
+            "description": "Sending debug level information to log port",
+            "type": "boolean"
+        },
+        "num_rows": {
+            "title": "Number of table rows",
+            "description": "Number of table rows",
+            "type": "integer"
+        },
+        "package_size": {
+            "title": "Package size",
+            "description": "Package size",
+            "type": "integer"
+        },
+        "num_tables": {
+            "title": "Number of tables",
+            "description": "Number of tables.",
+            "type": "integer"
+        },
+        "base_table_name": {
+            "title": "Base Table Name",
+            "description": "Base Table Name.",
+            "type": "string"
+        }
+    }
+}

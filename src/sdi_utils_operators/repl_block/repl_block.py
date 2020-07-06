@@ -46,30 +46,40 @@ except NameError:
 
 def process(msg):
 
-    att_dict = msg.attributes
-    att_dict['operator'] = 'repl_block'
-    logger, log_stream = slog.set_logging(att_dict['operator'], loglevel=api.config.debug_mode)
+    att = {} # do not copy the msg.attributes, because only ref not value is been used
+    att['operator'] = 'repl_block'
+    att['table'] = msg.attributes['table']
+    att['base_table'] = msg.attributes['base_table']
+    att['latency'] = msg.attributes['latency']
+    att['data_outcome'] = msg.attributes['data_outcome']
+    #att['pid'] = msg.attributes['pid']
+    logger, log_stream = slog.set_logging(att['operator'], loglevel=api.config.debug_mode)
 
     logger.info("Process started. Logging level: {}".format(logger.level))
     time_monitor = tp.progress()
-    logger.debug('Attributes: {}'.format(str(att_dict)))
+    logger.debug('Attributes: {}'.format(str(dict)))
 
-    repl_table = att_dict['replication_table']
-    logger.info('Replication table from attributes: {}'.format(repl_table))
+    logger.info('Replication table from attributes: {}'.format(att['table']))
 
     pid = int(random.random() * 100000000)
-    att_dict['pid'] = pid
+    att['pid'] = pid
 
-    update_sql = 'UPDATE {table} SET \"STATUS\" = \'B\', \"PID\" = \'{pid}\', \"UPDATED\" =  CURRENT_UTCTIMESTAMP WHERE ' \
-                 '\"PACKAGEID\" = (SELECT min(\"PACKAGEID\") FROM {table} WHERE \"STATUS\" = \'W\')'.format(table=repl_table, pid = pid)
+    update_sql = 'UPDATE {table} SET \"DIREPL_STATUS\" = \'B\', \"DIREPL_PID\" = \'{pid}\', '\
+                 '\"DIREPL_UPDATED\" =  CURRENT_UTCTIMESTAMP WHERE ' \
+                 '\"DIREPL_PACKAGEID\" = (SELECT min(\"DIREPL_PACKAGEID\") ' \
+                 'FROM {table} WHERE \"DIREPL_STATUS\" = \'W\')'.format(table=att['table'], pid = pid)
 
     logger.info('Update statement: {}'.format(update_sql))
-    att_dict['update_sql'] = update_sql
+    att['update_sql'] = update_sql
 
     logger.debug('Process ended: {}'.format(time_monitor.elapsed_time()))
-    api.send(outports[0]['name'], log_stream.getvalue())
+
     api.send(outports[1]['name'], update_sql)
-    api.send(outports[2]['name'], api.Message(attributes=att_dict,body=update_sql))
+    api.send(outports[2]['name'], api.Message(attributes=att,body=update_sql))
+
+    log = log_stream.getvalue()
+    if len(log) > 0 :
+        api.send(outports[0]['name'], log )
 
 
 inports = [{'name': 'data', 'type': 'message', "description": "Input data"}]
@@ -81,7 +91,7 @@ outports = [{'name': 'log', 'type': 'string', "description": "Logging data"}, \
 
 def test_operator():
 
-    msg = api.Message(attributes={'packageid':4711,'replication_table':'repl_table'},body='')
+    msg = api.Message(attributes={'packageid':4711,'table':'repl_table','base_table':'repl_table','latency':30,'data_outcome':True},body='')
     process(msg)
 
     for st in api.queue :

@@ -1,10 +1,10 @@
 {
-    "description": "Repl. Reset",
+    "description": "Repl. Complete",
     "component": "com.sap.system.python3Operator",
     "inports": [
         {
             "name": "data",
-            "type": "message",
+            "type": "message.file",
             "description": "Input data"
         }
     ],
@@ -26,12 +26,12 @@
         }
     ],
     "config": {
-        "$type": "http://sap.com/vflow/sdi_utils_operators.repl_reset.configSchema.json",
-        "script": "file://repl_reset.py",
+        "$type": "http://sap.com/vflow/sdi_utils_operators.repl_complete.configSchema.json",
+        "script": "file://repl_complete.py",
         "debug_mode": true
     },
     "tags": {
         "sdi_utils": ""
     },
-    "iconsrc": "repl_reset.svg"
+    "iconsrc": "repl_complete.svg"
 }
