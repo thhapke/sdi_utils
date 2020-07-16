@@ -27,15 +27,11 @@ except NameError:
             elif port == outports[1]['name'] :
                 print('Files processed: {}'.format(msg))
 
-
-        def set_config(config):
-            api.config = config
-    
         class config:
             ## Meta data
             config_params = dict()
             tags = {'sdi_utils':''}
-            version = "0.0.1"
+            version = "0.1.0"
             operator_name = 'filter_date'
             operator_description = "Filter date string"
             operator_description_long = "Filters filenames with date pattern (yyyy-mm-dd or yyyymmdd)."
@@ -129,11 +125,9 @@ outports = [{'name': 'log', 'type': 'string',"description":"Logging data"},\
 #api.set_port_callback(inports[0]['name'], process)
 
 def test_operator() :
-    config = api.config
-    config.debug_mode = True
-    config.start_date = '2020-02-01'
-    config.end_date = '2020-03-31'
-    api.set_config(config)
+    api.config.debug_mode = True
+    api.config.start_date = '2020-02-01'
+    api.config.end_date = '2020-03-31'
 
     process(api.Message(attributes={'file':{'path':'/folder/file-20200206'},'message.lastBatch':False},body = []))
     process(api.Message(attributes={'file':{'path':'/folder/file-20200207'},'message.lastBatch':False},body = []))
@@ -141,7 +135,7 @@ def test_operator() :
     process(api.Message(attributes={'file': {'path': '/folder/file-20201215'}, 'message.lastBatch': True}, body=[]))
 
 if __name__ == '__main__':
-    #test_operator()
+    test_operator()
 
 
     if True :
