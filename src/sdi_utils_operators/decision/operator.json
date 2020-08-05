@@ -1,0 +1,38 @@
+{
+    "description": "Decision",
+    "component": "com.sap.system.python3Operator",
+    "inports": [
+        {
+            "name": "input",
+            "type": "message.*",
+            "description": "Input data"
+        }
+    ],
+    "outports": [
+        {
+            "name": "log",
+            "type": "string",
+            "description": "Logging data"
+        },
+        {
+            "name": "True",
+            "type": "message.*",
+            "description": "True message"
+        },
+        {
+            "name": "False",
+            "type": "message.*",
+            "description": "False message"
+        }
+    ],
+    "config": {
+        "$type": "http://sap.com/vflow/sdi_utils_operators.decision.configSchema.json",
+        "script": "file://decision.py",
+        "debug_mode": true,
+        "decision_attribute": "message.lastBatch"
+    },
+    "tags": {
+        "sdi_utils": ""
+    },
+    "iconsrc": "decision.svg"
+}

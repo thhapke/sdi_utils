@@ -1,4 +1,4 @@
-# table to csv stream - s.d051079.OneDrive - SAP SE.GitHub.sdi_utils.deprecated.table_csv (Version: 0.0.1)
+# table to csv stream - sdi_utils_operators.table.table_to_csv (Version: 0.0.1)
 
 Converts table to csv stream.
 
@@ -14,7 +14,7 @@ Converts table to csv stream.
 ## Config
 
 * **debug_mode** - Debug mode (Type: boolean) Sending debug level information to log port
-* **drop_columns** - Drop Columns (Type: string) List of columns to drop.
+* **separator** - Separator (Type: string) Separator
 
 
 # Tags
